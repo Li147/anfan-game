@@ -12,13 +12,14 @@ public class ItemController : MonoBehaviour {
     private int itemID;
 
     private Inventory inventory;
-    public GameObject itemButton;
+    public Button itemButton;
+    public SpriteRenderer spriteRenderer;
    
     
 
     private void Start() {
-        
-        
+
+        spriteRenderer.sprite = itemSprites[itemID];
         inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
 
     }
@@ -50,10 +51,10 @@ public class ItemController : MonoBehaviour {
 
                     inventory.isFull[i] = true;
 
-                    GameObject button = (GameObject) Instantiate(itemButton, inventory.slots[i].transform, false);
-                    //button.GetComponent<Image>().sprite = itemSprites[1];
-
-                    itemButton.GetComponent<Image>().sprite = itemSprites[itemID];
+                    Button button = (Button) Instantiate(itemButton, inventory.slots[i].transform, false);
+                    
+               
+                    button.GetComponent<Image>().sprite = this.itemSprites[itemID];
                     
 
                     Destroy(gameObject);
