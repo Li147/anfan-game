@@ -1,9 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
 using UnityEngine.UI;
 
-public class InventoryController : MonoBehaviour
+public class InventoryUI : MonoBehaviour
 {
 
     [SerializeField]
@@ -12,8 +11,17 @@ public class InventoryController : MonoBehaviour
     public bool[] isFull = new bool[10];
     public GameObject[] slots = new GameObject[10];
 
+    public Inventory inventory;
+
+
+    void Start() {
+        
+         
+    }
+
+
     // picked up item, update sprite of the button
-    public void UpdateInventoryUI() {
+    public void UpdateUI() {
         for (int i = 0; i < slots.Length; i++) {
 
         }
