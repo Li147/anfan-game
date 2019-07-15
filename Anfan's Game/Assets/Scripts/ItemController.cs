@@ -52,10 +52,15 @@ public class ItemController : MonoBehaviour {
                     inventory.isFull[i] = true;
 
                     Button button = (Button) Instantiate(itemButton, inventory.slots[i].transform, false);
-                    
-               
+
+
+                    Sprite mySprite = this.itemSprites[itemID];
+
                     button.GetComponent<Image>().sprite = this.itemSprites[itemID];
-                    
+
+                    GameObject newObject = this.gameObject;
+
+                    button.GetComponent<Spawn>().item = Instantiate(this.gameObject);
 
                     Destroy(gameObject);
                     break;
