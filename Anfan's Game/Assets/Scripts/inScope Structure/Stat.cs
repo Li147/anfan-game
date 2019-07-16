@@ -3,10 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Stats : MonoBehaviour
+public class Stat : MonoBehaviour
 {
 
     private Image content;
+
+    [SerializeField]
+    private Text statValue;
+
+    [SerializeField]
+    private float lerpSpeed;
 
     private float currentFill;
 
@@ -30,6 +36,8 @@ public class Stats : MonoBehaviour
             }
 
             currentFill = currentValue / MyMaxValue;
+
+            statValue.text = currentValue + "/" + MyMaxValue;
             
         }
 
@@ -52,7 +60,12 @@ public class Stats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        content.fillAmount = currentFill;
+        
+        
+        if (currentFill != content.fillAmount) {
+            content.fillAmount = Mathf.Lerp(content.fillAmount, currentFill, Time.deltaTime * lerpSpeed);
+        }
+
         
     }
 

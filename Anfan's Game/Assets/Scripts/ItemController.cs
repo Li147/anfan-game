@@ -12,7 +12,7 @@ public class ItemController : MonoBehaviour {
     private int itemID;
 
     private Inventory inventory;
-    public Button itemButton;
+    public GameObject itemButton;
     public SpriteRenderer spriteRenderer;
    
     
@@ -27,22 +27,6 @@ public class ItemController : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D other) {
 
-        //if (other.CompareTag("Player")) {
-            
-        //    for (int i = 0; i < inventory.slots.Length; i++) {
-
-        //        if (inventory.isFull[i] == false) {
-
-        //            inventory.isFull[i] = true;
-        //            Instantiate(itemButton, inventory.slots[i].transform, false);
-        //            Destroy(gameObject);
-        //            break;
-        //        }
-        //    }
-        //}
-
-        
-
         if (other.CompareTag("Player")) {
 
             for (int i = 0; i < inventory.slots.Length; i++) {
@@ -50,23 +34,39 @@ public class ItemController : MonoBehaviour {
                 if (inventory.isFull[i] == false) {
 
                     inventory.isFull[i] = true;
-
-                    Button button = (Button) Instantiate(itemButton, inventory.slots[i].transform, false);
-
-
-                    Sprite mySprite = this.itemSprites[itemID];
-
-                    button.GetComponent<Image>().sprite = this.itemSprites[itemID];
-
-                    GameObject newObject = this.gameObject;
-
-                    button.GetComponent<Spawn>().item = Instantiate(this.gameObject);
-
+                    Instantiate(itemButton, inventory.slots[i].transform, false);
                     Destroy(gameObject);
                     break;
                 }
             }
         }
+
+
+
+        //if (other.CompareTag("Player")) {
+
+        //    for (int i = 0; i < inventory.slots.Length; i++) {
+
+        //        if (inventory.isFull[i] == false) {
+
+        //            inventory.isFull[i] = true;
+
+        //            Button button = (Button) Instantiate(itemButton, inventory.slots[i].transform, false);
+
+
+        //            Sprite mySprite = this.itemSprites[itemID];
+
+        //            button.GetComponent<Image>().sprite = this.itemSprites[itemID];
+
+        //            GameObject newObject = this.gameObject;
+
+        //            button.GetComponent<Spawn>().item = Instantiate(this.gameObject);
+
+        //            Destroy(gameObject);
+        //            break;
+        //        }
+        //    }
+        //}
 
 
     }

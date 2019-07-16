@@ -5,22 +5,22 @@ using UnityEngine.UI;
 
 public class PlayerStats : MonoBehaviour
 {
-    private int health = 100;
-    private int hunger = 100;
-    public Text healthText;
-    public Text hungerText;
+    //private int health = 100;
+    //private int hunger = 100;
+    //public Text healthText;
+    //public Text hungerText;
 
-    void Update() {
+    //void Update() {
 
-        healthText.text = health.ToString();
-        hungerText.text = hunger.ToString();
+    //    healthText.text = health.ToString();
+    //    hungerText.text = hunger.ToString();
 
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            health--;
-        }
+    //    if (Input.GetKeyDown(KeyCode.Space)) {
+    //        health--;
+    //    }
 
-        if (Input.GetKeyDown(KeyCode.K)) {
-            hunger--;
-        }
-    }
+    //    if (Input.GetKeyDown(KeyCode.K)) {
+    //        hunger--;
+    //    }
+    //}
 }

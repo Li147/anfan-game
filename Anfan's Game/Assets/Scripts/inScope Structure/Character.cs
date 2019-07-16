@@ -11,11 +11,10 @@ public abstract class Character : MonoBehaviour
     protected Vector2 movementDirection;
 
     [SerializeField]
-    private float movementSpeed;
+    public float movementSpeed;
 
-    [Header("References:")]
-    public Animator animator;
-    public Rigidbody2D rb;
+    private Animator animator;
+    private Rigidbody2D rb;
 
 
     // Start is called before the first frame update
@@ -26,16 +25,23 @@ public abstract class Character : MonoBehaviour
     }
 
     // Update is called once per frame
-    protected virtual void Update()
-    {
+    protected virtual void Update() {
+        Animate(movementDirection);
+    }
+
+    protected virtual void FixedUpdate() {
         Move();
     }
 
-    void Move() {
-        rb.velocity = movementDirection * movementSpeed * Time.deltaTime;
-        Animate(movementDirection);
+
+
+    public void Move() {
+        rb.velocity = movementDirection * movementSpeed;
+        
         
     }
+
+
 
     public void Animate(Vector2 direction) {
         animator.SetFloat("x", movementDirection.x);
