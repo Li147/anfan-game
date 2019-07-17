@@ -21,11 +21,7 @@ public class Player : Character {
     private IInteractable interactable;
     
  
-    private Vector2 lastMove;
-
     
-
-
     protected override void Start() {
 
         health.Initialize(initHealth, initHealth);
@@ -63,6 +59,24 @@ public class Player : Character {
         
         movementDirection.Normalize();
 
+
+
+        if (Input.GetKeyDown(KeyCode.Space)) {
+
+            if (!isAttacking && !IsMoving) {
+
+                attackRoutine = StartCoroutine(Attack());
+
+            }
+            
+        }
+
+        if (Input.GetKeyDown(KeyCode.M)) {
+
+            StartCoroutine(Spellcast());
+        }
+
+
         //Debugging
 
         if (Input.GetKeyDown(KeyCode.O)) {
@@ -80,13 +94,52 @@ public class Player : Character {
 
     }
 
-    
 
-    
+    private IEnumerator Attack() {
+
+        
+        isAttacking = true;
+        animator.SetBool("attack", isAttacking);
+
+
+        yield return new WaitForSeconds(1);
+
+        StopAttack();
 
 
 
-    
+
+    }
+
+    private IEnumerator Spellcast() {
+
+        isSpellcasting = true;
+        animator.SetBool("spellcast", isSpellcasting);
+        
+
+        yield return new WaitForSeconds(3);
+
+               
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public void Interact() {
         if(interactable != null) {
@@ -109,4 +162,9 @@ public class Player : Character {
             
         }
     }
+
+
+
+
+
 }

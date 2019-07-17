@@ -13,8 +13,23 @@ public abstract class Character : MonoBehaviour
     [SerializeField]
     public float movementSpeed;
 
-    private Animator animator;
+    protected Animator animator;
     private Rigidbody2D rb;
+    private int length;
+
+    protected bool isAttacking = false;
+    protected bool isSpellcasting = false;
+
+    protected Coroutine attackRoutine;
+
+
+    public bool IsMoving {
+        get {
+            return movementDirection.x != 0 || movementDirection.y != 0;
+        }
+    }
+
+
 
 
     // Start is called before the first frame update
@@ -26,7 +41,7 @@ public abstract class Character : MonoBehaviour
 
     // Update is called once per frame
     protected virtual void Update() {
-        Animate(movementDirection);
+        HandleLayers();
     }
 
     protected virtual void FixedUpdate() {
@@ -37,18 +52,59 @@ public abstract class Character : MonoBehaviour
 
     public void Move() {
         rb.velocity = movementDirection * movementSpeed;
-        
-        
+           
+    }
+
+
+    public void HandleLayers() {
+
+        if (IsMoving) {
+            ActivateLayer("WalkLayer");
+
+
+            // sets animation parameter  to ensure player faces correct direction
+            animator.SetFloat("x", movementDirection.x);
+            animator.SetFloat("y", movementDirection.y);
+
+
+
+        } else if (isAttacking) {
+
+            ActivateLayer("AttackLayer");
+
+                       
+
+        } else if (isSpellcasting) {
+
+            ActivateLayer("SpellcastLayer");
+
+
+        } else {
+            ActivateLayer("IdleLayer");
+        }
     }
 
 
 
-    public void Animate(Vector2 direction) {
-        animator.SetFloat("x", movementDirection.x);
-        animator.SetFloat("y", movementDirection.y);
+    public void ActivateLayer(string layerName) {
+        for (int i = 0; i < animator.layerCount; i++) {
+            animator.SetLayerWeight(i, 0);
+        }
 
-       
+        animator.SetLayerWeight(animator.GetLayerIndex(layerName), 1);
+        
+    }
 
+    public void StopAttack() {
+
+        if (attackRoutine != null) {
+            StopCoroutine(attackRoutine);
+            isAttacking = false;
+            animator.SetBool("attack", isAttacking);
+
+        }
+        
+        
     }
 
 }
