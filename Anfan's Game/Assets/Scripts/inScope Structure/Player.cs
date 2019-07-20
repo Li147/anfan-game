@@ -14,6 +14,15 @@ public class Player : Character {
     private float initHealth = 100;
     private float initHunger = 200;
 
+    [SerializeField]
+    private GameObject[] spellPrefab;
+
+    [SerializeField]
+    private Transform[] exitPoints;
+
+    private int exitIndex = 2;
+
+
     private GameObject currentObject = null;
 
    
@@ -49,15 +58,42 @@ public class Player : Character {
     }
 
     private void ProcessInputs() {
-       
 
-        float moveHorizontal = Input.GetAxisRaw("Horizontal");
-        float moveVertical = Input.GetAxisRaw("Vertical");
+        movementDirection = Vector2.zero;
 
-        movementDirection =  new Vector2(moveHorizontal, moveVertical);
+        if (Input.GetKey(KeyCode.W)) {
+            exitIndex = 0;
+            movementDirection += Vector2.up;
+        }
+        if (Input.GetKey(KeyCode.A)) {
+            exitIndex = 3;
+            movementDirection += Vector2.left;
+
+        }
+        if (Input.GetKey(KeyCode.S)) {
+            exitIndex = 2;
+            movementDirection += Vector2.down;
+
+        }
+        if (Input.GetKey(KeyCode.D)) {
+            exitIndex = 1;
+            movementDirection += Vector2.right;
+
+        }
+
+
+
+
+
+
+
+        //float moveHorizontal = Input.GetAxisRaw("Horizontal");
+        //float moveVertical = Input.GetAxisRaw("Vertical");
+
+        //movementDirection =  new Vector2(moveHorizontal, moveVertical);
         
         
-        movementDirection.Normalize();
+        //movementDirection.Normalize();
 
 
 
@@ -73,7 +109,22 @@ public class Player : Character {
 
         if (Input.GetKeyDown(KeyCode.M)) {
 
-            StartCoroutine(Spellcast());
+            if (!isSpellcasting && !IsMoving) {
+
+                spellRoutine = StartCoroutine(Spellcast());
+
+            }
+           
+        }
+
+        if (Input.GetKeyDown(KeyCode.B)) {
+
+            if (!isShooting && !IsMoving) {
+
+                bowRoutine = StartCoroutine(Shoot());
+
+            }
+
         }
 
 
@@ -100,8 +151,7 @@ public class Player : Character {
         
         isAttacking = true;
         animator.SetBool("attack", isAttacking);
-
-
+        
         yield return new WaitForSeconds(1);
 
         StopAttack();
@@ -117,9 +167,41 @@ public class Player : Character {
         animator.SetBool("spellcast", isSpellcasting);
         
 
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(1);
+        CastSpell();
+
+        StopSpell();
 
                
+    }
+
+    public void CastSpell() {
+
+        Instantiate(spellPrefab[1], exitPoints[exitIndex].position, Quaternion.identity);
+
+    }
+
+    public void ShootArrow() {
+
+        Instantiate(spellPrefab[0], transform.position, Quaternion.identity);
+
+    }
+
+
+    private IEnumerator Shoot() {
+
+
+        isShooting = true;
+        animator.SetBool("bow", isShooting);
+
+        yield return new WaitForSeconds(1);
+        ShootArrow();
+
+        StopShoot();
+
+
+
+
     }
 
 

@@ -19,8 +19,11 @@ public abstract class Character : MonoBehaviour
 
     protected bool isAttacking = false;
     protected bool isSpellcasting = false;
+    protected bool isShooting = false;
 
     protected Coroutine attackRoutine;
+    protected Coroutine spellRoutine;
+    protected Coroutine bowRoutine;
 
 
     public bool IsMoving {
@@ -60,11 +63,17 @@ public abstract class Character : MonoBehaviour
 
         if (IsMoving) {
             ActivateLayer("WalkLayer");
+            
+
 
 
             // sets animation parameter  to ensure player faces correct direction
             animator.SetFloat("x", movementDirection.x);
             animator.SetFloat("y", movementDirection.y);
+
+            StopAttack();
+            StopSpell();
+            StopShoot();
 
 
 
@@ -72,14 +81,20 @@ public abstract class Character : MonoBehaviour
 
             ActivateLayer("AttackLayer");
 
-                       
+
 
         } else if (isSpellcasting) {
 
             ActivateLayer("SpellcastLayer");
 
 
+        } else if (isShooting) {
+
+            ActivateLayer("BowLayer");
+            
         } else {
+
+        
             ActivateLayer("IdleLayer");
         }
     }
@@ -104,7 +119,26 @@ public abstract class Character : MonoBehaviour
 
         }
         
+    }
+
+    public void StopSpell() {
+
+        if (spellRoutine != null) {
+            StopCoroutine(spellRoutine);
+            isSpellcasting = false;
+            animator.SetBool("spellcast", isSpellcasting);
+        }
         
+    }
+
+    public void StopShoot() {
+
+        if (bowRoutine != null) {
+            StopCoroutine(bowRoutine);
+            isShooting = false;
+            animator.SetBool("bow", isShooting);
+        }
+
     }
 
 }

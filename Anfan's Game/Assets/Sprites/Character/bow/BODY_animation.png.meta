@@ -1,115 +1,163 @@
 fileFormatVersion: 2
-guid: a518003dd1aed2e4d9696151f4547c59
+guid: 43ee1ec0112693744832cd133ae24669
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -741219643665213747
-    second: BODY_skeleton_0
+      213: 2866502029772508092
+    second: BODY_animation_0
   - first:
-      213: -260040946835377574
-    second: BODY_skeleton_1
+      213: -7824051593122464281
+    second: BODY_animation_1
   - first:
-      213: -6336693289913559628
-    second: BODY_skeleton_2
+      213: -5073199366754858008
+    second: BODY_animation_2
   - first:
-      213: 7258264759824131416
-    second: BODY_skeleton_3
+      213: -1112590870174155271
+    second: BODY_animation_3
   - first:
-      213: 1388016704927529941
-    second: BODY_skeleton_4
+      213: 403136579148153360
+    second: BODY_animation_4
   - first:
-      213: -7343071590831398774
-    second: BODY_skeleton_5
+      213: 1326009177871141990
+    second: BODY_animation_5
   - first:
-      213: 8898200838001078079
-    second: BODY_skeleton_6
+      213: -8500141067592867819
+    second: BODY_animation_6
   - first:
-      213: 4475818770162217952
-    second: BODY_skeleton_7
+      213: 5857464270815839819
+    second: BODY_animation_7
   - first:
-      213: 4286294764975238719
-    second: BODY_skeleton_8
+      213: 3291240851192867120
+    second: BODY_animation_8
   - first:
-      213: -4983107519436264953
-    second: BODY_skeleton_9
+      213: -5230485293002854687
+    second: BODY_animation_9
   - first:
-      213: 1841817595971694963
-    second: BODY_skeleton_10
+      213: -6921464528146628511
+    second: BODY_animation_10
   - first:
-      213: -6960302023829482440
-    second: BODY_skeleton_11
+      213: -587294110965124595
+    second: BODY_animation_11
   - first:
-      213: -7057640721343971578
-    second: BODY_skeleton_12
+      213: -557933565189512388
+    second: BODY_animation_12
   - first:
-      213: -2132126524159877453
-    second: BODY_skeleton_13
+      213: -1062820754221268334
+    second: BODY_animation_13
   - first:
-      213: -4609831475300367520
-    second: BODY_skeleton_14
+      213: 580921255529327356
+    second: BODY_animation_14
   - first:
-      213: -4799604809865338137
-    second: BODY_skeleton_15
+      213: -2952559835562707904
+    second: BODY_animation_15
   - first:
-      213: -848327046187568239
-    second: BODY_skeleton_16
+      213: -4933171436073025535
+    second: BODY_animation_16
   - first:
-      213: -5864481937519431694
-    second: BODY_skeleton_17
+      213: -1414211246139718840
+    second: BODY_animation_17
   - first:
-      213: 7797689050140567892
-    second: BODY_skeleton_18
+      213: -7716117078982630140
+    second: BODY_animation_18
   - first:
-      213: -3851016518411673338
-    second: BODY_skeleton_19
+      213: -4308974709085277616
+    second: BODY_animation_19
   - first:
-      213: -1958022603467462159
-    second: BODY_skeleton_20
+      213: -3196087067547328308
+    second: BODY_animation_20
   - first:
-      213: -7905335449874020042
-    second: BODY_skeleton_21
+      213: 306495807377894538
+    second: BODY_animation_21
   - first:
-      213: -5468629267508159605
-    second: BODY_skeleton_22
+      213: 5165375611760129228
+    second: BODY_animation_22
   - first:
-      213: -117389163748080426
-    second: BODY_skeleton_23
+      213: 3070411189348069910
+    second: BODY_animation_23
   - first:
-      213: 6392629603707373526
-    second: BODY_skeleton_24
+      213: -3083402095925179170
+    second: BODY_animation_24
   - first:
-      213: 752677681957282051
-    second: BODY_skeleton_25
+      213: 9184873963317095297
+    second: BODY_animation_25
   - first:
-      213: -5837559175826525553
-    second: BODY_skeleton_26
+      213: -5585058768682239145
+    second: BODY_animation_26
   - first:
-      213: -1782503442021355981
-    second: BODY_skeleton_27
+      213: 7120192153763669486
+    second: BODY_animation_27
   - first:
-      213: 5296838497826127520
-    second: BODY_skeleton_28
+      213: 2498375783858999118
+    second: BODY_animation_28
   - first:
-      213: -6268549674564086078
-    second: BODY_skeleton_29
+      213: -2245536324760028533
+    second: BODY_animation_29
   - first:
-      213: 207686864736921424
-    second: BODY_skeleton_30
+      213: 8097209799374051168
+    second: BODY_animation_30
   - first:
-      213: -8281493416742358596
-    second: BODY_skeleton_31
+      213: -3610212653593919295
+    second: BODY_animation_31
   - first:
-      213: -1188747301311119058
-    second: BODY_skeleton_32
+      213: 5384320739517854935
+    second: BODY_animation_32
   - first:
-      213: -4069024994596776358
-    second: BODY_skeleton_33
+      213: 2678821603210701652
+    second: BODY_animation_33
   - first:
-      213: 8568399698914762092
-    second: BODY_skeleton_34
+      213: -4134819632336501411
+    second: BODY_animation_34
   - first:
-      213: 4146308142426433368
-    second: BODY_skeleton_35
+      213: -195725154401763869
+    second: BODY_animation_35
+  - first:
+      213: -3652545436356074584
+    second: BODY_animation_36
+  - first:
+      213: 1968831191727327399
+    second: BODY_animation_37
+  - first:
+      213: 3214059583377047386
+    second: BODY_animation_38
+  - first:
+      213: 8893036303785861478
+    second: BODY_animation_39
+  - first:
+      213: -2087025627097407929
+    second: BODY_animation_40
+  - first:
+      213: 1700355731314600742
+    second: BODY_animation_41
+  - first:
+      213: 4896664419720059939
+    second: BODY_animation_42
+  - first:
+      213: 2669324700791513661
+    second: BODY_animation_43
+  - first:
+      213: -1383710156070670797
+    second: BODY_animation_44
+  - first:
+      213: 7389704009221055253
+    second: BODY_animation_45
+  - first:
+      213: 4398524861928699292
+    second: BODY_animation_46
+  - first:
+      213: -7737171594758217442
+    second: BODY_animation_47
+  - first:
+      213: 6987156951014127568
+    second: BODY_animation_48
+  - first:
+      213: -3081317206753745813
+    second: BODY_animation_49
+  - first:
+      213: 82586563208742604
+    second: BODY_animation_50
+  - first:
+      213: 4707273366539215065
+    second: BODY_animation_51
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -192,7 +240,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BODY_skeleton_0
+      name: BODY_animation_0
       rect:
         serializedVersion: 2
         x: 0
@@ -206,14 +254,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2468b0af07919054c88a6e1ebd6f6cdf
-      internalID: -741219643665213747
+      spriteID: 19935150778559f4c86e35800c5ea6f3
+      internalID: 2866502029772508092
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BODY_skeleton_1
+      name: BODY_animation_1
       rect:
         serializedVersion: 2
         x: 64
@@ -227,14 +275,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e1f4775122042ba41924dd9471a0bc61
-      internalID: -260040946835377574
+      spriteID: d75fc151ff1934f49b6d32dbb89affd9
+      internalID: -7824051593122464281
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BODY_skeleton_2
+      name: BODY_animation_2
       rect:
         serializedVersion: 2
         x: 128
@@ -248,14 +296,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d3192f26d30f5c54cab407a62d9d3be4
-      internalID: -6336693289913559628
+      spriteID: 3c8ec36fb7b314b4ab3e7be4ffb85b9d
+      internalID: -5073199366754858008
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BODY_skeleton_3
+      name: BODY_animation_3
       rect:
         serializedVersion: 2
         x: 192
@@ -269,14 +317,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0f81bf9f309f37044ad45b7d74c1cb0c
-      internalID: 7258264759824131416
+      spriteID: 6cf7c6cc70501c54081217973e103098
+      internalID: -1112590870174155271
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BODY_skeleton_4
+      name: BODY_animation_4
       rect:
         serializedVersion: 2
         x: 256
@@ -290,14 +338,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 433fbd0c2afd36649828c26f190e956c
-      internalID: 1388016704927529941
+      spriteID: cc1cc9425116d5648a333fde0e969b5d
+      internalID: 403136579148153360
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BODY_skeleton_5
+      name: BODY_animation_5
       rect:
         serializedVersion: 2
         x: 320
@@ -311,14 +359,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 466c19c834d88b141a0f7b5dcd657989
-      internalID: -7343071590831398774
+      spriteID: c0f51890740a50348b98dbd5e3b4fd9d
+      internalID: 1326009177871141990
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BODY_skeleton_6
+      name: BODY_animation_6
       rect:
         serializedVersion: 2
         x: 384
@@ -332,14 +380,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3038eb782ae564d48ad2f3787257f2e2
-      internalID: 8898200838001078079
+      spriteID: 29a1cd2282eae2045bac2ff4e4a06ee4
+      internalID: -8500141067592867819
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BODY_skeleton_7
+      name: BODY_animation_7
       rect:
         serializedVersion: 2
         x: 448
@@ -353,14 +401,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d4f4399a3fc9e2e4ba7d625618d56c8f
-      internalID: 4475818770162217952
+      spriteID: 6b6f439489c4e194bba641c6e68abc8b
+      internalID: 5857464270815839819
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BODY_skeleton_8
+      name: BODY_animation_8
       rect:
         serializedVersion: 2
         x: 512
@@ -374,14 +422,98 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 95e8f9dc1abe6124bb4fa96ea90f9db2
-      internalID: 4286294764975238719
+      spriteID: dda6b4005582e1d498c9b29facb7f9b3
+      internalID: 3291240851192867120
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BODY_skeleton_9
+      name: BODY_animation_9
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 409d3f6184f2adc4094759abe63056c9
+      internalID: -5230485293002854687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BODY_animation_10
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1086c16c2e576b46aef08c9dc8e8ec1
+      internalID: -6921464528146628511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BODY_animation_11
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d26056cc9b1647740b39edcac5f09009
+      internalID: -587294110965124595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BODY_animation_12
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6aaf30e3a4d22244688911bb4d08e2ff
+      internalID: -557933565189512388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BODY_animation_13
       rect:
         serializedVersion: 2
         x: 0
@@ -395,14 +527,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1822f3bd9ad79bc49ab351de302e27d4
-      internalID: -4983107519436264953
+      spriteID: 4299d93f9cea26448bc6fc9a7eeb6ba9
+      internalID: -1062820754221268334
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BODY_skeleton_10
+      name: BODY_animation_14
       rect:
         serializedVersion: 2
         x: 64
@@ -416,14 +548,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c6088a9c69d86a748ba73fdc8a85daa4
-      internalID: 1841817595971694963
+      spriteID: d56fe6dfb994c2f4d890941e710cf9b5
+      internalID: 580921255529327356
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BODY_skeleton_11
+      name: BODY_animation_15
       rect:
         serializedVersion: 2
         x: 128
@@ -437,14 +569,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d979cd6e9a222a949943ef03ede46fa2
-      internalID: -6960302023829482440
+      spriteID: 31e95813cb9a80e48ab76cd794486ec4
+      internalID: -2952559835562707904
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BODY_skeleton_12
+      name: BODY_animation_16
       rect:
         serializedVersion: 2
         x: 192
@@ -458,14 +590,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b51f56ea94174894d8b6e865d234ef89
-      internalID: -7057640721343971578
+      spriteID: 362ea7b3236b62e4fb6e64445cab7c12
+      internalID: -4933171436073025535
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BODY_skeleton_13
+      name: BODY_animation_17
       rect:
         serializedVersion: 2
         x: 256
@@ -479,14 +611,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7ff664c40bedf464e8d22f9cbea43042
-      internalID: -2132126524159877453
+      spriteID: d5f515664aca0464ea06e3e7d8fb0c12
+      internalID: -1414211246139718840
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BODY_skeleton_14
+      name: BODY_animation_18
       rect:
         serializedVersion: 2
         x: 320
@@ -500,14 +632,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 966d07e4f51b87d4baad5b9b3a4c3743
-      internalID: -4609831475300367520
+      spriteID: b78afadd67b72a34884316a2a2cb0482
+      internalID: -7716117078982630140
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BODY_skeleton_15
+      name: BODY_animation_19
       rect:
         serializedVersion: 2
         x: 384
@@ -521,14 +653,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9795799766c39a240ae9cb6ce7c44e21
-      internalID: -4799604809865338137
+      spriteID: 3a48077aa6e700948a5a0f97fd359818
+      internalID: -4308974709085277616
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BODY_skeleton_16
+      name: BODY_animation_20
       rect:
         serializedVersion: 2
         x: 448
@@ -542,14 +674,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b32db5c93629a514abfd16d1d0da70a7
-      internalID: -848327046187568239
+      spriteID: e560262db1554344d96345a687f5b15c
+      internalID: -3196087067547328308
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BODY_skeleton_17
+      name: BODY_animation_21
       rect:
         serializedVersion: 2
         x: 512
@@ -563,14 +695,98 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 24eee569aca211d488e2f73c7afb43ac
-      internalID: -5864481937519431694
+      spriteID: 6cc2f96fa52302840a5deabcfdc779f5
+      internalID: 306495807377894538
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BODY_skeleton_18
+      name: BODY_animation_22
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6fe383d8488181b47b271857fbfc2f1a
+      internalID: 5165375611760129228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BODY_animation_23
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a267606c1659244aaaf6ab3eda3d98e
+      internalID: 3070411189348069910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BODY_animation_24
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 727893c246158db4dba73ab40f46c687
+      internalID: -3083402095925179170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BODY_animation_25
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2699f01bc5f2954db39235bbabd1038
+      internalID: 9184873963317095297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BODY_animation_26
       rect:
         serializedVersion: 2
         x: 0
@@ -584,14 +800,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ad8c0fd811967b64a921f544946f4493
-      internalID: 7797689050140567892
+      spriteID: 39af29dcf55d03a48986647c7db8d75a
+      internalID: -5585058768682239145
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BODY_skeleton_19
+      name: BODY_animation_27
       rect:
         serializedVersion: 2
         x: 64
@@ -605,14 +821,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 648ffa764e193164e8995c5b70118aaf
-      internalID: -3851016518411673338
+      spriteID: c419d145409797541971ba64414e9b4a
+      internalID: 7120192153763669486
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BODY_skeleton_20
+      name: BODY_animation_28
       rect:
         serializedVersion: 2
         x: 128
@@ -626,14 +842,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 775bc7ead0c1728458446669d9e4b0dc
-      internalID: -1958022603467462159
+      spriteID: f9fa7620200b52c4e9a498a3224e69a3
+      internalID: 2498375783858999118
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BODY_skeleton_21
+      name: BODY_animation_29
       rect:
         serializedVersion: 2
         x: 192
@@ -647,14 +863,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 320ea861faba42e4f88abbed0c14719a
-      internalID: -7905335449874020042
+      spriteID: 9a7531b46f5c5e4458e8cc17ded5cae5
+      internalID: -2245536324760028533
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BODY_skeleton_22
+      name: BODY_animation_30
       rect:
         serializedVersion: 2
         x: 256
@@ -668,14 +884,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 79507fe7f2f1a2c478b63180e7e15475
-      internalID: -5468629267508159605
+      spriteID: 477e47264a8ee7b4c8ee763833bab287
+      internalID: 8097209799374051168
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BODY_skeleton_23
+      name: BODY_animation_31
       rect:
         serializedVersion: 2
         x: 320
@@ -689,14 +905,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a6e527399af75264b97e98cf33a886f0
-      internalID: -117389163748080426
+      spriteID: 21029e1fb947b554da7b432c967b9adb
+      internalID: -3610212653593919295
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BODY_skeleton_24
+      name: BODY_animation_32
       rect:
         serializedVersion: 2
         x: 384
@@ -710,14 +926,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dab65bf27f8342249ac9838a226de7cd
-      internalID: 6392629603707373526
+      spriteID: 8758d48d6888eba45bc0aa11c81a1128
+      internalID: 5384320739517854935
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BODY_skeleton_25
+      name: BODY_animation_33
       rect:
         serializedVersion: 2
         x: 448
@@ -731,14 +947,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: af13489b0915eac4cad92b7673505e26
-      internalID: 752677681957282051
+      spriteID: 39c7591a78883544f9c51a6782c01e2c
+      internalID: 2678821603210701652
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BODY_skeleton_26
+      name: BODY_animation_34
       rect:
         serializedVersion: 2
         x: 512
@@ -752,14 +968,98 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 484a67bc677eeeb40b1c11f00e59379c
-      internalID: -5837559175826525553
+      spriteID: 6e8a923126e45d6418db816269d53770
+      internalID: -4134819632336501411
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BODY_skeleton_27
+      name: BODY_animation_35
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 290ee61f43e2305469a7c9f849b69982
+      internalID: -195725154401763869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BODY_animation_36
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3fb94ca864f12f545bdf425860dada3c
+      internalID: -3652545436356074584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BODY_animation_37
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62d509b118aa669409cab8b914c42986
+      internalID: 1968831191727327399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BODY_animation_38
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c6076dcb8125894abdd71c3f2f56aa6
+      internalID: 3214059583377047386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BODY_animation_39
       rect:
         serializedVersion: 2
         x: 0
@@ -773,14 +1073,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 032506be4c64a5b40a3123050fb33436
-      internalID: -1782503442021355981
+      spriteID: ce631a757563ccc46acf37f7cacd923e
+      internalID: 8893036303785861478
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BODY_skeleton_28
+      name: BODY_animation_40
       rect:
         serializedVersion: 2
         x: 64
@@ -794,14 +1094,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 23c8e2e399f55f149a4b1d524ebe7d3a
-      internalID: 5296838497826127520
+      spriteID: 89bb89394ee59ed49a2b8aaf527d2c7a
+      internalID: -2087025627097407929
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BODY_skeleton_29
+      name: BODY_animation_41
       rect:
         serializedVersion: 2
         x: 128
@@ -815,14 +1115,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 538de3f663c635b43b4f796fc1d01152
-      internalID: -6268549674564086078
+      spriteID: 8b86de9938966934086f4d14414c5338
+      internalID: 1700355731314600742
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BODY_skeleton_30
+      name: BODY_animation_42
       rect:
         serializedVersion: 2
         x: 192
@@ -836,14 +1136,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c75156cebe931f3498508ad23a60ffc6
-      internalID: 207686864736921424
+      spriteID: 7eebf4fab1486be429177f2553f3d352
+      internalID: 4896664419720059939
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BODY_skeleton_31
+      name: BODY_animation_43
       rect:
         serializedVersion: 2
         x: 256
@@ -857,14 +1157,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3e3ea8ea6d1a1e94d9d3739549ecf508
-      internalID: -8281493416742358596
+      spriteID: c1f00611676b5ee4ab23673a7d0894e8
+      internalID: 2669324700791513661
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BODY_skeleton_32
+      name: BODY_animation_44
       rect:
         serializedVersion: 2
         x: 320
@@ -878,14 +1178,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5182245b67e9f0c40ad84ac5f82f068d
-      internalID: -1188747301311119058
+      spriteID: c855377ee60dd1e4590407f73698e098
+      internalID: -1383710156070670797
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BODY_skeleton_33
+      name: BODY_animation_45
       rect:
         serializedVersion: 2
         x: 384
@@ -899,14 +1199,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 18891dc9f519c5b4b87bde1fb1a1a1e5
-      internalID: -4069024994596776358
+      spriteID: 0b97f0ad0215f4f41beb4343a75fbe50
+      internalID: 7389704009221055253
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BODY_skeleton_34
+      name: BODY_animation_46
       rect:
         serializedVersion: 2
         x: 448
@@ -920,14 +1220,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 41c3cbdf671c9f34ab26e86beb67f1c6
-      internalID: 8568399698914762092
+      spriteID: 6eeb48828ad228a449782222905fb172
+      internalID: 4398524861928699292
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BODY_skeleton_35
+      name: BODY_animation_47
       rect:
         serializedVersion: 2
         x: 512
@@ -941,8 +1241,92 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9d44581d50dddb745a5df7fb28791943
-      internalID: 4146308142426433368
+      spriteID: dba089ea6256809479c426d63e89f968
+      internalID: -7737171594758217442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BODY_animation_48
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a5d30185f6aa854f88ecccd9d040984
+      internalID: 6987156951014127568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BODY_animation_49
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c9ae5060fb00e14e88499ecdbca1516
+      internalID: -3081317206753745813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BODY_animation_50
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08f8667fcec9e4947a72cef1458d948d
+      internalID: 82586563208742604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BODY_animation_51
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0922a4325dcc9f64d9c9e61f71d37cf2
+      internalID: 4707273366539215065
       vertices: []
       indices: 
       edges: []
@@ -950,7 +1334,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: c8bc1f08d01cfd84b96149b139828cbd
+    spriteID: c9ab00ba659ee5a43a7bc1178ba96230
     internalID: 0
     vertices: []
     indices: 
