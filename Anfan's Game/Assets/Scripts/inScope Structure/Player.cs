@@ -18,9 +18,19 @@ public class Player : Character {
     private GameObject[] spellPrefab;
 
     [SerializeField]
+    private Block[] blocks;
+
+
+    [SerializeField]
     private Transform[] exitPoints;
 
     private int exitIndex = 2;
+
+    
+
+    public Transform MyTarget { get; set; }
+
+
 
 
     private GameObject currentObject = null;
@@ -35,7 +45,9 @@ public class Player : Character {
 
         health.Initialize(initHealth, initHealth);
         hunger.Initialize(initHunger, initHunger);
-        
+
+        MyTarget = GameObject.Find("Target").transform;
+
         base.Start();
     }
 
@@ -86,17 +98,6 @@ public class Player : Character {
 
 
 
-
-        //float moveHorizontal = Input.GetAxisRaw("Horizontal");
-        //float moveVertical = Input.GetAxisRaw("Vertical");
-
-        //movementDirection =  new Vector2(moveHorizontal, moveVertical);
-        
-        
-        //movementDirection.Normalize();
-
-
-
         if (Input.GetKeyDown(KeyCode.Space)) {
 
             if (!isAttacking && !IsMoving) {
@@ -107,19 +108,13 @@ public class Player : Character {
             
         }
 
-        if (Input.GetKeyDown(KeyCode.M)) {
-
-            if (!isSpellcasting && !IsMoving) {
-
-                spellRoutine = StartCoroutine(Spellcast());
-
-            }
-           
-        }
+        
 
         if (Input.GetKeyDown(KeyCode.B)) {
 
-            if (!isShooting && !IsMoving) {
+            Block();
+
+            if (MyTarget!= null && !isShooting && !IsMoving && InLineOfSight()) {
 
                 bowRoutine = StartCoroutine(Shoot());
 
@@ -156,37 +151,36 @@ public class Player : Character {
 
         StopAttack();
 
-
-
-
     }
 
-    private IEnumerator Spellcast() {
+    private IEnumerator Spellcast(int spellIndex) {
 
         isSpellcasting = true;
         animator.SetBool("spellcast", isSpellcasting);
         
 
         yield return new WaitForSeconds(1);
-        CastSpell();
+        
+        Instantiate(spellPrefab[spellIndex], exitPoints[exitIndex].position, Quaternion.identity);
 
         StopSpell();
 
                
     }
 
-    public void CastSpell() {
+    public void CastSpell(int spellIndex) {
 
-        Instantiate(spellPrefab[1], exitPoints[exitIndex].position, Quaternion.identity);
+        Block();
+
+        if (MyTarget != null && !isSpellcasting && !IsMoving && InLineOfSight()) {
+
+            spellRoutine = StartCoroutine(Spellcast(spellIndex));
+
+        }
+
+        
 
     }
-
-    public void ShootArrow() {
-
-        Instantiate(spellPrefab[0], transform.position, Quaternion.identity);
-
-    }
-
 
     private IEnumerator Shoot() {
 
@@ -195,13 +189,38 @@ public class Player : Character {
         animator.SetBool("bow", isShooting);
 
         yield return new WaitForSeconds(1);
-        ShootArrow();
+
+        Instantiate(spellPrefab[0], transform.position, Quaternion.identity);
 
         StopShoot();
 
+    }
 
 
+    
 
+
+    private bool InLineOfSight() {
+
+        Vector3 targetDirection = (MyTarget.transform.position - transform.position).normalized;
+
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, targetDirection, Vector2.Distance(transform.position, MyTarget.transform.position), 256);
+
+
+        if (hit.collider == null) {
+            return true;
+        }
+
+        return false;
+    }
+
+    private void Block() {
+        foreach (Block b in blocks) {
+            b.Deactivate();
+
+        }
+
+        blocks[exitIndex].Activate();
     }
 
 

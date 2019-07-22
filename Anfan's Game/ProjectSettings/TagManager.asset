@@ -6,6 +6,7 @@ TagManager:
   tags:
   - apple
   - cross
+  - enemy
   layers:
   - Default
   - TransparentFX
@@ -15,8 +16,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - Block
+  - Clickable
   - 
   - 
   - 
