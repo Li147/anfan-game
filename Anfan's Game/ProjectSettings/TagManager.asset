@@ -7,6 +7,7 @@ TagManager:
   - apple
   - cross
   - enemy
+  - hitbox
   layers:
   - Default
   - TransparentFX

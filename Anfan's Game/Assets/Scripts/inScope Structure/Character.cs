@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // Base class for all characters in game, including Player and Enemies
+
+[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Animator))]
+
 public abstract class Character : MonoBehaviour
 {
 
@@ -25,6 +29,23 @@ public abstract class Character : MonoBehaviour
     protected Coroutine spellRoutine;
     protected Coroutine bowRoutine;
 
+    [SerializeField]
+    protected Transform hitBox;
+
+    [SerializeField]
+    protected Stat health;
+
+    public Stat MyHealth {
+        get { return health; }
+    }
+
+
+
+    [SerializeField]
+    private float initHealth = 100;
+
+
+
 
     public bool IsMoving {
         get {
@@ -38,6 +59,9 @@ public abstract class Character : MonoBehaviour
     // Start is called before the first frame update
     protected virtual void Start()
     {
+        health.Initialize(initHealth, initHealth);
+
+
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
     }
@@ -121,7 +145,7 @@ public abstract class Character : MonoBehaviour
         
     }
 
-    public void StopSpell() {
+    public virtual void StopSpell() {
 
         if (spellRoutine != null) {
             StopCoroutine(spellRoutine);
@@ -140,5 +164,19 @@ public abstract class Character : MonoBehaviour
         }
 
     }
+
+    public virtual void TakeDamage(float damage) {
+
+        health.MyCurrentValue -= damage;
+
+       
+        if (health.MyCurrentValue <= 0) {
+
+            animator.SetTrigger("die");
+        }
+
+    }
+
+
 
 }

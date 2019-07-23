@@ -37,7 +37,14 @@ public class Stat : MonoBehaviour
 
             currentFill = currentValue / MyMaxValue;
 
-            statValue.text = currentValue + "/" + MyMaxValue;
+            if (statValue != null) {
+
+                statValue.text = currentValue + "/" + MyMaxValue;
+            }
+
+
+
+            
             
         }
 
@@ -70,8 +77,16 @@ public class Stat : MonoBehaviour
     }
 
     public void Initialize(float currentValue, float maxValue) {
+
+        if (content == null) {
+
+            content = GetComponent<Image>();
+
+        }
+
         MyMaxValue = maxValue;
         MyCurrentValue = currentValue;
+        content.fillAmount = MyCurrentValue / MyMaxValue;
     }
 
 }

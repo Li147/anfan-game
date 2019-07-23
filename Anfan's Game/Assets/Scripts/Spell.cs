@@ -1,44 +1,37 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spell : MonoBehaviour
+[Serializable]
+public class Spell
 {
+    [SerializeField]
+    private string name;
 
-    private Rigidbody2D myRigidBody;
+    [SerializeField]
+    private int damage;
+
+    [SerializeField]
+    private Sprite icon;
 
     [SerializeField]
     private float speed;
 
-    private Transform target;
+    [SerializeField]
+    private float castTime;
 
+    [SerializeField]
+    private GameObject spellPrefab;
 
+    [SerializeField]
+    private Color barColor;
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        myRigidBody = GetComponent<Rigidbody2D>();
-        target = GameObject.Find("Target").transform;
-    }
-
-    
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private void FixedUpdate() {
-
-        Vector2 direction = target.position - transform.position;
-
-        myRigidBody.velocity = direction.normalized * speed;
-
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-
-        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-
-    }
+    public string MyName { get => name; set => name = value; }
+    public int MyDamage { get => damage; set => damage = value; }
+    public Sprite MyIcon { get => icon; set => icon = value; }
+    public float MySpeed { get => speed; set => speed = value; }
+    public float MyCastTime { get => castTime; set => castTime = value; }
+    public GameObject MySpellPrefab { get => spellPrefab; set => spellPrefab = value; }
+    public Color MyBarColor { get => barColor; set => barColor = value; }
 }

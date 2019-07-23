@@ -6,17 +6,12 @@ using UnityEngine.UI;
 public class Player : Character {
 
     [SerializeField]
-    private Stat health;
-
-    [SerializeField]
     private Stat hunger;
 
-    private float initHealth = 100;
+    
     private float initHunger = 200;
 
-    [SerializeField]
-    private GameObject[] spellPrefab;
-
+   
     [SerializeField]
     private Block[] blocks;
 
@@ -25,6 +20,11 @@ public class Player : Character {
     private Transform[] exitPoints;
 
     private int exitIndex = 2;
+
+    private SpellBook spellBook;
+
+    [SerializeField]
+    private GameObject arrow;
 
     
 
@@ -43,10 +43,10 @@ public class Player : Character {
     
     protected override void Start() {
 
-        health.Initialize(initHealth, initHealth);
-        hunger.Initialize(initHunger, initHunger);
+        spellBook = GetComponent<SpellBook>();
 
-        MyTarget = GameObject.Find("Target").transform;
+ 
+        hunger.Initialize(initHunger, initHunger);
 
         base.Start();
     }
@@ -155,13 +155,25 @@ public class Player : Character {
 
     private IEnumerator Spellcast(int spellIndex) {
 
-        isSpellcasting = true;
-        animator.SetBool("spellcast", isSpellcasting);
+        Transform currentTarget = MyTarget;
+
+        Spell newSpell = spellBook.FindSpell(spellIndex);
+
+        isSpellcasting = true; // Changes our state to spellcasting
+
+        animator.SetBool("spellcast", isSpellcasting); // Starts spellcast animation
         
 
-        yield return new WaitForSeconds(1);
-        
-        Instantiate(spellPrefab[spellIndex], exitPoints[exitIndex].position, Quaternion.identity);
+        yield return new WaitForSeconds(newSpell.MyCastTime);
+
+        if (currentTarget != null && InLineOfSight()) {
+
+            SpellScript s = Instantiate(newSpell.MySpellPrefab, exitPoints[exitIndex].position, Quaternion.identity).GetComponent<SpellScript>();
+            s.Initialize(currentTarget, newSpell.MyDamage);
+
+        }
+
+              
 
         StopSpell();
 
@@ -190,7 +202,7 @@ public class Player : Character {
 
         yield return new WaitForSeconds(1);
 
-        Instantiate(spellPrefab[0], transform.position, Quaternion.identity);
+        Instantiate(arrow, transform.position, Quaternion.identity);
 
         StopShoot();
 
@@ -199,18 +211,26 @@ public class Player : Character {
 
     
 
-
+    // Checks if target is line of sight of player model
     private bool InLineOfSight() {
 
-        Vector3 targetDirection = (MyTarget.transform.position - transform.position).normalized;
+        // check if we have a target
+        if (MyTarget != null) {
 
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, targetDirection, Vector2.Distance(transform.position, MyTarget.transform.position), 256);
+            Vector3 targetDirection = (MyTarget.transform.position - transform.position).normalized;
+
+            // throw a raycast in the direction of the target
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, targetDirection, Vector2.Distance(transform.position, MyTarget.transform.position), 256);
 
 
-        if (hit.collider == null) {
-            return true;
+            if (hit.collider == null) {
+                return true;
+            }
+
         }
 
+        
+        // if we hit a line of sight block we are not allowed to cast spell
         return false;
     }
 
@@ -221,6 +241,14 @@ public class Player : Character {
         }
 
         blocks[exitIndex].Activate();
+    }
+
+    public override void StopSpell() {
+
+        spellBook.StopCasting();
+
+
+        base.StopSpell();
     }
 
 
