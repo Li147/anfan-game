@@ -8,6 +8,7 @@ TagManager:
   - cross
   - enemy
   - hitbox
+  - obstacle
   layers:
   - Default
   - TransparentFX

@@ -18,6 +18,8 @@ public abstract class Character : MonoBehaviour
     public float movementSpeed;
 
     protected Animator animator;
+    //public Animator childAnimator;
+
     private Rigidbody2D rb;
     private int length;
 
@@ -63,6 +65,7 @@ public abstract class Character : MonoBehaviour
 
 
         animator = GetComponent<Animator>();
+        //childAnimator = GetComponentsInChildren<Animator>()[1];
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -86,9 +89,12 @@ public abstract class Character : MonoBehaviour
     public void HandleLayers() {
 
         if (IsMoving) {
-            ActivateLayer("WalkLayer");
-            
+            ActivateLayer(animator, "WalkLayer");
+            //ActivateLayer(childAnimator, "WalkLayer");
 
+            // sets animation parameter  to ensure player faces correct direction
+            //childAnimator.SetFloat("x", movementDirection.x);
+            //childAnimator.SetFloat("y", movementDirection.y);
 
 
             // sets animation parameter  to ensure player faces correct direction
@@ -103,29 +109,33 @@ public abstract class Character : MonoBehaviour
 
         } else if (isAttacking) {
 
-            ActivateLayer("AttackLayer");
+            ActivateLayer(animator, "AttackLayer");
+            //ActivateLayer(childAnimator, "AttackLayer");
 
 
 
         } else if (isSpellcasting) {
 
-            ActivateLayer("SpellcastLayer");
+            ActivateLayer(animator, "SpellcastLayer");
+            //ActivateLayer(childAnimator, "SpellcastLayer");
 
 
         } else if (isShooting) {
 
-            ActivateLayer("BowLayer");
-            
+            ActivateLayer(animator, "BowLayer");
+           // ActivateLayer(childAnimator, "BowLayer");
+
         } else {
 
         
-            ActivateLayer("IdleLayer");
+            ActivateLayer(animator, "IdleLayer");
+            //ActivateLayer(childAnimator, "IdleLayer");
         }
     }
 
 
 
-    public void ActivateLayer(string layerName) {
+    public void ActivateLayer(Animator animator, string layerName) {
         for (int i = 0; i < animator.layerCount; i++) {
             animator.SetLayerWeight(i, 0);
         }
