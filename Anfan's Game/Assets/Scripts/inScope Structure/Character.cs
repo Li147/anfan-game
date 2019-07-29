@@ -10,20 +10,23 @@ using UnityEngine;
 public abstract class Character : MonoBehaviour
 {
 
-  
     [SerializeField]
-    protected Vector2 movementDirection;
+    private float movementSpeed;
 
-    [SerializeField]
-    public float movementSpeed;
+    private Vector2 movementDirection;
 
-    protected Animator animator;
+
+    public Animator MyAnimator { get; set; }
+
+
     //public Animator childAnimator;
 
     private Rigidbody2D rb;
     private int length;
 
-    protected bool isAttacking = false;
+  
+    public bool IsAttacking { get; set; }
+
     protected bool isSpellcasting = false;
     protected bool isShooting = false;
 
@@ -51,9 +54,12 @@ public abstract class Character : MonoBehaviour
 
     public bool IsMoving {
         get {
-            return movementDirection.x != 0 || movementDirection.y != 0;
+            return MovementDirection.x != 0 || MovementDirection.y != 0;
         }
     }
+
+    public Vector2 MovementDirection { get => movementDirection; set => movementDirection = value; }
+    public float MovementSpeed { get => movementSpeed; set => movementSpeed = value; }
 
 
 
@@ -64,7 +70,7 @@ public abstract class Character : MonoBehaviour
         health.Initialize(initHealth, initHealth);
 
 
-        animator = GetComponent<Animator>();
+        MyAnimator = GetComponent<Animator>();
         //childAnimator = GetComponentsInChildren<Animator>()[1];
         rb = GetComponent<Rigidbody2D>();
     }
@@ -81,7 +87,7 @@ public abstract class Character : MonoBehaviour
 
 
     public void Move() {
-        rb.velocity = movementDirection * movementSpeed;
+        rb.velocity = MovementDirection * MovementSpeed;
            
     }
 
@@ -89,7 +95,7 @@ public abstract class Character : MonoBehaviour
     public void HandleLayers() {
 
         if (IsMoving) {
-            ActivateLayer(animator, "WalkLayer");
+            ActivateLayer(MyAnimator, "WalkLayer");
             //ActivateLayer(childAnimator, "WalkLayer");
 
             // sets animation parameter  to ensure player faces correct direction
@@ -98,37 +104,34 @@ public abstract class Character : MonoBehaviour
 
 
             // sets animation parameter  to ensure player faces correct direction
-            animator.SetFloat("x", movementDirection.x);
-            animator.SetFloat("y", movementDirection.y);
+            MyAnimator.SetFloat("x", MovementDirection.x);
+            MyAnimator.SetFloat("y", MovementDirection.y);
 
-            StopAttack();
-            StopSpell();
-            StopShoot();
+           
 
 
+        } else if (IsAttacking) {
 
-        } else if (isAttacking) {
-
-            ActivateLayer(animator, "AttackLayer");
+            ActivateLayer(MyAnimator, "AttackLayer");
             //ActivateLayer(childAnimator, "AttackLayer");
 
 
 
         } else if (isSpellcasting) {
 
-            ActivateLayer(animator, "SpellcastLayer");
+            ActivateLayer(MyAnimator, "SpellcastLayer");
             //ActivateLayer(childAnimator, "SpellcastLayer");
 
 
         } else if (isShooting) {
 
-            ActivateLayer(animator, "BowLayer");
+            ActivateLayer(MyAnimator, "BowLayer");
            // ActivateLayer(childAnimator, "BowLayer");
 
         } else {
 
         
-            ActivateLayer(animator, "IdleLayer");
+            ActivateLayer(MyAnimator, "IdleLayer");
             //ActivateLayer(childAnimator, "IdleLayer");
         }
     }
@@ -144,36 +147,7 @@ public abstract class Character : MonoBehaviour
         
     }
 
-    public void StopAttack() {
-
-        if (attackRoutine != null) {
-            StopCoroutine(attackRoutine);
-            isAttacking = false;
-            animator.SetBool("attack", isAttacking);
-
-        }
-        
-    }
-
-    public virtual void StopSpell() {
-
-        if (spellRoutine != null) {
-            StopCoroutine(spellRoutine);
-            isSpellcasting = false;
-            animator.SetBool("spellcast", isSpellcasting);
-        }
-        
-    }
-
-    public void StopShoot() {
-
-        if (bowRoutine != null) {
-            StopCoroutine(bowRoutine);
-            isShooting = false;
-            animator.SetBool("bow", isShooting);
-        }
-
-    }
+    
 
     public virtual void TakeDamage(float damage) {
 
@@ -182,7 +156,7 @@ public abstract class Character : MonoBehaviour
        
         if (health.MyCurrentValue <= 0) {
 
-            animator.SetTrigger("die");
+            MyAnimator.SetTrigger("die");
         }
 
     }

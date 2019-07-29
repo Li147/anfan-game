@@ -12,6 +12,23 @@ public class WaterTile2 : Tile
     [SerializeField]
     private Sprite preview;
 
+    // Allows us to generate colliders on our water tiles
+    public override bool StartUp(Vector3Int position, ITilemap tilemap, GameObject go) {
+
+        return base.StartUp(position, tilemap, go);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
     public override void RefreshTile(Vector3Int position, ITilemap tilemap) {
 
         for (int y = -1; y <= 1; y++) {

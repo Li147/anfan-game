@@ -30,6 +30,16 @@ public class Player : Character {
 
     public Transform MyTarget { get; set; }
 
+    private Vector3 min, max;
+
+
+
+
+
+
+
+
+
 
 
 
@@ -56,6 +66,10 @@ public class Player : Character {
 
         ProcessInputs();
 
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x, min.x, max.x), 
+                                         Mathf.Clamp(transform.position.y, min.y, max.y), 
+                                         transform.position.z);
+
 
         base.Update();
         
@@ -71,25 +85,25 @@ public class Player : Character {
 
     private void ProcessInputs() {
 
-        movementDirection = Vector2.zero;
+        MovementDirection = Vector2.zero;
 
         if (Input.GetKey(KeyCode.W)) {
             exitIndex = 0;
-            movementDirection += Vector2.up;
+            MovementDirection += Vector2.up;
         }
         if (Input.GetKey(KeyCode.A)) {
             exitIndex = 3;
-            movementDirection += Vector2.left;
+            MovementDirection += Vector2.left;
 
         }
         if (Input.GetKey(KeyCode.S)) {
             exitIndex = 2;
-            movementDirection += Vector2.down;
+            MovementDirection += Vector2.down;
 
         }
         if (Input.GetKey(KeyCode.D)) {
             exitIndex = 1;
-            movementDirection += Vector2.right;
+            MovementDirection += Vector2.right;
 
         }
 
@@ -100,7 +114,7 @@ public class Player : Character {
 
         if (Input.GetKeyDown(KeyCode.Space)) {
 
-            if (!isAttacking && !IsMoving) {
+            if (!IsAttacking && !IsMoving) {
 
                 attackRoutine = StartCoroutine(Attack());
 
@@ -122,8 +136,19 @@ public class Player : Character {
 
         }
 
+        // Cancel spells if player moves
+        if (IsMoving) {
+            StopAttack();
+            StopSpell();
+            StopShoot();
+        }
+        
 
-        //Debugging
+
+
+
+
+        //Debugging HP bar
 
         if (Input.GetKeyDown(KeyCode.O)) {
             health.MyCurrentValue -= 10;
@@ -134,18 +159,26 @@ public class Player : Character {
             hunger.MyCurrentValue += 10;
 
         }
-
+             
         
-
-
     }
+
+    public void SetLimits(Vector3 min, Vector3 max) {
+
+        this.min = min;
+        this.max = max;
+        
+    }
+
+
+
 
 
     private IEnumerator Attack() {
 
         
-        isAttacking = true;
-        animator.SetBool("attack", isAttacking);
+        IsAttacking = true;
+        MyAnimator.SetBool("attack", IsAttacking);
         
         yield return new WaitForSeconds(1);
 
@@ -161,7 +194,7 @@ public class Player : Character {
 
         isSpellcasting = true; // Changes our state to spellcasting
 
-        animator.SetBool("spellcast", isSpellcasting); // Starts spellcast animation
+        MyAnimator.SetBool("spellcast", isSpellcasting); // Starts spellcast animation
         
 
         yield return new WaitForSeconds(newSpell.MyCastTime);
@@ -198,7 +231,7 @@ public class Player : Character {
 
 
         isShooting = true;
-        animator.SetBool("bow", isShooting);
+        MyAnimator.SetBool("bow", isShooting);
 
         yield return new WaitForSeconds(1);
 
@@ -243,12 +276,39 @@ public class Player : Character {
         blocks[exitIndex].Activate();
     }
 
-    public override void StopSpell() {
+    
+
+    public void StopAttack() {
+
+        if (attackRoutine != null) {
+            StopCoroutine(attackRoutine);
+            IsAttacking = false;
+            MyAnimator.SetBool("attack", IsAttacking);
+
+        }
+
+    }
+
+    public void StopSpell() {
 
         spellBook.StopCasting();
 
+        if (spellRoutine != null) {
+            StopCoroutine(spellRoutine);
+            isSpellcasting = false;
+            MyAnimator.SetBool("spellcast", isSpellcasting);
+        }
 
-        base.StopSpell();
+    }
+
+    public void StopShoot() {
+
+        if (bowRoutine != null) {
+            StopCoroutine(bowRoutine);
+            isShooting = false;
+            MyAnimator.SetBool("bow", isShooting);
+        }
+
     }
 
 
