@@ -48,4 +48,18 @@ public class HandScript : MonoBehaviour
         icon.color = Color.white;
     
     }
+
+    // takes an icon on your mouse and puts it in a slot
+    public IMoveable Put() {
+
+        IMoveable tmp = MyMoveable;
+
+        MyMoveable = null;
+
+        icon.color = new Color(0, 0, 0, 0);
+
+        return tmp;
+
+
+    }
 }

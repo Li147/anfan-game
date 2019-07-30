@@ -9,7 +9,12 @@ public class TreeTile : Tile
 
     public override bool StartUp(Vector3Int position, ITilemap tilemap, GameObject go) {
 
-        go.GetComponent<SpriteRenderer>().sortingOrder = -position.y * 2;
+        if (go != null) {
+
+            go.GetComponent<SpriteRenderer>().sortingOrder = -position.y * 2;
+
+        }
+        
 
         return base.StartUp(position, tilemap, go);
 
@@ -21,7 +26,7 @@ public class TreeTile : Tile
 #if UNITY_EDITOR
     [MenuItem("Assets/Create/Tiles/TreeTile")]
 
-    public static void CreateWaterTile() {
+    public static void CreateTreeTile() {
 
         string path = EditorUtility.SaveFilePanelInProject("Save Treetile", "TreeTile", "asset", "Save treetile", "Assets");
         if (path == "") {

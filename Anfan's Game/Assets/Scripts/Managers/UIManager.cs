@@ -61,12 +61,7 @@ public class UIManager : MonoBehaviour
         
         healthStat = targetFrame.GetComponentInChildren<Stat>();
 
-        SetUseable(actionButtons[0], SpellBook.MyInstance.GetSpell("Firebolt"));
-        SetUseable(actionButtons[1], SpellBook.MyInstance.GetSpell("Icebolt"));
-        SetUseable(actionButtons[2], SpellBook.MyInstance.GetSpell("Thunderbolt"));
-
-
-
+                     
     }
 
     // Update is called once per frame
@@ -131,14 +126,7 @@ public class UIManager : MonoBehaviour
 
     }
 
-    public void SetUseable(ActionButton btn, IUseable useable) {
-
-        btn.MyIcon.sprite = useable.MyIcon;
-        btn.MyIcon.color = Color.white;
-
-        btn.MyUseable = useable;
-
-    }
+   
 
     public void OpenClose(CanvasGroup canvasGroup) {
 
