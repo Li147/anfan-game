@@ -21,14 +21,8 @@ public class WaterTile2 : Tile
 
 
 
-
-
-
-
-
-
-
-
+    
+          
     public override void RefreshTile(Vector3Int position, ITilemap tilemap) {
 
         for (int y = -1; y <= 1; y++) {
@@ -54,6 +48,8 @@ public class WaterTile2 : Tile
     }
 
     public override void GetTileData(Vector3Int position, ITilemap tilemap, ref TileData tileData) {
+
+        base.GetTileData(position, tilemap, ref tileData);
 
         string composition = string.Empty;
 

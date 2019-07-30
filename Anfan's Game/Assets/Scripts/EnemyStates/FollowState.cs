@@ -20,30 +20,29 @@ public class FollowState : IState {
     public void Update() {
 
         // If parent has a target
-        if (parent.Target != null) {
+        if (parent.MyTarget != null) {
 
-            parent.MovementDirection = (parent.Target.transform.position - parent.transform.position).normalized;
+            parent.MovementDirection = (parent.MyTarget.transform.position - parent.transform.position).normalized;
 
             parent.transform.position = 
-            Vector2.MoveTowards(parent.transform.position, parent.Target.position, parent.MovementSpeed * Time.deltaTime);
+            Vector2.MoveTowards(parent.transform.position, parent.MyTarget.position, parent.MovementSpeed * Time.deltaTime);
 
-            float distance = Vector2.Distance(parent.Target.position, parent.transform.position);
+            float distance = Vector2.Distance(parent.MyTarget.position, parent.transform.position);
 
             if (distance <= parent.MyAttackRange) {
 
                 parent.ChangeState(new AttackState());
 
             }
-
-
-        } else { // otherwise change to idle state
-
-            parent.ChangeState(new IdleState());
-
         }
 
+        // If parent is no longer in range of target
+        if (!parent.InRange) {
 
-        
+            parent.ChangeState(new EvadeState());
+
+
+        }     
 
     }
 }

@@ -11,6 +11,7 @@ public class SpellScript : MonoBehaviour
     private float speed;
 
     public Transform MyTarget { get; private set; }
+    private Transform source;
 
     private int damage;
 
@@ -29,9 +30,10 @@ public class SpellScript : MonoBehaviour
         
     }
 
-    public void Initialize(Transform target, int damage) {
+    public void Initialize(Transform target, Transform source, int damage) {
 
         this.MyTarget = target;
+        this.source = source;
         this.damage = damage;
 
     }
@@ -62,10 +64,12 @@ public class SpellScript : MonoBehaviour
         
         if (collision.tag == "hitbox" && collision.transform == MyTarget) {
 
+            Character c = collision.GetComponentInParent<Character>();
+
             // set speed to 0 when we hit the target so we don't get flicker
             speed = 0;
 
-            collision.GetComponentInParent<Enemy>().TakeDamage(damage);
+            c.TakeDamage(damage, source);
 
 
             GetComponent<Animator>().SetTrigger("impact");

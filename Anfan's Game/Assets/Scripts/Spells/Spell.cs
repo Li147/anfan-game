@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public class Spell
+public class Spell : IUseable, IMoveable
 {
     [SerializeField]
     private string name;
@@ -34,4 +34,11 @@ public class Spell
     public float MyCastTime { get => castTime; set => castTime = value; }
     public GameObject MySpellPrefab { get => spellPrefab; set => spellPrefab = value; }
     public Color MyBarColor { get => barColor; set => barColor = value; }
+
+
+    public void Use() {
+
+        Player.MyInstance.CastSpell(MyName);
+
+    }
 }

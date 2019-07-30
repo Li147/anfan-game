@@ -28,10 +28,10 @@ public class AttackState : IState {
 
         }
 
-        if (parent.Target != null) {
+        if (parent.MyTarget != null) {
 
             //We need to check range and attack
-            float distance = Vector2.Distance(parent.Target.position, parent.transform.position);
+            float distance = Vector2.Distance(parent.MyTarget.position, parent.transform.position);
 
             if (distance >= parent.MyAttackRange + extraRange && !parent.IsAttacking) {
 

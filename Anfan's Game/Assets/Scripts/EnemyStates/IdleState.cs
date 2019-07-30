@@ -8,6 +8,7 @@ class IdleState : IState {
     public void Enter(Enemy parent) {
 
         this.parent = parent;
+        this.parent.Reset();
      
     }
 
@@ -18,7 +19,7 @@ class IdleState : IState {
     public void Update() {
 
         // If we have a target...
-        if (parent.Target != null) {
+        if (parent.MyTarget != null) {
 
             // Change state to follow state
             parent.ChangeState(new FollowState());

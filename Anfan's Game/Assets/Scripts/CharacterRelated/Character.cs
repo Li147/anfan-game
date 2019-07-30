@@ -50,6 +50,14 @@ public abstract class Character : MonoBehaviour
     private float initHealth = 100;
 
 
+    public Transform MyTarget { get; set; }
+
+
+
+
+
+
+
 
 
     public bool IsMoving {
@@ -57,6 +65,14 @@ public abstract class Character : MonoBehaviour
             return MovementDirection.x != 0 || MovementDirection.y != 0;
         }
     }
+
+
+    public bool IsAlive {
+        get {
+            return health.MyCurrentValue > 0;
+        }
+    }
+
 
     public Vector2 MovementDirection { get => movementDirection; set => movementDirection = value; }
     public float MovementSpeed { get => movementSpeed; set => movementSpeed = value; }
@@ -87,53 +103,70 @@ public abstract class Character : MonoBehaviour
 
 
     public void Move() {
-        rb.velocity = MovementDirection * MovementSpeed;
+
+        if (IsAlive) {
+            rb.velocity = MovementDirection * MovementSpeed;
+        }
+        
            
     }
 
 
     public void HandleLayers() {
 
-        if (IsMoving) {
-            ActivateLayer(MyAnimator, "WalkLayer");
-            //ActivateLayer(childAnimator, "WalkLayer");
+        // If the character is ALIVE
+        if (IsAlive) {
 
-            // sets animation parameter  to ensure player faces correct direction
-            //childAnimator.SetFloat("x", movementDirection.x);
-            //childAnimator.SetFloat("y", movementDirection.y);
+            if (IsMoving) {
+                ActivateLayer(MyAnimator, "WalkLayer");
+                //ActivateLayer(childAnimator, "WalkLayer");
 
-
-            // sets animation parameter  to ensure player faces correct direction
-            MyAnimator.SetFloat("x", MovementDirection.x);
-            MyAnimator.SetFloat("y", MovementDirection.y);
-
-           
+                // sets animation parameter  to ensure player faces correct direction
+                //childAnimator.SetFloat("x", movementDirection.x);
+                //childAnimator.SetFloat("y", movementDirection.y);
 
 
-        } else if (IsAttacking) {
-
-            ActivateLayer(MyAnimator, "AttackLayer");
-            //ActivateLayer(childAnimator, "AttackLayer");
+                // sets animation parameter  to ensure player faces correct direction
+                MyAnimator.SetFloat("x", MovementDirection.x);
+                MyAnimator.SetFloat("y", MovementDirection.y);
 
 
 
-        } else if (isSpellcasting) {
 
-            ActivateLayer(MyAnimator, "SpellcastLayer");
-            //ActivateLayer(childAnimator, "SpellcastLayer");
+            } else if (IsAttacking) {
+
+                ActivateLayer(MyAnimator, "AttackLayer");
+                //ActivateLayer(childAnimator, "AttackLayer");
 
 
-        } else if (isShooting) {
 
-            ActivateLayer(MyAnimator, "BowLayer");
-           // ActivateLayer(childAnimator, "BowLayer");
+            } else if (isSpellcasting) {
 
-        } else {
+                ActivateLayer(MyAnimator, "SpellcastLayer");
+                //ActivateLayer(childAnimator, "SpellcastLayer");
+
+
+            } else if (isShooting) {
+
+                ActivateLayer(MyAnimator, "BowLayer");
+                // ActivateLayer(childAnimator, "BowLayer");
+
+            } else {
+
+
+                ActivateLayer(MyAnimator, "IdleLayer");
+                //ActivateLayer(childAnimator, "IdleLayer");
+            }
+
+
+
+        } else { //if the character is DEAD
+
+            ActivateLayer(MyAnimator, "DeathLayer");
+
+        }
 
         
-            ActivateLayer(MyAnimator, "IdleLayer");
-            //ActivateLayer(childAnimator, "IdleLayer");
-        }
     }
 
 
@@ -149,12 +182,15 @@ public abstract class Character : MonoBehaviour
 
     
 
-    public virtual void TakeDamage(float damage) {
+    public virtual void TakeDamage(float damage, Transform source) {
 
+        // update health value
         health.MyCurrentValue -= damage;
-
-       
+                       
+        // if death, velocity is set to zero so character can't move
         if (health.MyCurrentValue <= 0) {
+
+            rb.velocity = Vector2.zero;
 
             MyAnimator.SetTrigger("die");
         }

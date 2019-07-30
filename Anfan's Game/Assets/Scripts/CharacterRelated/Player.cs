@@ -5,6 +5,22 @@ using UnityEngine.UI;
 
 public class Player : Character {
 
+    // This makes the player a singleton
+    private static Player instance;
+
+    public static Player MyInstance {
+
+        get {
+            if (instance == null) {
+                instance = FindObjectOfType<Player>();
+            }
+
+            return instance;
+        }
+                
+    }
+
+
     [SerializeField]
     private Stat hunger;
 
@@ -20,29 +36,15 @@ public class Player : Character {
     private Transform[] exitPoints;
 
     private int exitIndex = 2;
-
-    private SpellBook spellBook;
-
+        
     [SerializeField]
     private GameObject arrow;
-
-    
-
-    public Transform MyTarget { get; set; }
+ 
 
     private Vector3 min, max;
 
-
-
-
-
-
-
-
-
-
-
-
+    
+      
     private GameObject currentObject = null;
 
    
@@ -52,10 +54,7 @@ public class Player : Character {
  
     
     protected override void Start() {
-
-        spellBook = GetComponent<SpellBook>();
-
- 
+                     
         hunger.Initialize(initHunger, initHunger);
 
         base.Start();
@@ -87,21 +86,21 @@ public class Player : Character {
 
         MovementDirection = Vector2.zero;
 
-        if (Input.GetKey(KeyCode.W)) {
+        if (Input.GetKey(KeybindManager.MyInstance.Keybinds["UP"])) {  // move up
             exitIndex = 0;
             MovementDirection += Vector2.up;
         }
-        if (Input.GetKey(KeyCode.A)) {
+        if (Input.GetKey(KeybindManager.MyInstance.Keybinds["LEFT"])) {
             exitIndex = 3;
             MovementDirection += Vector2.left;
 
         }
-        if (Input.GetKey(KeyCode.S)) {
+        if (Input.GetKey(KeybindManager.MyInstance.Keybinds["DOWN"])) {
             exitIndex = 2;
             MovementDirection += Vector2.down;
 
         }
-        if (Input.GetKey(KeyCode.D)) {
+        if (Input.GetKey(KeybindManager.MyInstance.Keybinds["RIGHT"])) {
             exitIndex = 1;
             MovementDirection += Vector2.right;
 
@@ -141,6 +140,17 @@ public class Player : Character {
             StopAttack();
             StopSpell();
             StopShoot();
+        }
+
+
+        foreach (string action in KeybindManager.MyInstance.ActionBinds.Keys) {
+
+            if (Input.GetKeyDown(KeybindManager.MyInstance.ActionBinds[action])) {
+
+                UIManager.MyInstance.ClickActionButton(action);
+
+            }
+
         }
         
 
@@ -186,11 +196,11 @@ public class Player : Character {
 
     }
 
-    private IEnumerator Spellcast(int spellIndex) {
+    private IEnumerator Spellcast(string spellName) {
 
         Transform currentTarget = MyTarget;
 
-        Spell newSpell = spellBook.FindSpell(spellIndex);
+        Spell newSpell = SpellBook.MyInstance.FindSpell(spellName);
 
         isSpellcasting = true; // Changes our state to spellcasting
 
@@ -202,7 +212,7 @@ public class Player : Character {
         if (currentTarget != null && InLineOfSight()) {
 
             SpellScript s = Instantiate(newSpell.MySpellPrefab, exitPoints[exitIndex].position, Quaternion.identity).GetComponent<SpellScript>();
-            s.Initialize(currentTarget, newSpell.MyDamage);
+            s.Initialize(currentTarget, transform, newSpell.MyDamage);
 
         }
 
@@ -213,13 +223,15 @@ public class Player : Character {
                
     }
 
-    public void CastSpell(int spellIndex) {
+    public void CastSpell(string spellName) {
 
         Block();
 
-        if (MyTarget != null && !isSpellcasting && !IsMoving && InLineOfSight()) {
+        
 
-            spellRoutine = StartCoroutine(Spellcast(spellIndex));
+        if (MyTarget != null && MyTarget.GetComponentInParent<Character>().IsAlive && !isSpellcasting && !IsMoving && InLineOfSight()) {
+
+            spellRoutine = StartCoroutine(Spellcast(spellName));
 
         }
 
@@ -291,7 +303,7 @@ public class Player : Character {
 
     public void StopSpell() {
 
-        spellBook.StopCasting();
+        SpellBook.MyInstance.StopCasting();
 
         if (spellRoutine != null) {
             StopCoroutine(spellRoutine);
