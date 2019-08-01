@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class HandScript : MonoBehaviour
@@ -39,6 +40,7 @@ public class HandScript : MonoBehaviour
     void Update()
     {
         icon.transform.position = Input.mousePosition + offset;
+        DeleteItem();
     }
 
     public void TakeMoveable(IMoveable moveable) {
@@ -62,4 +64,31 @@ public class HandScript : MonoBehaviour
 
 
     }
+
+    public void Drop() {
+
+        MyMoveable = null;
+        icon.color = new Color(0, 0, 0, 0);
+
+    }
+
+    private void DeleteItem() {
+
+        // if I (1) press my mouse button (2) not hovering over any UI elements (3) holding something in my hand
+        if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject() && MyInstance.MyMoveable != null) {
+
+            if (MyMoveable is Item && InventoryScript.MyInstance.FromSlot != null) {
+
+                (MyMoveable as Item).MySlot.Clear();
+
+            }
+
+            Drop();
+
+            InventoryScript.MyInstance.FromSlot = null;
+
+        }
+
+    }
+
 }

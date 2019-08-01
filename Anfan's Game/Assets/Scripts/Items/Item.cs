@@ -6,7 +6,7 @@ using UnityEngine;
 // Normally scripts are attatched to objects
 // This means we can instantiate an object without it being physically in the game scene
 
-public abstract class Item : ScriptableObject
+public abstract class Item : ScriptableObject, IMoveable
 {
     [SerializeField]
     private Sprite icon;
@@ -17,7 +17,17 @@ public abstract class Item : ScriptableObject
     private SlotScript slot;
 
 
-    public Sprite Icon { get => icon;}
-    public int StackSize { get => stackSize;}
-    protected SlotScript Slot { get => slot; set => slot = value; }
+    public Sprite MyIcon { get => icon;}
+    public int MyStackSize { get => stackSize;}
+    public SlotScript MySlot { get => slot; set => slot = value; }
+
+    public void Remove() {
+
+        if (MySlot != null) {
+            MySlot.RemoveItem(this);
+        }
+
+    }
+
+
 }

@@ -11,6 +11,9 @@ public class Bag : Item, IUseable
     private GameObject bagPrefab;
 
     public BagScript MyBagScript { get; set; }
+
+    public BagButton MyBagButton { get; set; }
+
     public int Slots { get => slots; }
 
     public void Initialize(int slots) {
@@ -24,10 +27,22 @@ public class Bag : Item, IUseable
         // You can only Use() a bag if you have less than 3 bags
         if (InventoryScript.MyInstance.CanAddBag) {
 
+            Remove();
             MyBagScript = Instantiate(bagPrefab, InventoryScript.MyInstance.transform).GetComponent<BagScript>();
             MyBagScript.AddSlots(slots);
 
-            InventoryScript.MyInstance.AddBag(this);
+            if (MyBagButton == null) {
+
+                InventoryScript.MyInstance.AddBag(this);
+
+            } else {
+
+                InventoryScript.MyInstance.AddBag(this, MyBagButton);
+
+            }
+
+
+            
 
         }
 
