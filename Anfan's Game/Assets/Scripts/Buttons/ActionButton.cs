@@ -4,13 +4,30 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ActionButton : MonoBehaviour, IPointerClickHandler
+public class ActionButton : MonoBehaviour, IPointerClickHandler, IClickable
 {
     
     public IUseable MyUseable { get; set; }
 
+    private Stack<IUseable> useables = new Stack<IUseable>();
+
+    [SerializeField]
+    private Text stackSize;
+
+    private int count;
+
     public Button MyButton { get; private set; }
     public Image MyIcon { get => icon; set => icon = value; }
+
+    public int MyCount => count;
+
+    public Text MyStackText {
+
+        get {
+            return stackSize;
+        }
+    }
+
 
     [SerializeField]
     private Image icon;
@@ -18,8 +35,10 @@ public class ActionButton : MonoBehaviour, IPointerClickHandler
     // Start is called before the first frame update
     void Start()
     {
+
         MyButton = GetComponent<Button>();
         MyButton.onClick.AddListener(OnClick);
+        InventoryScript.MyInstance.itemCountChangedEvent += new ItemCountChanged(UpdateItemCount);
     }
 
     // Update is called once per frame
@@ -30,11 +49,22 @@ public class ActionButton : MonoBehaviour, IPointerClickHandler
 
     public void OnClick() {
 
-        if (MyUseable != null) {
+        if (HandScript.MyInstance.MyMoveable == null) {
 
-            MyUseable.Use();
+            if (MyUseable != null) {
+
+                MyUseable.Use();
+
+            }
+            if (useables != null && useables.Count > 0) {
+
+                useables.Peek().Use();
+
+            }
 
         }
+
+        
 
     }
 
@@ -55,10 +85,26 @@ public class ActionButton : MonoBehaviour, IPointerClickHandler
         }
     }
 
+
     public void SetUseable(IUseable useable) {
+        
+        // If the useable I dragged onto is an item...
+        if (useable is Item) {
 
-        this.MyUseable = useable;
+            useables = InventoryScript.MyInstance.GetUseables(useable);
+            count = useables.Count;
 
+            InventoryScript.MyInstance.FromSlot.MyIcon.color = Color.white;
+            InventoryScript.MyInstance.FromSlot = null;
+
+        } else { // ...else just set useable as useable
+
+            this.MyUseable = useable;
+
+        }
+
+        
+        // needs (1) change icon (2) update stack size text
         UpdateVisual();
 
     }
@@ -68,6 +114,34 @@ public class ActionButton : MonoBehaviour, IPointerClickHandler
         MyIcon.sprite = HandScript.MyInstance.Put().MyIcon;
         MyIcon.color = Color.white;
 
+        if (count > 1) {
+
+            UIManager.MyInstance.UpdateStackSize(this);
+
+        }
+
+    }
+
+    public void UpdateItemCount(Item item) {
+
+        // When we pick something up
+        // check if item is the same item as the one on the button
+
+        if (item is IUseable && useables.Count > 0) {
+
+            // Checks if item I have on ActionButton is the SAME type as the item 
+            // that just got added to my bag
+            if (useables.Peek().GetType() == item.GetType()) {
+
+                useables = InventoryScript.MyInstance.GetUseables(item as IUseable);
+
+                count = useables.Count;
+
+                UIManager.MyInstance.UpdateStackSize(this);
+
+            }
+
+        }
 
     }
 
