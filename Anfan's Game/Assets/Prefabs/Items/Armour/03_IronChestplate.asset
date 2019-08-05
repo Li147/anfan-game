@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 442d4534ee4fbff4796283075a385bd4, type: 3}
+  m_Name: 03_IronChestplate
+  m_EditorClassIdentifier: 
+  icon: {fileID: 7732996222074863556, guid: b66a06173382ea947899662e0a80db91, type: 3}
+  stackSize: 0
+  itemName: Iron Chestplate
+  itemIndex: 3
+  quality: 3
+  armourType: 1
+  strength: 10
+  defense: 20
+  stamina: 10
+  animationClips:
+  - {fileID: 7400000, guid: d3c0b1524c746be43bf0ff8cea11f95f, type: 2}
+  - {fileID: 7400000, guid: 6d75ced17a1917f43a019f7163fa67eb, type: 2}
+  - {fileID: 7400000, guid: f61c1779121c70d46b6f002921a712b9, type: 2}
+  - {fileID: 7400000, guid: e537eaeb510031b4286583724e6f1cf0, type: 2}
+  - {fileID: 7400000, guid: e2bdb8ce2738a7945be53e32c791b3ce, type: 2}
+  - {fileID: 7400000, guid: 5e0612a5b7230874896ce56fe063dda3, type: 2}
+  - {fileID: 7400000, guid: 0b06dd427b604a64f8dc557502f2dd52, type: 2}
+  - {fileID: 7400000, guid: c7cb92c18709190478317819b7a4dbc5, type: 2}
+  - {fileID: 7400000, guid: ad8baf50d33b60b4fb88f3508aa2cfd3, type: 2}
+  - {fileID: 7400000, guid: 8f8e74e46951ed347ba924424d647098, type: 2}
+  - {fileID: 7400000, guid: 1847500832874e5488e0a7753aca5f26, type: 2}
+  - {fileID: 7400000, guid: 05b05d63951a42f43ac3fbf99fdfd2c0, type: 2}

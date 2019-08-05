@@ -43,11 +43,24 @@ public class UIManager : MonoBehaviour
 
     private GameObject[] keybindButtons;
 
+    [SerializeField]
+    private GameObject tooltip;
+
+    [SerializeField]
+    private CharacterPanel charPanel;
+
+
+    private Text tooltipText;
+
+    [SerializeField]
+    private RectTransform tooltipRect;
+
 
 
     private void Awake() {
 
         keybindButtons = GameObject.FindGameObjectsWithTag("Keybind");
+        tooltipText = tooltip.GetComponentInChildren<Text>();
 
     }
 
@@ -86,6 +99,12 @@ public class UIManager : MonoBehaviour
 
             InventoryScript.MyInstance.OpenClose();
             
+        }
+
+        if (Input.GetKeyDown(KeyCode.C)) {
+
+            charPanel.OpenClose();
+
         }
 
     }
@@ -165,6 +184,32 @@ public class UIManager : MonoBehaviour
             clickable.MyStackText.color = new Color(0, 0, 0, 0);
 
         }
+    }
+
+    // Shows tooltip containing item description
+    public void ShowTooltip(Vector2 pivot, Vector3 position, IDescribable description) {
+
+        tooltipRect.pivot = pivot;
+
+
+        tooltip.SetActive(true);
+        tooltip.transform.position = position;
+
+        tooltipText.text = description.GetDescription();
+
+    }
+
+    public void HideTooltip() {
+
+        tooltip.SetActive(false);
+
+    }
+
+    public void RefreshTooltip(IDescribable description) {
+
+        tooltipText.text = description.GetDescription();
+
+
     }
 
 

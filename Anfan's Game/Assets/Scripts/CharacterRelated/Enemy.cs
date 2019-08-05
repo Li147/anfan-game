@@ -9,7 +9,10 @@ public class Enemy : NPC
 
     private IState currentState;
 
-    
+    [SerializeField]
+    private LootTable lootTable;
+
+    private bool looted = false;
 
     
 
@@ -133,6 +136,19 @@ public class Enemy : NPC
         // resets the UI enemy health bar
         OnHealthChanged(health.MyCurrentValue);
 
+    }
+
+    public override void Interact() {
+
+        // loot enemy
+
+        if (!IsAlive && !looted) {
+
+            lootTable.RollLoot();
+            looted = true;
+
+        }
+        
     }
 
 }

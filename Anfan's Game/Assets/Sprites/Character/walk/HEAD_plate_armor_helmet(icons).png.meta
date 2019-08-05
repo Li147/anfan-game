@@ -1,0 +1,1073 @@
+fileFormatVersion: 2
+guid: baba5c2f359f87f47b3178dcee1f35da
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4034188165546186228
+    second: HEAD_plate_armor_helmet_0
+  - first:
+      213: -923358455810626113
+    second: HEAD_plate_armor_helmet_1
+  - first:
+      213: 7270800277324687240
+    second: HEAD_plate_armor_helmet_2
+  - first:
+      213: 6189337119549605492
+    second: HEAD_plate_armor_helmet_3
+  - first:
+      213: 2330352314598408518
+    second: HEAD_plate_armor_helmet_4
+  - first:
+      213: -6938262338515241087
+    second: HEAD_plate_armor_helmet_5
+  - first:
+      213: -1200271888866069961
+    second: HEAD_plate_armor_helmet_6
+  - first:
+      213: -7242695911623125259
+    second: HEAD_plate_armor_helmet_7
+  - first:
+      213: 624182282651356542
+    second: HEAD_plate_armor_helmet_8
+  - first:
+      213: -2635432896157751316
+    second: HEAD_plate_armor_helmet_9
+  - first:
+      213: 2507053897185205103
+    second: HEAD_plate_armor_helmet_10
+  - first:
+      213: -8462867598055222016
+    second: HEAD_plate_armor_helmet_11
+  - first:
+      213: -1063786167119475649
+    second: HEAD_plate_armor_helmet_12
+  - first:
+      213: 6623264768626534195
+    second: HEAD_plate_armor_helmet_13
+  - first:
+      213: -5204398138902054139
+    second: HEAD_plate_armor_helmet_14
+  - first:
+      213: 3593035719261339541
+    second: HEAD_plate_armor_helmet_15
+  - first:
+      213: -1650421688129673789
+    second: HEAD_plate_armor_helmet_16
+  - first:
+      213: -3537669788071350870
+    second: HEAD_plate_armor_helmet_17
+  - first:
+      213: -4860885702948445938
+    second: HEAD_plate_armor_helmet_18
+  - first:
+      213: 5811514110515535836
+    second: HEAD_plate_armor_helmet_19
+  - first:
+      213: 3302328589934348566
+    second: HEAD_plate_armor_helmet_20
+  - first:
+      213: -4784404118642574041
+    second: HEAD_plate_armor_helmet_21
+  - first:
+      213: -817955694248534593
+    second: HEAD_plate_armor_helmet_22
+  - first:
+      213: 1124863377325070749
+    second: HEAD_plate_armor_helmet_23
+  - first:
+      213: -3773653374446265337
+    second: HEAD_plate_armor_helmet_24
+  - first:
+      213: 8952560639695548765
+    second: HEAD_plate_armor_helmet_25
+  - first:
+      213: -8087481189245992266
+    second: HEAD_plate_armor_helmet_26
+  - first:
+      213: -4767025211203770594
+    second: HEAD_plate_armor_helmet_27
+  - first:
+      213: 2692718683949878922
+    second: HEAD_plate_armor_helmet_28
+  - first:
+      213: 7322503452545126546
+    second: HEAD_plate_armor_helmet_29
+  - first:
+      213: -4617981842148958009
+    second: HEAD_plate_armor_helmet_30
+  - first:
+      213: 2793320414540159590
+    second: HEAD_plate_armor_helmet_31
+  - first:
+      213: -4040418753252316887
+    second: HEAD_plate_armor_helmet_32
+  - first:
+      213: -5944977542357447713
+    second: HEAD_plate_armor_helmet_33
+  - first:
+      213: 555924795301026700
+    second: HEAD_plate_armor_helmet_34
+  - first:
+      213: 4882355532298397819
+    second: HEAD_plate_armor_helmet_35
+  - first:
+      213: 2216281040465833404
+    second: HEAD_plate_armor_helmet(icons)_0
+  - first:
+      213: -7793754109629834874
+    second: HEAD_plate_armor_helmet(icons)_1
+  - first:
+      213: 4397689659748249718
+    second: HEAD_plate_armor_helmet(icons)_2
+  - first:
+      213: -8528052191404698471
+    second: HEAD_plate_armor_helmet(icons)_3
+  - first:
+      213: 3144813265926652300
+    second: HEAD_plate_armor_helmet(icons)_4
+  - first:
+      213: 184211704712635514
+    second: HEAD_plate_armor_helmet(icons)_5
+  - first:
+      213: 3023842370372364481
+    second: HEAD_plate_armor_helmet(icons)_6
+  - first:
+      213: 7200380870983391598
+    second: HEAD_plate_armor_helmet(icons)_7
+  - first:
+      213: 1437317696914951152
+    second: HEAD_plate_armor_helmet(icons)_8
+  - first:
+      213: 5730059575784835466
+    second: HEAD_plate_armor_helmet(icons)_9
+  - first:
+      213: -2854822025606291196
+    second: HEAD_plate_armor_helmet(icons)_10
+  - first:
+      213: 2782210739960240119
+    second: HEAD_plate_armor_helmet(icons)_11
+  - first:
+      213: 5934513748476255441
+    second: HEAD_plate_armor_helmet(icons)_12
+  - first:
+      213: -830821309592935218
+    second: HEAD_plate_armor_helmet(icons)_13
+  - first:
+      213: -7339096848920942481
+    second: HEAD_plate_armor_helmet(icons)_14
+  - first:
+      213: 6132425158971488172
+    second: HEAD_plate_armor_helmet(icons)_15
+  - first:
+      213: -2018047902219031759
+    second: HEAD_plate_armor_helmet(icons)_16
+  - first:
+      213: -4047347728732045828
+    second: HEAD_plate_armor_helmet(icons)_17
+  - first:
+      213: -5948229656862284745
+    second: HEAD_plate_armor_helmet(icons)_18
+  - first:
+      213: 302266683028936054
+    second: HEAD_plate_armor_helmet(icons)_19
+  - first:
+      213: -2623996576740805455
+    second: HEAD_plate_armor_helmet(icons)_20
+  - first:
+      213: -2008187872963594913
+    second: HEAD_plate_armor_helmet(icons)_21
+  - first:
+      213: 1708655748855630838
+    second: HEAD_plate_armor_helmet(icons)_22
+  - first:
+      213: -6178342285305947560
+    second: HEAD_plate_armor_helmet(icons)_23
+  - first:
+      213: -4128098665583058140
+    second: HEAD_plate_armor_helmet(icons)_24
+  - first:
+      213: -2337817667835578498
+    second: HEAD_plate_armor_helmet(icons)_25
+  - first:
+      213: -7010024990265245615
+    second: HEAD_plate_armor_helmet(icons)_26
+  - first:
+      213: -4160206668025674822
+    second: HEAD_plate_armor_helmet(icons)_27
+  - first:
+      213: -2262667824705440726
+    second: HEAD_plate_armor_helmet(icons)_28
+  - first:
+      213: -4452918629146560422
+    second: HEAD_plate_armor_helmet(icons)_29
+  - first:
+      213: 2367355735838739370
+    second: HEAD_plate_armor_helmet(icons)_30
+  - first:
+      213: 2194359942458313388
+    second: HEAD_plate_armor_helmet(icons)_31
+  - first:
+      213: 1653369664927981904
+    second: HEAD_plate_armor_helmet(icons)_32
+  - first:
+      213: -3278731597558495021
+    second: HEAD_plate_armor_helmet(icons)_33
+  - first:
+      213: -1144294171367664107
+    second: HEAD_plate_armor_helmet(icons)_34
+  - first:
+      213: 7054116071829837169
+    second: HEAD_plate_armor_helmet(icons)_35
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: HEAD_plate_armor_helmet(icons)_0
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 219
+        width: 22
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 009f481c799888a42ae2cdb6b49d2196
+      internalID: 2216281040465833404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HEAD_plate_armor_helmet(icons)_1
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 219
+        width: 22
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 950cd273619c9f547885953e7443e561
+      internalID: -7793754109629834874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HEAD_plate_armor_helmet(icons)_2
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 219
+        width: 22
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df3d76a492f577446ae60e6ddf138398
+      internalID: 4397689659748249718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HEAD_plate_armor_helmet(icons)_3
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 218
+        width: 22
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d74b8e1ea794264fa9bd6805b81f447
+      internalID: -8528052191404698471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HEAD_plate_armor_helmet(icons)_4
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 219
+        width: 22
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df2898fbe8543854f92f76c8279d59f6
+      internalID: 3144813265926652300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HEAD_plate_armor_helmet(icons)_5
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 219
+        width: 22
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 087412b052886744e9007d22cd069b34
+      internalID: 184211704712635514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HEAD_plate_armor_helmet(icons)_6
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 219
+        width: 22
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ad3bf2fc5dced2478dd27b43b6ce9a2
+      internalID: 3023842370372364481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HEAD_plate_armor_helmet(icons)_7
+      rect:
+        serializedVersion: 2
+        x: 469
+        y: 218
+        width: 22
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce5fd2c2fe360974db47b5e903ff3eea
+      internalID: 7200380870983391598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HEAD_plate_armor_helmet(icons)_8
+      rect:
+        serializedVersion: 2
+        x: 533
+        y: 219
+        width: 22
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c43894f4e4c4d74b8fed30bffb766c2
+      internalID: 1437317696914951152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HEAD_plate_armor_helmet(icons)_9
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 156
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e689d9c87b69bb745a851c3de1e93b4f
+      internalID: 5730059575784835466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HEAD_plate_armor_helmet(icons)_10
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 155
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10e946bb17a8b624aaebdd8d0f72a3da
+      internalID: -2854822025606291196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HEAD_plate_armor_helmet(icons)_11
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 156
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32f5aab150efba147b3b11560fe767d7
+      internalID: 2782210739960240119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HEAD_plate_armor_helmet(icons)_12
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 156
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 248b2e3df07c4154b86ba93102b1fc53
+      internalID: 5934513748476255441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HEAD_plate_armor_helmet(icons)_13
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 156
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b6255cf213ac9c4187c8af77488139b
+      internalID: -830821309592935218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HEAD_plate_armor_helmet(icons)_14
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 155
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19cdc115d9724024abda72f5c34e8e5f
+      internalID: -7339096848920942481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HEAD_plate_armor_helmet(icons)_15
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 156
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4a61490841dac14dad34633609f9b03
+      internalID: 6132425158971488172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HEAD_plate_armor_helmet(icons)_16
+      rect:
+        serializedVersion: 2
+        x: 469
+        y: 156
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26e76af5b55fc3b4686c1ea401976898
+      internalID: -2018047902219031759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HEAD_plate_armor_helmet(icons)_17
+      rect:
+        serializedVersion: 2
+        x: 533
+        y: 156
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc2a5a7e0e6099f4688710305ea61d1f
+      internalID: -4047347728732045828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HEAD_plate_armor_helmet(icons)_18
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 91
+        width: 22
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bfa82904e64561419adb4e907637b8a
+      internalID: -5948229656862284745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HEAD_plate_armor_helmet(icons)_19
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 91
+        width: 22
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b181263d5a117a44bb6f8c6c1994ea43
+      internalID: 302266683028936054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HEAD_plate_armor_helmet(icons)_20
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 91
+        width: 22
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e27e205643820b44b9f179de83ce97ed
+      internalID: -2623996576740805455
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HEAD_plate_armor_helmet(icons)_21
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 90
+        width: 22
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c27acf4e090695a418b562ad1e9e8004
+      internalID: -2008187872963594913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HEAD_plate_armor_helmet(icons)_22
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 91
+        width: 22
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d56290c4cc7a88a4e91814b5344043a2
+      internalID: 1708655748855630838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HEAD_plate_armor_helmet(icons)_23
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 91
+        width: 22
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 137cc71c2f281dd44b3710a37f0f466c
+      internalID: -6178342285305947560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HEAD_plate_armor_helmet(icons)_24
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 91
+        width: 22
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99e99f2b8037d4f4c966d20f1db3c1b5
+      internalID: -4128098665583058140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HEAD_plate_armor_helmet(icons)_25
+      rect:
+        serializedVersion: 2
+        x: 469
+        y: 90
+        width: 22
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ff97656b9a571747821943906f1b93d
+      internalID: -2337817667835578498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HEAD_plate_armor_helmet(icons)_26
+      rect:
+        serializedVersion: 2
+        x: 533
+        y: 91
+        width: 22
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 054522763285477418ed2e5efb266367
+      internalID: -7010024990265245615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HEAD_plate_armor_helmet(icons)_27
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 28
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c77c3aaec0cf63489b25ea4472aa41c
+      internalID: -4160206668025674822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HEAD_plate_armor_helmet(icons)_28
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 27
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb15667f17660784cb99fd0a58615382
+      internalID: -2262667824705440726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HEAD_plate_armor_helmet(icons)_29
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 28
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 325978e988dc5df429f2d1f9149c6742
+      internalID: -4452918629146560422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HEAD_plate_armor_helmet(icons)_30
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 28
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d56a236312387394bbaebe9be44408e8
+      internalID: 2367355735838739370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HEAD_plate_armor_helmet(icons)_31
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 28
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 605842b3808d12e479b78aab059f1735
+      internalID: 2194359942458313388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HEAD_plate_armor_helmet(icons)_32
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 27
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5d7f6c67a39f7245a4021267da8a4c6
+      internalID: 1653369664927981904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HEAD_plate_armor_helmet(icons)_33
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 28
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f99e2c3d0fea15469d6092ed6759981
+      internalID: -3278731597558495021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HEAD_plate_armor_helmet(icons)_34
+      rect:
+        serializedVersion: 2
+        x: 469
+        y: 28
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca9aab3b8032ddb42b7a86e0cfe71944
+      internalID: -1144294171367664107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HEAD_plate_armor_helmet(icons)_35
+      rect:
+        serializedVersion: 2
+        x: 533
+        y: 28
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43a9ac3e782842c489eb622697c7ed40
+      internalID: 7054116071829837169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 738b47a5191105f4ca4d9f159fa10218
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -40,18 +40,16 @@ public class Bag : Item, IUseable
                 InventoryScript.MyInstance.AddBag(this, MyBagButton);
 
             }
-
-
             
-
+            
         }
 
-
-       
-
+               
     }
 
-    
+    public override string GetDescription() {
+        return base.GetDescription() + string.Format("\n{0} slot bag", slots);
+    }
 
 
 }

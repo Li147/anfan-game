@@ -54,12 +54,7 @@ public abstract class Character : MonoBehaviour
 
 
 
-
-
-
-
-
-
+          
     public bool IsMoving {
         get {
             return MovementDirection.x != 0 || MovementDirection.y != 0;
@@ -112,7 +107,7 @@ public abstract class Character : MonoBehaviour
     }
 
 
-    public void HandleLayers() {
+    public virtual void HandleLayers() {
 
         // If the character is ALIVE
         if (IsAlive) {

@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 442d4534ee4fbff4796283075a385bd4, type: 3}
+  m_Name: 05_IronPlatelegs
+  m_EditorClassIdentifier: 
+  icon: {fileID: 1795675885171700485, guid: b66a06173382ea947899662e0a80db91, type: 3}
+  stackSize: 0
+  itemName: Iron Platelegs
+  itemIndex: 5
+  quality: 3
+  armourType: 2
+  strength: 10
+  defense: 20
+  stamina: 10
+  animationClips:
+  - {fileID: 7400000, guid: 57ffb19290739c14987d3dadc4829377, type: 2}
+  - {fileID: 7400000, guid: e8f2fb3d6e87a704580a42098f058370, type: 2}
+  - {fileID: 7400000, guid: 35af03afdb6dd3f4fa2b003a69751f79, type: 2}
+  - {fileID: 7400000, guid: c306ffef78bcafb4288508f772a1d079, type: 2}
+  - {fileID: 7400000, guid: 8488ee55742d3f44dbb12ca920f404bd, type: 2}
+  - {fileID: 7400000, guid: d8faa7ea6d4ebf74ebcc61202bbf7a44, type: 2}
+  - {fileID: 7400000, guid: 2d897ccc1ca2a77428194e981833a5ca, type: 2}
+  - {fileID: 7400000, guid: be136cf857a768e448829d261f50de79, type: 2}
+  - {fileID: 7400000, guid: 8f8cdc1013330f842b2634e07a4cf94f, type: 2}
+  - {fileID: 7400000, guid: 92c886af5d243804ebd7c93a9e04cbcc, type: 2}
+  - {fileID: 7400000, guid: 4ca21f8e7d6d3984085e1a475465ca41, type: 2}
+  - {fileID: 7400000, guid: 2af3eaa03bcc5ef4ab3aeffaabebdb69, type: 2}

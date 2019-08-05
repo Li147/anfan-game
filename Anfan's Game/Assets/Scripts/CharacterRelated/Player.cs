@@ -43,6 +43,9 @@ public class Player : Character {
 
     private Vector3 min, max;
 
+    [SerializeField]
+    private GearSocket[] gearSockets;
+
     
       
     private GameObject currentObject = null;
@@ -362,6 +365,22 @@ public class Player : Character {
             }
             
         }
+    }
+
+    // Used for setting parameters to change animations of specific peices of gear
+    public override void HandleLayers() {
+        base.HandleLayers();
+
+        if (IsMoving) {
+
+            foreach (GearSocket g in gearSockets) {
+
+                g.SetXAndY(MovementDirection.x, MovementDirection.y);
+
+            }
+
+        }
+
     }
 
 

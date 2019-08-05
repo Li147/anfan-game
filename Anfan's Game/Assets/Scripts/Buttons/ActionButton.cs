@@ -4,8 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ActionButton : MonoBehaviour, IPointerClickHandler, IClickable
-{
+public class ActionButton : MonoBehaviour, IPointerClickHandler, IClickable, IPointerEnterHandler, IPointerExitHandler {
     
     public IUseable MyUseable { get; set; }
 
@@ -145,4 +144,32 @@ public class ActionButton : MonoBehaviour, IPointerClickHandler, IClickable
 
     }
 
+    public void OnPointerEnter(PointerEventData eventData) {
+
+        IDescribable tmp = null;
+                
+        if (MyUseable != null && MyUseable is IDescribable) {
+
+            tmp = (IDescribable)MyUseable;
+            //UIManager.MyInstance.ShowTooltip(transform.position);
+
+        } else if (useables.Count > 0) {
+
+            //UIManager.MyInstance.ShowTooltip(transform.position);
+
+        }
+
+        if (tmp != null) {
+            UIManager.MyInstance.ShowTooltip(new Vector2(2,0), transform.position, tmp);
+        }
+       
+    }
+
+
+
+
+    public void OnPointerExit(PointerEventData eventData) {
+
+        UIManager.MyInstance.HideTooltip();
+    }
 }

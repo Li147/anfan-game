@@ -33,7 +33,7 @@ public class InventoryScript : MonoBehaviour
     [SerializeField]
     private BagButton[] bagButtons;
 
-    // for debugging
+    // FOR DEBUGGING
     [SerializeField]
     private Item[] items;
 
@@ -130,6 +130,22 @@ public class InventoryScript : MonoBehaviour
 
         }
 
+        if (Input.GetKeyDown(KeyCode.H)) {
+
+            
+            AddItem((Armour)Instantiate(items[2]));
+            AddItem((Armour)Instantiate(items[3]));
+            AddItem((Armour)Instantiate(items[4]));
+            AddItem((Armour)Instantiate(items[5]));
+            AddItem((Armour)Instantiate(items[6]));
+            AddItem((Armour)Instantiate(items[7]));
+            AddItem((Armour)Instantiate(items[8]));
+            AddItem((Armour)Instantiate(items[9]));
+
+
+        }
+
+
     }
 
                     
@@ -203,31 +219,35 @@ public class InventoryScript : MonoBehaviour
 
 
 
-    public void AddItem(Item item) {
+    public bool AddItem(Item item) {
 
-        // try to place item in an existing stack...
+        // is the item a stackable?
         if (item.MyStackSize > 0) {
 
+            // try to place it in a stack...
             if (PlaceInStack(item)) {
-                return;
+                return true;
             }
         }
 
         // ... if it doesnt work, place in an empty slot
-        PlaceInEmpty(item);
+        return PlaceInEmpty(item);
 
     }
 
-    private void PlaceInEmpty(Item item) {
+    private bool PlaceInEmpty(Item item) {
 
         foreach (Bag bag in bags) {
 
             if (bag.MyBagScript.AddItem(item)) {
 
                 OnItemCountChanged(item);
-                return;
+                return true;
             }
         }
+
+        // if code gets to here, it means inventory is FULL
+        return false;
 
     }
 

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class SlotScript : MonoBehaviour, IPointerClickHandler, IClickable
+public class SlotScript : MonoBehaviour, IPointerClickHandler, IClickable, IPointerEnterHandler, IPointerExitHandler
 {
     private ObservableStack<Item> items = new ObservableStack<Item>();
 
@@ -148,11 +148,29 @@ public class SlotScript : MonoBehaviour, IPointerClickHandler, IClickable
 
             if (InventoryScript.MyInstance.FromSlot == null && !IsEmpty) { // If we haven't got something to move
 
-                if (HandScript.MyInstance != null && HandScript.MyInstance.MyMoveable is Bag) {
+                if (HandScript.MyInstance.MyMoveable != null) {
 
-                    if (MyItem is Bag) {
-                        InventoryScript.MyInstance.SwapBags(HandScript.MyInstance.MyMoveable as Bag, MyItem as Bag);
+                    if (HandScript.MyInstance.MyMoveable is Bag) {
+
+                        if (MyItem is Bag) {
+                            InventoryScript.MyInstance.SwapBags(HandScript.MyInstance.MyMoveable as Bag, MyItem as Bag);
+                        }
+
                     }
+                    // picking up an armour from character panel and clicking on inventory
+                    else if (HandScript.MyInstance.MyMoveable is Armour) {
+
+                        if (MyItem is Armour && (MyItem as Armour).MyArmourType == (HandScript.MyInstance.MyMoveable as Armour).MyArmourType) {
+
+                            (MyItem as Armour).Equip();
+                            
+                            HandScript.MyInstance.Drop();
+
+                        }
+
+                    }
+
+                    
 
                 } else {
                     HandScript.MyInstance.TakeMoveable(MyItem as IMoveable);
@@ -161,21 +179,36 @@ public class SlotScript : MonoBehaviour, IPointerClickHandler, IClickable
 
                
 
-            } else if (InventoryScript.MyInstance.FromSlot == null && IsEmpty && HandScript.MyInstance.MyMoveable is Bag) {
+            } else if (InventoryScript.MyInstance.FromSlot == null && IsEmpty) { // if slotscript is empty
 
-                Bag bag = (Bag) HandScript.MyInstance.MyMoveable;
+                // dequip bag from character, add bag to bag
+                if (HandScript.MyInstance.MyMoveable is Bag) {
+
+                    Bag bag = (Bag)HandScript.MyInstance.MyMoveable;
 
 
 
-                if (bag.MyBagScript != MyBag && InventoryScript.MyInstance.MyEmptySlotCount - bag.Slots > 0) {
+                    if (bag.MyBagScript != MyBag && InventoryScript.MyInstance.MyEmptySlotCount - bag.Slots > 0) {
 
-                    // Adds bag item to inventory
-                    AddItem(bag);
+                        // Adds bag item to inventory
+                        AddItem(bag);
 
-                    bag.MyBagButton.RemoveBag();
+                        bag.MyBagButton.RemoveBag();
+                        HandScript.MyInstance.Drop();
+
+                    }
+
+                }
+                // Dequip armour from character, add armor to bag
+                else if (HandScript.MyInstance.MyMoveable is Armour) {
+
+                    Armour armour = (Armour) HandScript.MyInstance.MyMoveable;
+                    CharacterPanel.MyInstance.MySelectedButton.DequipArmour();
+                    AddItem(armour);
                     HandScript.MyInstance.Drop();
 
                 }
+                
                
 
 
@@ -197,7 +230,7 @@ public class SlotScript : MonoBehaviour, IPointerClickHandler, IClickable
         }
 
         // If we right click on the item, use the item
-        if (eventData.button == PointerEventData.InputButton.Right) {
+        if (eventData.button == PointerEventData.InputButton.Right &&HandScript.MyInstance.MyMoveable == null) {
             UseItem();
         }
     }
@@ -212,6 +245,12 @@ public class SlotScript : MonoBehaviour, IPointerClickHandler, IClickable
         if (MyItem is IUseable) {
 
             (MyItem as IUseable).Use();
+
+        } 
+
+        else if(MyItem is Armour) {
+
+            (MyItem as Armour).Equip();
 
         }
         
@@ -321,5 +360,21 @@ public class SlotScript : MonoBehaviour, IPointerClickHandler, IClickable
 
     }
 
+    // Method for showing tooltip
+    public void OnPointerEnter(PointerEventData eventData) {
 
+        if (!IsEmpty) {
+
+            UIManager.MyInstance.ShowTooltip(new Vector2(1,0), transform.position, MyItem);
+            Debug.Log("mouse just entered");
+        }
+
+        
+    }
+
+    // Method for hiding tooltip
+    public void OnPointerExit(PointerEventData eventData) {
+
+        UIManager.MyInstance.HideTooltip();
+    }
 }

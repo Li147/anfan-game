@@ -23,14 +23,14 @@ public class Slot : MonoBehaviour
         
     }
 
-    public void DropItem() {
-        foreach (Transform child in transform) {
-            if (child.tag != "cross") {
-                child.GetComponent<Spawn>().SpawnDroppedItem();
-                GameObject.Destroy(child.gameObject);
-            }
+    //public void DropItem() {
+    //    foreach (Transform child in transform) {
+    //        if (child.tag != "cross") {
+    //            child.GetComponent<SpawnItemController>().SpawnDroppedItem(0);
+    //            GameObject.Destroy(child.gameObject);
+    //        }
            
-        }
-    }
+    //    }
+    //}
 
 }
