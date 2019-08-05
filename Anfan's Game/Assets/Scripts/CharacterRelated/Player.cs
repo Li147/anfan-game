@@ -208,6 +208,12 @@ public class Player : Character {
         isSpellcasting = true; // Changes our state to spellcasting
 
         MyAnimator.SetBool("spellcast", isSpellcasting); // Starts spellcast animation
+
+        foreach (GearSocket g in gearSockets) {
+
+            g.MyAnimator.SetBool("spellcast", isSpellcasting);
+
+        }
         
 
         yield return new WaitForSeconds(newSpell.MyCastTime);
@@ -312,6 +318,14 @@ public class Player : Character {
             StopCoroutine(spellRoutine);
             isSpellcasting = false;
             MyAnimator.SetBool("spellcast", isSpellcasting);
+
+            foreach (GearSocket g in gearSockets) {
+
+                g.MyAnimator.SetBool("spellcast", isSpellcasting);
+
+            }
+
+
         }
 
     }
@@ -381,6 +395,17 @@ public class Player : Character {
 
         }
 
+    }
+
+    public override void ActivateLayer(Animator animator, string layerName) {
+
+        base.ActivateLayer(animator, layerName);
+
+        foreach (GearSocket g in gearSockets) {
+
+            g.ActivateLayer(layerName);
+
+        }
     }
 
 
