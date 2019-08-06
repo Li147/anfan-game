@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-enum ArmourType {Head, Chest, Legs, Accessory, MainHand, OffHand, TwoHand}
+enum ArmourType {Head, Chest, Legs, Feet, Accessory, MainHand, OffHand, TwoHand}
 
 [CreateAssetMenu(fileName = "Armour", menuName = "Items/Armour", order = 2)]
 public class Armour : Item

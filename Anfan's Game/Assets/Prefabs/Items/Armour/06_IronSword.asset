@@ -17,7 +17,8 @@ MonoBehaviour:
   itemName: Iron Sword
   itemIndex: 6
   quality: 3
-  armourType: 4
+  armourType: 5
   strength: 30
   defense: 5
   stamina: 5
+  animationClips: []

@@ -8,7 +8,7 @@ public class GearSocket : MonoBehaviour
 
     public Animator MyAnimator { get; set; }
 
-    private SpriteRenderer spriteRenderer;
+    protected SpriteRenderer spriteRenderer;
 
     private Animator parentAnimator;
 
@@ -28,19 +28,8 @@ public class GearSocket : MonoBehaviour
     }
 
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void SetXAndY(float x, float y) {
+    
+    public virtual void SetXAndY(float x, float y) {
 
         // sets animation parameter  to ensure player faces correct direction
         MyAnimator.SetFloat("x", x);

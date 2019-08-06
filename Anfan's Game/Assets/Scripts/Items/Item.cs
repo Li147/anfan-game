@@ -28,6 +28,8 @@ public abstract class Item : ScriptableObject, IMoveable, IDescribable
 
     private SlotScript slot;
 
+    public CharButton MyCharButton { get; set; }
+
 
     public Sprite MyIcon { get => icon;}
     public int MyStackSize { get => stackSize;}
@@ -45,6 +47,7 @@ public abstract class Item : ScriptableObject, IMoveable, IDescribable
 
         if (MySlot != null) {
             MySlot.RemoveItem(this);
+            MySlot = null;
         }
 
     }

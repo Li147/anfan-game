@@ -24,7 +24,6 @@ public class Player : Character {
     [SerializeField]
     private Stat hunger;
 
-    
     private float initHunger = 200;
 
    
@@ -342,45 +341,6 @@ public class Player : Character {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    public void Interact() {
-        if(interactable != null) {
-            interactable.Interact();
-        }
-    }
-
-    public void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.tag == "Enemy") {
-            interactable = collision.GetComponent<IInteractable>();
-        }
-    }
-
-    public void OnTriggerExit2D(Collider2D collision) {
-        if (collision.tag == "Enemy") {
-            if (interactable!= null) {
-                interactable.StopInteract();
-                interactable = null;
-            }
-            
-        }
-    }
-
     // Used for setting parameters to change animations of specific peices of gear
     public override void HandleLayers() {
         base.HandleLayers();
@@ -407,6 +367,39 @@ public class Player : Character {
 
         }
     }
+
+
+
+                   
+    public void Interact() 
+    {
+        if(interactable != null) 
+        {
+            interactable.Interact();
+        }
+    }
+
+    public void OnTriggerEnter2D(Collider2D collision) 
+    {
+        if (collision.tag == "enemy" || collision.tag == "interactable") 
+        {
+            interactable = collision.GetComponent<IInteractable>();
+        }
+    }
+
+    public void OnTriggerExit2D(Collider2D collision) 
+    {
+        if (collision.tag == "enemy" || collision.tag == "interactable") 
+        {
+            if (interactable != null) 
+            {
+                interactable.StopInteract();
+                interactable = null;
+            }
+        }
+    }
+
+   
 
 
 

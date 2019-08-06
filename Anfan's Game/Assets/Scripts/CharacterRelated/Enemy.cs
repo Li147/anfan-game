@@ -146,9 +146,15 @@ public class Enemy : NPC
 
             lootTable.RollLoot();
             looted = true;
+            Destroy(this.gameObject);
 
         }
-        
+    }
+
+    public override void StopInteract() {
+
+
+
     }
 
 }

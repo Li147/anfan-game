@@ -96,18 +96,21 @@ public class ActionButton : MonoBehaviour, IPointerClickHandler, IClickable, IPo
             InventoryScript.MyInstance.FromSlot.MyIcon.color = Color.white;
             InventoryScript.MyInstance.FromSlot = null;
 
-        } else { // ...else just set useable as useable
+        } else { // ...else if it is something like a SPELL, just set the button's useable as new useable
 
+            useables.Clear();
             this.MyUseable = useable;
 
         }
 
-        
+        count = useables.Count;
+
         // needs (1) change icon (2) update stack size text
         UpdateVisual();
 
     }
 
+    // This method is responsible for updating the visuals of the action button
     public void UpdateVisual() {
 
         MyIcon.sprite = HandScript.MyInstance.Put().MyIcon;
@@ -116,6 +119,11 @@ public class ActionButton : MonoBehaviour, IPointerClickHandler, IClickable, IPo
         if (count > 1) {
 
             UIManager.MyInstance.UpdateStackSize(this);
+
+        } 
+        else if (MyUseable is Spell) {
+
+            UIManager.MyInstance.ClearStackCount(this);
 
         }
 

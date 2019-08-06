@@ -72,6 +72,7 @@ public class CharButton : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
         icon.sprite = armour.MyIcon;
         icon.color = Color.white;
         this.equippedArmour = armour;  // references the equipped armour
+        this.equippedArmour.MyCharButton = this;
 
         if (HandScript.MyInstance.MyMoveable == (armour as IMoveable)) {
 
@@ -80,7 +81,7 @@ public class CharButton : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
         }
 
         // check that the charbutton has an associated socket and that armor has animation clips
-        if (gearSocket != null && equippedArmour.MyAnimationClips != null) {
+        if (gearSocket != null && equippedArmour.MyAnimationClips != null && equippedArmour.MyAnimationClips.Length != 0) {
 
             gearSocket.EquipAnimation(equippedArmour.MyAnimationClips);
 
@@ -116,6 +117,7 @@ public class CharButton : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
 
         }
 
+        equippedArmour.MyCharButton = null;
         equippedArmour = null;
             
     }

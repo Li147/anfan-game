@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+// This class is responsible for selecting a player's target
 public class GameManager : MonoBehaviour
 {
     [SerializeField]
@@ -21,6 +22,7 @@ public class GameManager : MonoBehaviour
 
     private void ClickTarget() {
 
+        // deals with clicks using the LEFT MOUSE BUTTON
         if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject()) {
 
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, Mathf.Infinity, 512);
@@ -59,13 +61,15 @@ public class GameManager : MonoBehaviour
                 player.MyTarget = null;
             }
         }
+        // deals with clicks on the RIGHT MOUSE BUTTON
         else if (Input.GetMouseButtonDown(1) && !EventSystem.current.IsPointerOverGameObject()) {
 
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, Mathf.Infinity, 512);
+            
+            // if our mouse clicks on an enemy...
+            if (hit.collider != null && (hit.collider.tag == "enemy" || hit.collider.tag == "interactable")) {
 
-            if (hit.collider != null && hit.collider.tag == "enemy") {
-
-                hit.collider.GetComponent<NPC>().Interact();
+                player.Interact();
 
             }
 

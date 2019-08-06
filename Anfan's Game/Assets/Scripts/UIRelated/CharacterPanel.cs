@@ -13,7 +13,7 @@ public class CharacterPanel : MonoBehaviour
     private CanvasGroup canvasGroup;
 
     [SerializeField]
-    private CharButton head, chest, legs, accessory1, accessory2, accessory3, main, off;
+    private CharButton head, chest, legs, feet, accessory1, accessory2, accessory3, main, off;
 
     public CharButton MySelectedButton { get; set; }
 
@@ -49,15 +49,16 @@ public class CharacterPanel : MonoBehaviour
 
         switch (armour.MyArmourType) {
             case ArmourType.Head:
-
                 head.EquipArmour(armour);
-
                 break;
             case ArmourType.Chest:
                 chest.EquipArmour(armour);
                 break;
             case ArmourType.Legs:
                 legs.EquipArmour(armour);
+                break;
+            case ArmourType.Feet:
+                feet.EquipArmour(armour);
                 break;
             case ArmourType.Accessory:
                accessory1.EquipArmour(armour);
