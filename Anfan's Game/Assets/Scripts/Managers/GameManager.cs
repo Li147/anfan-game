@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private Player player;
 
-    private NPC currentTarget;
+    private Enemy currentTarget;
     
 
     // Update is called once per frame
@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
         //Debug.Log(LayerMask.GetMask("Clickable"));
     }
 
+    // when player mouse clicks a target
     private void ClickTarget() {
 
         // deals with clicks using the LEFT MOUSE BUTTON
@@ -27,7 +28,7 @@ public class GameManager : MonoBehaviour
 
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, Mathf.Infinity, 512);
                         
-            if (hit.collider != null) { // if my mouse clicks something
+            if (hit.collider != null && hit.collider.tag == "enemy") { // if my mouse clicks something
 
                 if (currentTarget!= null) {
 
@@ -35,7 +36,7 @@ public class GameManager : MonoBehaviour
 
                 }
 
-                currentTarget = hit.collider.GetComponent<NPC>();
+                currentTarget = hit.collider.GetComponent<Enemy>();
 
                 // BUG - clicking the mini hitbox causes an error -> fix!!!
                 player.MyTarget = currentTarget.Select();
@@ -67,7 +68,10 @@ public class GameManager : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, Mathf.Infinity, 512);
             
             // if our mouse clicks on an enemy...
-            if (hit.collider != null && (hit.collider.tag == "enemy" || hit.collider.tag == "interactable")) {
+            if (hit.collider != null && (hit.collider.tag == "enemy" || hit.collider.tag == "interactable") &&
+                // ensures that gameobject we click on is same as the one closest to us
+                hit.collider.gameObject.GetComponent<IInteractable>() == player.MyInteractable) { 
+                
 
                 player.Interact();
 

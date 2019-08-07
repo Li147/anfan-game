@@ -32,7 +32,13 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private GameObject targetFrame;
 
-    private Stat healthStat;
+    private Stat enemyHealthStat;
+
+    [SerializeField]
+    private Text enemyLevelText;
+
+    [SerializeField]
+    private Text enemyNameText;
 
     [SerializeField]
     private CanvasGroup keybindMenu;
@@ -72,7 +78,7 @@ public class UIManager : MonoBehaviour
     {
 
         
-        healthStat = targetFrame.GetComponentInChildren<Stat>();
+        enemyHealthStat = targetFrame.GetComponentInChildren<Stat>();
 
                      
     }
@@ -111,10 +117,13 @@ public class UIManager : MonoBehaviour
 
 
 
-    public void ShowTargetFrame(NPC target) {
+    public void ShowTargetFrame(Enemy target) {
 
         targetFrame.SetActive(true);
-        healthStat.Initialize(target.MyHealth.MyCurrentValue, target.MyHealth.MyMaxValue);
+        enemyHealthStat.Initialize(target.MyHealth.MyCurrentValue, target.MyHealth.MyMaxValue);
+
+        enemyLevelText.text = target.MyLevel.ToString();
+        enemyNameText.text = target.MyName;
 
         // I have an event on target called healthchanged, 
         // updatetargetframe listens for a change in HealthChanged
@@ -122,6 +131,28 @@ public class UIManager : MonoBehaviour
         target.healthChanged += new HealthChanged(UpdateTargetFrame);
 
         target.characterRemoved += new CharacterRemoved(HideTargetFrame);
+
+        // change level text colour of enemy relative to player's level
+        if (target.MyLevel >= Player.MyInstance.MyLevel + 5)
+        {
+            enemyLevelText.color = Color.red;
+        }
+        else if (target.MyLevel == Player.MyInstance.MyLevel + 3 || target.MyLevel == Player.MyInstance.MyLevel + 4)
+        {
+            enemyLevelText.color = new Color32(255, 124, 0, 255);
+        }
+        else if (target.MyLevel >= Player.MyInstance.MyLevel -2 && target.MyLevel <= Player.MyInstance.MyLevel + 2)
+        {
+            enemyLevelText.color = Color.yellow;
+        }
+        else if (target.MyLevel <= Player.MyInstance.MyLevel - 3 && target.MyLevel > Player.MyInstance.MyLevel -10)
+        {
+            enemyLevelText.color = Color.green;
+        }
+        else
+        {
+            enemyLevelText.color = Color.gray;
+        }
 
     }
 
@@ -133,7 +164,7 @@ public class UIManager : MonoBehaviour
 
     public void UpdateTargetFrame(float value) {
 
-        healthStat.MyCurrentValue = value;
+        enemyHealthStat.MyCurrentValue = value;
 
     }
 

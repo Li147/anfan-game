@@ -1,22 +1,13 @@
 fileFormatVersion: 2
-guid: ca6b2030b085a044c979b48b18141fc6
+guid: b5b4ca2816d8598429d04d97d04f3123
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8357075547490260791
-    second: bar background
+      213: 8430723385105099488
+    second: slot_darkgrey
   - first:
-      213: -5663291345552922830
-    second: hp_bar_fill
-  - first:
-      213: -2396880660392060077
-    second: hunger_bar_full
-  - first:
-      213: -347808183162200321
-    second: mana_bar_fill
-  - first:
-      213: 1588006455984031252
-    second: single_bar_empty
+      213: 4542766948884499013
+    second: slot_lightgrey
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -99,97 +90,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bar background
+      name: slot_darkgrey
       rect:
         serializedVersion: 2
-        x: 8
-        y: 40
-        width: 100
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 44c335773004bd14780ce41db448bb36
-      internalID: 8357075547490260791
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: hp_bar_fill
-      rect:
-        serializedVersion: 2
-        x: 120
-        y: 64
-        width: 51
-        height: 4
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 880a5bb09b1be8f488c28998bd844b1b
-      internalID: -5663291345552922830
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: hunger_bar_full
-      rect:
-        serializedVersion: 2
-        x: 120
-        y: 54
-        width: 51
-        height: 4
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d4fe09cb299c79b46a8f57cae10faeea
-      internalID: -2396880660392060077
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mana_bar_fill
-      rect:
-        serializedVersion: 2
-        x: 120
-        y: 44
-        width: 51
-        height: 4
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 510c8b1534a4acb46a10017a91d6bfc7
-      internalID: -347808183162200321
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: single_bar_empty
-      rect:
-        serializedVersion: 2
-        x: 39
-        y: 61
-        width: 69
-        height: 10
+        x: 81
+        y: 120
+        width: 40
+        height: 40
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -197,8 +104,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 156c4298aa99b75428a5e9824af58e66
-      internalID: 1588006455984031252
+      spriteID: 7537d9410876ce04aa305b4f9df6b1b8
+      internalID: 8430723385105099488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slot_lightgrey
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 77
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12948ccf38d6c9f4296c9e766f66bf6c
+      internalID: 4542766948884499013
       vertices: []
       indices: 
       edges: []
@@ -206,7 +134,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: ef51b79efb9d7694cab04c8f8584831d
+    spriteID: fb389e463f208134ca2c9f8d9fbfbb45
     internalID: 0
     vertices: []
     indices: 

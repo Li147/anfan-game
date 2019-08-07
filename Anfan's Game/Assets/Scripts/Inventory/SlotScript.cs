@@ -8,6 +8,8 @@ public class SlotScript : MonoBehaviour, IPointerClickHandler, IClickable, IPoin
 {
     private ObservableStack<Item> items = new ObservableStack<Item>();
 
+    public ObservableStack<Item> MyItems { get => items; }
+
     [SerializeField]
     private Image icon;
 
@@ -55,9 +57,6 @@ public class SlotScript : MonoBehaviour, IPointerClickHandler, IClickable, IPoin
 
     }
 
-
- 
-
     public int MyCount {
         get {
             return MyItems.Count;
@@ -66,7 +65,7 @@ public class SlotScript : MonoBehaviour, IPointerClickHandler, IClickable, IPoin
 
     public Text MyStackText => stackSize;
 
-    public ObservableStack<Item> MyItems { get => items; }
+    
 
     private void Awake() {
         // every time these events are raised -> we call the update slot function to update UI
@@ -130,15 +129,17 @@ public class SlotScript : MonoBehaviour, IPointerClickHandler, IClickable, IPoin
 
     }
 
-    public void Clear() {
+    public void Clear()
+    {
+        int initCount = MyItems.Count;
 
-        if (MyItems.Count > 0) {
-
-            InventoryScript.MyInstance.OnItemCountChanged(MyItems.Pop());
-            MyItems.Clear();
-
+        if (initCount > 0)
+        {
+            for (int i = 0; i < initCount; i++)
+            {
+                InventoryScript.MyInstance.OnItemCountChanged(MyItems.Pop());
+            }
         }
-
     }
 
     public void OnPointerClick(PointerEventData eventData) {

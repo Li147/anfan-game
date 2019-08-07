@@ -20,13 +20,27 @@ public class Player : Character {
                 
     }
 
+    public IInteractable MyInteractable { get => interactable; set => interactable = value; }
 
+    // player's hunger stat
     [SerializeField]
     private Stat hunger;
 
     private float initHunger = 200;
 
-   
+    // player's mana stat
+    [SerializeField]
+    private Stat mana;
+
+    private float initMana = 100;
+
+    [SerializeField]
+    private Stat exp;
+
+    [SerializeField]
+    private Text levelText;
+
+    // blocks determine field of view (delete this?)
     [SerializeField]
     private Block[] blocks;
 
@@ -55,33 +69,31 @@ public class Player : Character {
     
  
     
-    protected override void Start() {
-                     
+    protected override void Start()
+    {
         hunger.Initialize(initHunger, initHunger);
+        mana.Initialize(initMana, initMana);
+        exp.Initialize(0, Mathf.Floor(100 * MyLevel * Mathf.Pow(MyLevel, 0.5f)));
+        levelText.text = "Level" + MyLevel.ToString();
 
         base.Start();
     }
 
-    protected override void Update() {
-        
-
+    protected override void Update()
+    {
         ProcessInputs();
 
         transform.position = new Vector3(Mathf.Clamp(transform.position.x, min.x, max.x), 
                                          Mathf.Clamp(transform.position.y, min.y, max.y), 
                                          transform.position.z);
 
-
         base.Update();
-        
-
     }
     
     // code relating to adjusting physics is here
-    protected override void FixedUpdate() {
-
+    protected override void FixedUpdate()
+    {
         base.FixedUpdate();
-
     }
 
     private void ProcessInputs() {
@@ -108,11 +120,8 @@ public class Player : Character {
 
         }
 
-
-
-
-
-
+                
+        
         if (Input.GetKeyDown(KeyCode.Space)) {
 
             if (!IsAttacking && !IsMoving) {
@@ -157,29 +166,34 @@ public class Player : Character {
         
 
 
+        
 
-
-
-        //Debugging HP bar
+        //Debugging stats bars
 
         if (Input.GetKeyDown(KeyCode.O)) {
             health.MyCurrentValue -= 10;
             hunger.MyCurrentValue -= 10;
+            mana.MyCurrentValue -= 10;
         }
         if (Input.GetKeyDown(KeyCode.P)) {
             health.MyCurrentValue += 10;
             hunger.MyCurrentValue += 10;
+            mana.MyCurrentValue += 10;
 
         }
-             
-        
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            GainXP(50);
+        }
+
+
     }
 
-    public void SetLimits(Vector3 min, Vector3 max) {
 
+    public void SetLimits(Vector3 min, Vector3 max)
+    {
         this.min = min;
         this.max = max;
-        
     }
 
 
@@ -373,17 +387,42 @@ public class Player : Character {
                    
     public void Interact() 
     {
-        if(interactable != null) 
+        if(MyInteractable != null) 
         {
-            interactable.Interact();
+            MyInteractable.Interact();
         }
     }
+
+    public void GainXP(int xp)
+    {
+        exp.MyCurrentValue += xp;
+        CombatTextManager.MyInstance.CreateText(transform.position, xp.ToString(), SCTTYPE.EXP, false);
+        if (exp.MyCurrentValue >= exp.MyMaxValue)
+        {
+            StartCoroutine(Ding());
+        }
+    }
+
+    private IEnumerator Ding()
+    {
+        while(!exp.isFull){
+            yield return null;
+        }
+
+        MyLevel++;
+        levelText.text = "Level" + MyLevel.ToString();
+        exp.MyMaxValue = 100 * MyLevel * Mathf.Pow(MyLevel, 0.5f);
+        exp.MyMaxValue = Mathf.Floor(exp.MyMaxValue);
+        exp.MyCurrentValue = exp.MyOverflow;
+        exp.Reset();
+    }
+
 
     public void OnTriggerEnter2D(Collider2D collision) 
     {
         if (collision.tag == "enemy" || collision.tag == "interactable") 
         {
-            interactable = collision.GetComponent<IInteractable>();
+            MyInteractable = collision.GetComponent<IInteractable>();
         }
     }
 
@@ -391,10 +430,10 @@ public class Player : Character {
     {
         if (collision.tag == "enemy" || collision.tag == "interactable") 
         {
-            if (interactable != null) 
+            if (MyInteractable != null) 
             {
-                interactable.StopInteract();
-                interactable = null;
+                MyInteractable.StopInteract();
+                MyInteractable = null;
             }
         }
     }

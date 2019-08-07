@@ -28,7 +28,7 @@ public abstract class Item : ScriptableObject, IMoveable, IDescribable
 
     private SlotScript slot;
 
-    public CharButton MyCharButton { get; set; }
+    private CharButton charButton;
 
 
     public Sprite MyIcon { get => icon;}
@@ -36,6 +36,15 @@ public abstract class Item : ScriptableObject, IMoveable, IDescribable
     public SlotScript MySlot { get => slot; set => slot = value; }
     public int MyItemIndex { get => itemIndex;}
     public string MyName { get => itemName; set => itemName = value; }
+    public CharButton MyCharButton
+    {
+        get => charButton;
+        set
+        {
+            MySlot = null;
+            charButton = value;
+        }
+    }
 
     public virtual string GetDescription() {
 
@@ -47,7 +56,7 @@ public abstract class Item : ScriptableObject, IMoveable, IDescribable
 
         if (MySlot != null) {
             MySlot.RemoveItem(this);
-            MySlot = null;
+            
         }
 
     }

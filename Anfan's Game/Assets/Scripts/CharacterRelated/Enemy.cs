@@ -2,8 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : NPC
+public delegate void HealthChanged(float health);
+
+public delegate void CharacterRemoved();
+
+public class Enemy : Character, IInteractable
 {
+    public event HealthChanged healthChanged;
+
+    public event CharacterRemoved characterRemoved;
+
     [SerializeField]
     private CanvasGroup healthGroup;
 
@@ -14,7 +22,8 @@ public class Enemy : NPC
 
     private bool looted = false;
 
-    
+    [SerializeField]
+    private string enemyName;
 
     public float MyAttackRange { get; set; }
     public float MyAttackTime { get; set; }
@@ -33,8 +42,7 @@ public class Enemy : NPC
         }
     }
 
-
-
+    public string MyName { get => enemyName; set => enemyName = value; }
 
     protected void Awake() {
 
@@ -63,20 +71,24 @@ public class Enemy : NPC
     }
 
 
-    public override Transform Select() {
+    public Transform Select() {
 
         healthGroup.alpha = 1;
 
-        return base.Select();
+        return hitBox;
     }
 
-    public override void DeSelect() {
+    public void DeSelect() {
 
         healthGroup.alpha = 0;
+        // Good practice to always include unsubscribe code in your thing
 
-        base.DeSelect();
+        healthChanged -= new HealthChanged(UIManager.MyInstance.UpdateTargetFrame);
+        characterRemoved -= new CharacterRemoved(UIManager.MyInstance.HideTargetFrame);
 
     }
+
+    
 
     public override void TakeDamage(float damage, Transform source) {
 
@@ -138,7 +150,7 @@ public class Enemy : NPC
 
     }
 
-    public override void Interact() {
+    public void Interact() {
 
         // loot enemy
 
@@ -151,9 +163,33 @@ public class Enemy : NPC
         }
     }
 
-    public override void StopInteract() {
+    public void StopInteract() {
 
 
+
+    }
+
+
+    public void OnHealthChanged(float health)
+    {
+
+        if (healthChanged != null)
+        {
+
+            healthChanged(health);
+
+        }
+
+    }
+
+    public void OnCharacterRemoved()
+    {
+
+        if (characterRemoved != null)
+        {
+            characterRemoved();
+        }
+        Destroy(gameObject);
 
     }
 

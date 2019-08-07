@@ -15,11 +15,11 @@ public abstract class Character : MonoBehaviour
 
     private Vector2 movementDirection;
 
+    [SerializeField]
+    private int level;
+
 
     public Animator MyAnimator { get; set; }
-
-
-    //public Animator childAnimator;
 
     private Rigidbody2D rb;
     private int length;
@@ -71,6 +71,7 @@ public abstract class Character : MonoBehaviour
 
     public Vector2 MovementDirection { get => movementDirection; set => movementDirection = value; }
     public float MovementSpeed { get => movementSpeed; set => movementSpeed = value; }
+    public int MyLevel { get => level; set => level = value; }
 
 
 
@@ -114,13 +115,7 @@ public abstract class Character : MonoBehaviour
 
             if (IsMoving) {
                 ActivateLayer(MyAnimator, "WalkLayer");
-                //ActivateLayer(childAnimator, "WalkLayer");
-
-                // sets animation parameter  to ensure player faces correct direction
-                //childAnimator.SetFloat("x", movementDirection.x);
-                //childAnimator.SetFloat("y", movementDirection.y);
-
-
+                
                 // sets animation parameter  to ensure player faces correct direction
                 MyAnimator.SetFloat("x", MovementDirection.x);
                 MyAnimator.SetFloat("y", MovementDirection.y);
@@ -131,26 +126,19 @@ public abstract class Character : MonoBehaviour
             } else if (IsAttacking) {
 
                 ActivateLayer(MyAnimator, "AttackLayer");
-                //ActivateLayer(childAnimator, "AttackLayer");
-
-
-
+           
             } else if (isSpellcasting) {
 
                 ActivateLayer(MyAnimator, "SpellcastLayer");
-                //ActivateLayer(childAnimator, "SpellcastLayer");
-
-
+                                
             } else if (isShooting) {
 
                 ActivateLayer(MyAnimator, "BowLayer");
-                // ActivateLayer(childAnimator, "BowLayer");
 
             } else {
 
-
                 ActivateLayer(MyAnimator, "IdleLayer");
-                //ActivateLayer(childAnimator, "IdleLayer");
+       
             }
 
 
@@ -165,14 +153,14 @@ public abstract class Character : MonoBehaviour
     }
 
 
-
-    public virtual void ActivateLayer(Animator animator, string layerName) {
-        for (int i = 0; i < animator.layerCount; i++) {
+    // activate a specific animation layer using the string name of the layer
+    public virtual void ActivateLayer(Animator animator, string layerName)
+    {
+        for (int i = 0; i < animator.layerCount; i++)
+        {
             animator.SetLayerWeight(i, 0);
         }
-
         animator.SetLayerWeight(animator.GetLayerIndex(layerName), 1);
-        
     }
 
     
@@ -181,7 +169,9 @@ public abstract class Character : MonoBehaviour
 
         // update health value
         health.MyCurrentValue -= damage;
-                       
+
+        CombatTextManager.MyInstance.CreateText(transform.position, damage.ToString(), SCTTYPE.DAMAGE, false);
+
         // if death, velocity is set to zero so character can't move
         if (health.MyCurrentValue <= 0) {
 
@@ -190,6 +180,13 @@ public abstract class Character : MonoBehaviour
             MyAnimator.SetTrigger("die");
         }
 
+    }
+
+    // use this function any time you want to increase character's health
+    public void GainHealth(int health)
+    {
+        MyHealth.MyCurrentValue += health;
+        CombatTextManager.MyInstance.CreateText(transform.position, health.ToString(), SCTTYPE.HEAL, true);
     }
 
 

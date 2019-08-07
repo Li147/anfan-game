@@ -27,6 +27,23 @@ public class ActionButton : MonoBehaviour, IPointerClickHandler, IClickable, IPo
         }
     }
 
+    public Stack<IUseable> MyUseables
+    {
+        get => useables;
+        set
+        {
+            if (value.Count > 0)
+            {
+                MyUseable = value.Peek();
+            }
+            else
+            {
+                MyUseable = null;
+            }
+            useables = value;
+            
+        }
+    }
 
     [SerializeField]
     private Image icon;
@@ -46,25 +63,21 @@ public class ActionButton : MonoBehaviour, IPointerClickHandler, IClickable, IPo
         
     }
 
-    public void OnClick() {
-
-        if (HandScript.MyInstance.MyMoveable == null) {
-
-            if (MyUseable != null) {
-
+    public void OnClick()
+    {
+        if (HandScript.MyInstance.MyMoveable == null)
+        {
+            if (MyUseable != null)
+            {
                 MyUseable.Use();
-
             }
-            if (useables != null && useables.Count > 0) {
-
-                useables.Peek().Use();
+            else if (MyUseables != null && MyUseables.Count > 0)
+            {
+                MyUseables.Peek().Use();
 
             }
 
         }
-
-        
-
     }
 
 
@@ -90,23 +103,24 @@ public class ActionButton : MonoBehaviour, IPointerClickHandler, IClickable, IPo
         // If the useable I dragged onto is an item...
         if (useable is Item) {
 
-            useables = InventoryScript.MyInstance.GetUseables(useable);
-            count = useables.Count;
+            MyUseables = InventoryScript.MyInstance.GetUseables(useable);
+            count = MyUseables.Count;
 
             InventoryScript.MyInstance.FromSlot.MyIcon.color = Color.white;
             InventoryScript.MyInstance.FromSlot = null;
 
         } else { // ...else if it is something like a SPELL, just set the button's useable as new useable
 
-            useables.Clear();
+            MyUseables.Clear();
             this.MyUseable = useable;
 
         }
 
-        count = useables.Count;
+        count = MyUseables.Count;
 
         // needs (1) change icon (2) update stack size text
         UpdateVisual();
+        UIManager.MyInstance.RefreshTooltip(MyUseable as IDescribable);
 
     }
 
@@ -134,15 +148,15 @@ public class ActionButton : MonoBehaviour, IPointerClickHandler, IClickable, IPo
         // When we pick something up
         // check if item is the same item as the one on the button
 
-        if (item is IUseable && useables.Count > 0) {
+        if (item is IUseable && MyUseables.Count > 0) {
 
             // Checks if item I have on ActionButton is the SAME type as the item 
             // that just got added to my bag
-            if (useables.Peek().GetType() == item.GetType()) {
+            if (MyUseables.Peek().GetType() == item.GetType()) {
 
-                useables = InventoryScript.MyInstance.GetUseables(item as IUseable);
+                MyUseables = InventoryScript.MyInstance.GetUseables(item as IUseable);
 
-                count = useables.Count;
+                count = MyUseables.Count;
 
                 UIManager.MyInstance.UpdateStackSize(this);
 
@@ -161,7 +175,7 @@ public class ActionButton : MonoBehaviour, IPointerClickHandler, IClickable, IPo
             tmp = (IDescribable)MyUseable;
             //UIManager.MyInstance.ShowTooltip(transform.position);
 
-        } else if (useables.Count > 0) {
+        } else if (MyUseables.Count > 0) {
 
             //UIManager.MyInstance.ShowTooltip(transform.position);
 

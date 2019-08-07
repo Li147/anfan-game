@@ -47,7 +47,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1.5
+  m_Radius: 1.65
 --- !u!114 &4080755147248739662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74,8 +74,9 @@ GameObject:
   - component: {fileID: 4080755147399968858}
   - component: {fileID: 4080755147399968857}
   - component: {fileID: 4080755147399968856}
+  - component: {fileID: 1673484042}
   m_Layer: 9
-  m_Name: Enemy 1
+  m_Name: Enemy (with animations)
   m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -171,7 +172,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.3, y: 0.54}
+  m_Size: {x: 0.19, y: 0.54}
   m_EdgeRadius: 0
 --- !u!50 &4080755147399968858
 Rigidbody2D:
@@ -230,6 +231,27 @@ MonoBehaviour:
   health: {fileID: 4080755149179067637}
   initHealth: 100
   healthGroup: {fileID: 4080755149130576858}
+  lootTable: {fileID: 1673484042}
+  initAggroRange: 2
+--- !u!114 &1673484042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4080755147399968836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 085320fd809025546b6685aa1a576664, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  possibleLoot:
+  - item: {fileID: 11400000, guid: b01624cd4be885442a62bebb27ecdf65, type: 2}
+    dropChance: 100
+  - item: {fileID: 11400000, guid: 1711f6bceed975f44a5a830f459f1bab, type: 2}
+    dropChance: 100
+  - item: {fileID: 11400000, guid: b27212ca711ea3b43a9332aa704b4e02, type: 2}
+    dropChance: 100
 --- !u!1 &4080755148848140448
 GameObject:
   m_ObjectHideFlags: 0
@@ -420,7 +442,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: 832702173
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &4080755149130576860

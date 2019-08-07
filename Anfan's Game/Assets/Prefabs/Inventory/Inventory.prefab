@@ -60,14 +60,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Padding:
     m_Left: 0
-    m_Right: 200
+    m_Right: 5
     m_Top: 0
-    m_Bottom: 200
+    m_Bottom: -130
   m_ChildAlignment: 8
   m_StartCorner: 3
   m_StartAxis: 0
-  m_CellSize: {x: 150, y: 150}
-  m_Spacing: {x: 150, y: 0}
+  m_CellSize: {x: 300, y: 500}
+  m_Spacing: {x: 5, y: 0}
   m_Constraint: 1
   m_ConstraintCount: 2
 --- !u!114 &4378759512649994065
@@ -86,6 +86,15 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
   items:
   - {fileID: 11400000, guid: 4933673a3d36cf14282f84e82fad113a, type: 2}
   - {fileID: 11400000, guid: b01624cd4be885442a62bebb27ecdf65, type: 2}
+  - {fileID: 11400000, guid: b27212ca711ea3b43a9332aa704b4e02, type: 2}
+  - {fileID: 11400000, guid: 1711f6bceed975f44a5a830f459f1bab, type: 2}
+  - {fileID: 11400000, guid: 2e936d92a17ba0d4d9fbe58940f79e1e, type: 2}
+  - {fileID: 11400000, guid: ddaabb56a0733fc44b5f96e604039cdd, type: 2}
+  - {fileID: 11400000, guid: c9c1b86625697f644aa480534577b76b, type: 2}
+  - {fileID: 11400000, guid: 31b15cc44593a564fa71a1156001a5e3, type: 2}
+  - {fileID: 11400000, guid: 8be1ef44d42bba24392d03c8d48d9887, type: 2}
+  - {fileID: 11400000, guid: d8f861e62933aa441bcd98d37fa1a848, type: 2}

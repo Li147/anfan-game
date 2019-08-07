@@ -16,16 +16,28 @@ public class Stat : MonoBehaviour
 
     private float currentFill;
 
+    private float overflow;
+
     public float MyMaxValue { get; set; }
     
-
+    public bool isFull
+    {
+        get
+        {
+            return content.fillAmount == 1;
+        }
+    }
    
     private float currentValue;
+
+
 
     public float MyCurrentValue {
         get => currentValue;
         set {
-            if (value > MyMaxValue) {
+            if (value > MyMaxValue) // ensures that we don't get too much health
+            {
+                MyOverflow = value - MyMaxValue;
                 currentValue = MyMaxValue;
 
             } else if (value < 0) {
@@ -50,9 +62,15 @@ public class Stat : MonoBehaviour
 
     }
 
-
-
-
+    public float MyOverflow
+    {
+        get
+        {
+            float tmp = overflow;
+            overflow = 0;
+            return tmp;
+        }
+        set => overflow = value; }
 
 
     // Start is called before the first frame update
@@ -67,10 +85,8 @@ public class Stat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        
         if (currentFill != content.fillAmount) {
-            content.fillAmount = Mathf.Lerp(content.fillAmount, currentFill, Time.deltaTime * lerpSpeed);
+            content.fillAmount = Mathf.MoveTowards(content.fillAmount, currentFill, Time.deltaTime * lerpSpeed);
         }
 
         
@@ -87,6 +103,11 @@ public class Stat : MonoBehaviour
         MyMaxValue = maxValue;
         MyCurrentValue = currentValue;
         content.fillAmount = MyCurrentValue / MyMaxValue;
+    }
+
+    public void Reset()
+    {
+        content.fillAmount = 0;
     }
 
 }
