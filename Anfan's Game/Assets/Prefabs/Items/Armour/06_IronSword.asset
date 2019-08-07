@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 442d4534ee4fbff4796283075a385bd4, type: 3}
   m_Name: 06_IronSword
   m_EditorClassIdentifier: 
-  icon: {fileID: -7632291555103788527, guid: b66a06173382ea947899662e0a80db91, type: 3}
+  icon: {fileID: 3902439834185535001, guid: b66a06173382ea947899662e0a80db91, type: 3}
   stackSize: 0
   itemName: Iron Sword
   itemIndex: 6

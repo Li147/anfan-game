@@ -141,6 +141,7 @@ public class InventoryScript : MonoBehaviour
             AddItem((Armour)Instantiate(items[7]));
             AddItem((Armour)Instantiate(items[8]));
             AddItem((Armour)Instantiate(items[9]));
+            AddItem((Armour)Instantiate(items[10]));
 
 
         }

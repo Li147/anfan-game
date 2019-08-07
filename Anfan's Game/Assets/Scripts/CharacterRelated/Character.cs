@@ -83,7 +83,6 @@ public abstract class Character : MonoBehaviour
 
 
         MyAnimator = GetComponent<Animator>();
-        //childAnimator = GetComponentsInChildren<Animator>()[1];
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -178,6 +177,12 @@ public abstract class Character : MonoBehaviour
             rb.velocity = Vector2.zero;
 
             MyAnimator.SetTrigger("die");
+
+            if (this is Enemy)
+            {
+                Player.MyInstance.GainXP(EXPManager.CalculateXP((this as Enemy)));
+                
+            }
         }
 
     }

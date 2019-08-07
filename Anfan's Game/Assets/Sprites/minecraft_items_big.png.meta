@@ -112,7 +112,7 @@ TextureImporter:
     second: minecraft_items_big_35
   - first:
       213: -2599154761857044461
-    second: minecraft_items_big_36
+    second: arrow
   - first:
       213: 4370406435546936810
     second: minecraft_items_big_37
@@ -196,7 +196,7 @@ TextureImporter:
     second: minecraft_items_big_63
   - first:
       213: 3902439834185535001
-    second: minecraft_items_big_64
+    second: iron_sword
   - first:
       213: -7632291555103788527
     second: iron_swords
@@ -346,7 +346,7 @@ TextureImporter:
     second: minecraft_items_big_113
   - first:
       213: -6359400973613629025
-    second: minecraft_items_big_114
+    second: bow
   - first:
       213: -6231354923120266361
     second: minecraft_items_big_115
@@ -1440,7 +1440,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: minecraft_items_big_36
+      name: arrow
       rect:
         serializedVersion: 2
         x: 163
@@ -2028,7 +2028,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: minecraft_items_big_64
+      name: iron_sword
       rect:
         serializedVersion: 2
         x: 33
@@ -3078,7 +3078,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: minecraft_items_big_114
+      name: bow
       rect:
         serializedVersion: 2
         x: 161

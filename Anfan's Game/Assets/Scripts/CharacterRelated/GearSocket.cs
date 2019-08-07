@@ -67,6 +67,22 @@ public class GearSocket : MonoBehaviour
         animatorOverrideController["Walk_Right"] = animations[10];
         animatorOverrideController["Walk_Up"] = animations[11];
 
+        //if (animations[12] != null)
+        //{
+        //    animatorOverrideController["Naked_Attack_Down"] = animations[12];
+        //    animatorOverrideController["Naked_Attack_Left"] = animations[13];
+        //    animatorOverrideController["Naked_Attack_Right"] = animations[14];
+        //    animatorOverrideController["Naked_Attack_Up"] = animations[15];
+        //}
+
+        animatorOverrideController["Naked_Attack_Down"] = animations[12];
+        animatorOverrideController["Naked_Attack_Left"] = animations[13];
+        animatorOverrideController["Naked_Attack_Right"] = animations[14];
+        animatorOverrideController["Naked_Attack_Up"] = animations[15];
+
+
+
+
 
 
     }

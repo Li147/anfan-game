@@ -17,6 +17,18 @@ public class Enemy : Character, IInteractable
 
     private IState currentState;
 
+
+    // test
+    private bool flashActive;
+    [SerializeField]
+    private float flashLength = 0f;
+    private float flashCounter = 0f;
+    private SpriteRenderer enemySprite;
+    //
+
+
+
+
     [SerializeField]
     private LootTable lootTable;
 
@@ -48,8 +60,17 @@ public class Enemy : Character, IInteractable
 
         MyStartPosition = transform.position;
         MyAggroRange = initAggroRange;
-        MyAttackRange = 0.3f;
+        MyAttackRange = 0.4f;
         ChangeState(new IdleState());
+
+        
+
+    }
+
+    protected override void Start()
+    {
+        base.Start();
+        enemySprite = GetComponent<SpriteRenderer>();
     }
 
     protected override void Update() {
@@ -64,6 +85,8 @@ public class Enemy : Character, IInteractable
             currentState.Update();
                         
         }
+
+        Flash();
 
         base.Update();
 
@@ -92,13 +115,15 @@ public class Enemy : Character, IInteractable
 
     public override void TakeDamage(float damage, Transform source) {
 
-        if (!(currentState is EvadeState)) {
+        if (!(currentState is EvadeState) && IsAlive) {
 
             SetTarget(source);
 
             base.TakeDamage(damage, source);
 
             OnHealthChanged(health.MyCurrentValue);
+            flashActive = true;
+            flashCounter = flashLength;
 
         }
       
@@ -191,6 +216,47 @@ public class Enemy : Character, IInteractable
         }
         Destroy(gameObject);
 
+    }
+
+    public void Flash()
+    {
+        if (flashActive)
+        {
+            if (flashCounter > flashLength * .99f)
+            {
+                enemySprite.color = new Color(enemySprite.color.r, enemySprite.color.g, enemySprite.color.b, 0f);
+            }
+            else if (flashCounter > flashLength * .82f)
+            {
+                enemySprite.color = new Color(enemySprite.color.r, enemySprite.color.g, enemySprite.color.b, 1f);
+            }
+            else if (flashCounter > flashLength * .66f)
+            {
+                enemySprite.color = new Color(enemySprite.color.r, enemySprite.color.g, enemySprite.color.b, 0f);
+            }
+            else if (flashCounter > flashLength * .49f)
+            {
+                enemySprite.color = new Color(enemySprite.color.r, enemySprite.color.g, enemySprite.color.b, 1f);
+            }
+            else if (flashCounter > flashLength * .33f)
+            {
+                enemySprite.color = new Color(enemySprite.color.r, enemySprite.color.g, enemySprite.color.b, 0f);
+            }
+            else if (flashCounter > flashLength * .16f)
+            {
+                enemySprite.color = new Color(enemySprite.color.r, enemySprite.color.g, enemySprite.color.b, 1f);
+            }
+            else if (flashCounter > 0f)
+            {
+                enemySprite.color = new Color(enemySprite.color.r, enemySprite.color.g, enemySprite.color.b, 0f);
+            }
+            else
+            {
+                enemySprite.color = new Color(enemySprite.color.r, enemySprite.color.g, enemySprite.color.b, 1f);
+                flashActive = false;
+            }
+            flashCounter -= Time.deltaTime;
+        }
     }
 
 }

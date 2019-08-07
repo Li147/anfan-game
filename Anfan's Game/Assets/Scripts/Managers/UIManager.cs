@@ -145,7 +145,7 @@ public class UIManager : MonoBehaviour
         {
             enemyLevelText.color = Color.yellow;
         }
-        else if (target.MyLevel <= Player.MyInstance.MyLevel - 3 && target.MyLevel > Player.MyInstance.MyLevel -10)
+        else if (target.MyLevel <= Player.MyInstance.MyLevel - 3 && target.MyLevel > EXPManager.CalculateGrayLevel())
         {
             enemyLevelText.color = Color.green;
         }

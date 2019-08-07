@@ -59,6 +59,8 @@ public class Player : Character {
     [SerializeField]
     private GearSocket[] gearSockets;
 
+    [SerializeField]
+    private ParticleSystem particleSystem;
     
       
     private GameObject currentObject = null;
@@ -127,9 +129,10 @@ public class Player : Character {
             if (!IsAttacking && !IsMoving) {
 
                 attackRoutine = StartCoroutine(Attack());
+                
 
             }
-            
+
         }
 
         
@@ -183,7 +186,15 @@ public class Player : Character {
         }
         if (Input.GetKeyDown(KeyCode.X))
         {
-            GainXP(50);
+            GainXP(100);
+        }
+
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+
+
+            particleSystem.Play();
+
         }
 
 
@@ -198,19 +209,82 @@ public class Player : Character {
 
 
 
-
+    public Transform [] attackPos;
+    public float attackRange;
+    public LayerMask whatIsEnemies;
 
     private IEnumerator Attack() {
 
         
         IsAttacking = true;
         MyAnimator.SetBool("attack", IsAttacking);
-        
-        yield return new WaitForSeconds(1);
+
+        foreach (GearSocket g in gearSockets)
+        {
+
+            g.MyAnimator.SetBool("attack", IsAttacking);
+
+        }
+
+        //experimental code
+
+        //int direction;
+
+        //if (this.MovementDirection.y > 0)
+        //{
+        //    direction = 0; 
+        //}
+        //else if (this.MovementDirection.y < 0)
+        //{
+        //    direction = 2;
+        //}
+        //else if (this.MovementDirection.x > 0)
+        //{
+        //    direction = 1;
+        //}
+        //else
+        //{
+        //    direction = 3;
+        //}
+
+        //Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos[direction].position, attackRange, whatIsEnemies);
+        //for (int i = 0; i < enemiesToDamage.Length; i++)
+        //{
+        //    if (enemiesToDamage[i].tag == "enemy")
+        //    {
+        //        enemiesToDamage[i].GetComponent<Enemy>().TakeDamage(10, transform);
+        //    }
+            
+        //}
+
+
+        //
+
+        Debug.Log("code reachs before the return");
+        yield return new WaitForSeconds(0.5f);
+
+        Debug.Log("code reachs after the return");
+
+        //yield return null;
 
         StopAttack();
 
     }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(attackPos[0].position, attackRange);
+        Gizmos.DrawWireSphere(attackPos[1].position, attackRange);
+        Gizmos.DrawWireSphere(attackPos[2].position, attackRange);
+        Gizmos.DrawWireSphere(attackPos[3].position, attackRange);
+
+        
+    }
+
+
+
+
 
     private IEnumerator Spellcast(string spellName) {
 
@@ -310,18 +384,27 @@ public class Player : Character {
         blocks[exitIndex].Activate();
     }
 
-    
 
-    public void StopAttack() {
+    public void StopAttack()
+    {
 
-        if (attackRoutine != null) {
+        if (attackRoutine != null)
+        {
             StopCoroutine(attackRoutine);
             IsAttacking = false;
             MyAnimator.SetBool("attack", IsAttacking);
 
+            foreach (GearSocket g in gearSockets)
+            {
+
+                g.MyAnimator.SetBool("attack", IsAttacking);
+
+            }
+
         }
 
     }
+
 
     public void StopSpell() {
 
@@ -399,22 +482,29 @@ public class Player : Character {
         CombatTextManager.MyInstance.CreateText(transform.position, xp.ToString(), SCTTYPE.EXP, false);
         if (exp.MyCurrentValue >= exp.MyMaxValue)
         {
-            StartCoroutine(Ding());
+            StartCoroutine(LevelUp());
         }
     }
 
-    private IEnumerator Ding()
+    private IEnumerator LevelUp()
     {
         while(!exp.isFull){
             yield return null;
         }
 
         MyLevel++;
+        particleSystem.Play();
         levelText.text = "Level" + MyLevel.ToString();
         exp.MyMaxValue = 100 * MyLevel * Mathf.Pow(MyLevel, 0.5f);
         exp.MyMaxValue = Mathf.Floor(exp.MyMaxValue);
         exp.MyCurrentValue = exp.MyOverflow;
         exp.Reset();
+
+        if (exp.MyCurrentValue >= exp.MyMaxValue)
+        {
+            StartCoroutine(LevelUp());
+        }
+
     }
 
 
