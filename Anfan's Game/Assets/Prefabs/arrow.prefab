@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1601638107679466055}
   - component: {fileID: -7847927752936019074}
   - component: {fileID: 7307655538991998916}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,6 +117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
+  damage: 10
 --- !u!61 &7307655538991998916
 BoxCollider2D:
   m_ObjectHideFlags: 0

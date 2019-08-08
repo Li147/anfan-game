@@ -21,6 +21,9 @@ public class Player : Character {
     }
 
     public IInteractable MyInteractable { get => interactable; set => interactable = value; }
+    public Stat MyExp { get => exp; set => exp = value; }
+    public Stat MyMana { get => mana; set => mana = value; }
+    public Stat MyHunger { get => hunger; set => hunger = value; }
 
     // player's hunger stat
     [SerializeField]
@@ -73,9 +76,9 @@ public class Player : Character {
     
     protected override void Start()
     {
-        hunger.Initialize(initHunger, initHunger);
-        mana.Initialize(initMana, initMana);
-        exp.Initialize(0, Mathf.Floor(100 * MyLevel * Mathf.Pow(MyLevel, 0.5f)));
+        MyHunger.Initialize(initHunger, initHunger);
+        MyMana.Initialize(initMana, initMana);
+        MyExp.Initialize(0, Mathf.Floor(100 * MyLevel * Mathf.Pow(MyLevel, 0.5f)));
         levelText.text = "Level" + MyLevel.ToString();
 
         base.Start();
@@ -175,13 +178,13 @@ public class Player : Character {
 
         if (Input.GetKeyDown(KeyCode.O)) {
             health.MyCurrentValue -= 10;
-            hunger.MyCurrentValue -= 10;
-            mana.MyCurrentValue -= 10;
+            MyHunger.MyCurrentValue -= 10;
+            MyMana.MyCurrentValue -= 10;
         }
         if (Input.GetKeyDown(KeyCode.P)) {
             health.MyCurrentValue += 10;
-            hunger.MyCurrentValue += 10;
-            mana.MyCurrentValue += 10;
+            MyHunger.MyCurrentValue += 10;
+            MyMana.MyCurrentValue += 10;
 
         }
         if (Input.GetKeyDown(KeyCode.X))
@@ -478,9 +481,9 @@ public class Player : Character {
 
     public void GainXP(int xp)
     {
-        exp.MyCurrentValue += xp;
+        MyExp.MyCurrentValue += xp;
         CombatTextManager.MyInstance.CreateText(transform.position, xp.ToString(), SCTTYPE.EXP, false);
-        if (exp.MyCurrentValue >= exp.MyMaxValue)
+        if (MyExp.MyCurrentValue >= MyExp.MyMaxValue)
         {
             StartCoroutine(LevelUp());
         }
@@ -488,24 +491,30 @@ public class Player : Character {
 
     private IEnumerator LevelUp()
     {
-        while(!exp.isFull){
+        while(!MyExp.isFull){
             yield return null;
         }
 
         MyLevel++;
         particleSystem.Play();
         levelText.text = "Level" + MyLevel.ToString();
-        exp.MyMaxValue = 100 * MyLevel * Mathf.Pow(MyLevel, 0.5f);
-        exp.MyMaxValue = Mathf.Floor(exp.MyMaxValue);
-        exp.MyCurrentValue = exp.MyOverflow;
-        exp.Reset();
+        MyExp.MyMaxValue = 100 * MyLevel * Mathf.Pow(MyLevel, 0.5f);
+        MyExp.MyMaxValue = Mathf.Floor(MyExp.MyMaxValue);
+        MyExp.MyCurrentValue = MyExp.MyOverflow;
+        MyExp.Reset();
 
-        if (exp.MyCurrentValue >= exp.MyMaxValue)
+        if (MyExp.MyCurrentValue >= MyExp.MyMaxValue)
         {
             StartCoroutine(LevelUp());
         }
 
     }
+
+    public void UpdateLevel()
+    {
+        levelText.text = "Level" + MyLevel.ToString();
+    }
+
 
 
     public void OnTriggerEnter2D(Collider2D collision) 

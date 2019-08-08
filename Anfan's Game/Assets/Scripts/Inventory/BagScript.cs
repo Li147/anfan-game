@@ -11,6 +11,8 @@ public class BagScript : MonoBehaviour
 
     private List<SlotScript> slots = new List<SlotScript>();
 
+    public int MyBagIndex { get; set; }
+
 
     public bool IsOpen {
 
@@ -81,6 +83,7 @@ public class BagScript : MonoBehaviour
 
             // Create i times slotprefabs, each a chhild of the BagScript
             SlotScript slot = Instantiate(slotPrefab, transform).GetComponent<SlotScript>();
+            slot.MyIndex = i;
             slot.MyBag = this;
             MySlots.Add(slot);
 

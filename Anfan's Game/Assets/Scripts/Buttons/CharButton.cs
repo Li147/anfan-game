@@ -17,6 +17,9 @@ public class CharButton : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
     [SerializeField]
     private GearSocket gearSocket;
 
+    public Armour MyEquippedArmour { get => equippedArmour;}
+
+
     public void OnPointerClick(PointerEventData eventData) {
         
         if (eventData.button == PointerEventData.InputButton.Left) {
@@ -33,9 +36,9 @@ public class CharButton : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
                 UIManager.MyInstance.RefreshTooltip(tmp);
             }
             // check if your hand is empty and we are clicking on a charbutton with armor equipped
-            else if(HandScript.MyInstance.MyMoveable == null && equippedArmour != null) {
+            else if(HandScript.MyInstance.MyMoveable == null && MyEquippedArmour != null) {
 
-                HandScript.MyInstance.TakeMoveable(equippedArmour);
+                HandScript.MyInstance.TakeMoveable(MyEquippedArmour);
                 CharacterPanel.MyInstance.MySelectedButton = this;
                 icon.color = Color.gray;
 
@@ -50,15 +53,15 @@ public class CharButton : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
 
         armour.Remove();
 
-        if (equippedArmour != null) {
+        if (MyEquippedArmour != null) {
 
-            if (equippedArmour != armour) {
+            if (MyEquippedArmour != armour) {
 
-                armour.MySlot.AddItem(equippedArmour);
+                armour.MySlot.AddItem(MyEquippedArmour);
 
             }
             
-            UIManager.MyInstance.RefreshTooltip(equippedArmour);
+            UIManager.MyInstance.RefreshTooltip(MyEquippedArmour);
 
 
 
@@ -81,9 +84,9 @@ public class CharButton : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
         }
 
         // check that the charbutton has an associated socket and that armor has animation clips
-        if (gearSocket != null && equippedArmour.MyAnimationClips != null && equippedArmour.MyAnimationClips.Length != 0) {
+        if (gearSocket != null && MyEquippedArmour.MyAnimationClips != null && MyEquippedArmour.MyAnimationClips.Length != 0) {
 
-            gearSocket.EquipAnimation(equippedArmour.MyAnimationClips);
+            gearSocket.EquipAnimation(MyEquippedArmour.MyAnimationClips);
 
         }
         
@@ -92,9 +95,9 @@ public class CharButton : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
 
     public void OnPointerEnter(PointerEventData eventData) {
 
-        if (equippedArmour != null) {
+        if (MyEquippedArmour != null) {
 
-            UIManager.MyInstance.ShowTooltip(new Vector2(0,0), transform.position, equippedArmour);
+            UIManager.MyInstance.ShowTooltip(new Vector2(0,0), transform.position, MyEquippedArmour);
 
         }
     }
@@ -111,7 +114,7 @@ public class CharButton : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
         icon.enabled = false;
         
 
-        if (gearSocket != null && equippedArmour.MyAnimationClips != null) {
+        if (gearSocket != null && MyEquippedArmour.MyAnimationClips != null) {
 
             gearSocket.DequipAnimation();
 

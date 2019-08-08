@@ -22,7 +22,7 @@ TextureImporter:
     second: ui_split_5
   - first:
       213: 4822739204888661080
-    second: ui_split_6
+    second: button
   - first:
       213: -8313630704830047685
     second: ui_split_7
@@ -549,7 +549,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ui_split_6
+      name: button
       rect:
         serializedVersion: 2
         x: 148

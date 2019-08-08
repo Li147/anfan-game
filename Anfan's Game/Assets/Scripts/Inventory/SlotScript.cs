@@ -19,6 +19,8 @@ public class SlotScript : MonoBehaviour, IPointerClickHandler, IClickable, IPoin
     // A reference to the bag the slot belongs to
     public BagScript MyBag { get; set; }
 
+    public int MyIndex { get; set; }
+
     public bool IsEmpty {
         get {
             return MyItems.Count == 0;
@@ -189,7 +191,7 @@ public class SlotScript : MonoBehaviour, IPointerClickHandler, IClickable, IPoin
 
 
 
-                    if (bag.MyBagScript != MyBag && InventoryScript.MyInstance.MyEmptySlotCount - bag.Slots > 0) {
+                    if (bag.MyBagScript != MyBag && InventoryScript.MyInstance.MyEmptySlotCount - bag.MySlotCount > 0) {
 
                         // Adds bag item to inventory
                         AddItem(bag);

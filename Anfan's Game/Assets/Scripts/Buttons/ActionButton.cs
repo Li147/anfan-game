@@ -119,15 +119,21 @@ public class ActionButton : MonoBehaviour, IPointerClickHandler, IClickable, IPo
         count = MyUseables.Count;
 
         // needs (1) change icon (2) update stack size text
-        UpdateVisual();
+        UpdateVisual(useable as IMoveable);
         UIManager.MyInstance.RefreshTooltip(MyUseable as IDescribable);
 
     }
 
     // This method is responsible for updating the visuals of the action button
-    public void UpdateVisual() {
+    public void UpdateVisual(IMoveable moveable) {
 
-        MyIcon.sprite = HandScript.MyInstance.Put().MyIcon;
+        if (HandScript.MyInstance.MyMoveable != null)
+        {
+            HandScript.MyInstance.Drop();
+        }
+
+
+        MyIcon.sprite = moveable.MyIcon;
         MyIcon.color = Color.white;
 
         if (count > 1) {
@@ -142,6 +148,7 @@ public class ActionButton : MonoBehaviour, IPointerClickHandler, IClickable, IPo
         }
 
     }
+
 
     public void UpdateItemCount(Item item) {
 

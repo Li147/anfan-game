@@ -146,6 +146,19 @@ public abstract class Character : MonoBehaviour
 
             ActivateLayer(MyAnimator, "DeathLayer");
 
+            // ensures that loot is kinematic and cannot be pushed around
+            if (this is Enemy)
+            {
+                Rigidbody2D tmp = this.GetComponent<Rigidbody2D>();
+                tmp.isKinematic= true;
+                BoxCollider2D collider = this.GetComponent<BoxCollider2D>();
+                collider.size = new Vector2(0.2f, 0.2f);
+
+                
+                
+            }
+
+
         }
 
         
