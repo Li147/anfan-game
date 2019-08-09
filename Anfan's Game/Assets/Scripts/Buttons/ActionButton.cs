@@ -106,8 +106,12 @@ public class ActionButton : MonoBehaviour, IPointerClickHandler, IClickable, IPo
             MyUseables = InventoryScript.MyInstance.GetUseables(useable);
             count = MyUseables.Count;
 
-            InventoryScript.MyInstance.FromSlot.MyIcon.color = Color.white;
-            InventoryScript.MyInstance.FromSlot = null;
+            if (InventoryScript.MyInstance.FromSlot != null)
+            {
+                InventoryScript.MyInstance.FromSlot.MyIcon.color = Color.white;
+                InventoryScript.MyInstance.FromSlot = null;
+            }
+            
 
         } else { // ...else if it is something like a SPELL, just set the button's useable as new useable
 

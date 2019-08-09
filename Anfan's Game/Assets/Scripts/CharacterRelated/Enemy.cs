@@ -58,12 +58,11 @@ public class Enemy : Character, IInteractable
 
     protected void Awake() {
 
+        health.Initialize(initHealth, initHealth);
         MyStartPosition = transform.position;
         MyAggroRange = initAggroRange;
         MyAttackRange = 0.4f;
         ChangeState(new IdleState());
-
-        
 
     }
 

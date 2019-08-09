@@ -47,7 +47,7 @@ public abstract class Character : MonoBehaviour
 
 
     [SerializeField]
-    private float initHealth = 100;
+    protected float initHealth = 100;
 
 
     public Transform MyTarget { get; set; }
@@ -79,9 +79,7 @@ public abstract class Character : MonoBehaviour
     // Start is called before the first frame update
     protected virtual void Start()
     {
-        health.Initialize(initHealth, initHealth);
-
-
+       
         MyAnimator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
     }

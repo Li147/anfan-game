@@ -74,15 +74,7 @@ public class Player : Character {
     
  
     
-    protected override void Start()
-    {
-        MyHunger.Initialize(initHunger, initHunger);
-        MyMana.Initialize(initMana, initMana);
-        MyExp.Initialize(0, Mathf.Floor(100 * MyLevel * Mathf.Pow(MyLevel, 0.5f)));
-        levelText.text = "Level" + MyLevel.ToString();
-
-        base.Start();
-    }
+   
 
     protected override void Update()
     {
@@ -100,6 +92,18 @@ public class Player : Character {
     {
         base.FixedUpdate();
     }
+
+
+    public void SetDefaultValues()
+    {
+        health.Initialize(initHealth, initHealth);
+        MyHunger.Initialize(initHunger, initHunger);
+        MyMana.Initialize(initMana, initMana);
+        MyExp.Initialize(0, Mathf.Floor(100 * MyLevel * Mathf.Pow(MyLevel, 0.5f)));
+        levelText.text = "Level" + MyLevel.ToString();
+    }
+
+
 
     private void ProcessInputs() {
 

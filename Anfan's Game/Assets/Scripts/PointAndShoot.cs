@@ -27,7 +27,7 @@ public class PointAndShoot : MonoBehaviour
     void Update()
     {
         //target = transform.GetComponent<Camera>().ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, transform.position.z));
-        target = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, transform.position.z));
+        target = GameManager.MyInstance.MyCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, transform.position.z));
         crosshairs.transform.position = new Vector2(target.x, target.y);
 
         Vector3 difference = target - bow.transform.position;

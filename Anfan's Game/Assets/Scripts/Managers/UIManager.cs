@@ -28,6 +28,9 @@ public class UIManager : MonoBehaviour
 
     [SerializeField]
     private ActionButton[] actionButtons;
+
+    [SerializeField]
+    private CanvasGroup[] menus;
        
     [SerializeField]
     private GameObject targetFrame;
@@ -86,32 +89,54 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Opens the keybind menu
-        if (Input.GetKeyDown(KeyCode.Escape)) {
-
-            OpenClose(keybindMenu);
-
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            OpenClose(menus[0]);
         }
-
-        // Opens the spellbook menu
-        if (Input.GetKeyDown(KeyCode.P)) {
-
-            OpenClose(spellBook);
-
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            OpenClose(menus[1]);
         }
-
-        // Opens the inventory menu
-        if (Input.GetKeyDown(KeyCode.B)) {
-
+        if (Input.GetKeyDown(KeyCode.B))
+        {
             InventoryScript.MyInstance.OpenClose();
-            
+        }
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            OpenClose(menus[2]);
+        }
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            OpenClose(menus[3]);
         }
 
-        if (Input.GetKeyDown(KeyCode.C)) {
 
-            charPanel.OpenClose();
+        //// Opens the keybind menu
+        //if (Input.GetKeyDown(KeyCode.Escape)) {
 
-        }
+        //    OpenClose(keybindMenu);
+
+        //}
+
+        //// Opens the spellbook menu
+        //if (Input.GetKeyDown(KeyCode.P)) {
+
+        //    OpenClose(spellBook);
+
+        //}
+
+        //// Opens the inventory menu
+        //if (Input.GetKeyDown(KeyCode.B)) {
+
+        //    InventoryScript.MyInstance.OpenClose();
+
+        //}
+
+        //if (Input.GetKeyDown(KeyCode.C)) {
+
+        //    charPanel.OpenClose();
+
+        //}
 
     }
 
@@ -190,6 +215,31 @@ public class UIManager : MonoBehaviour
 
         canvasGroup.alpha = canvasGroup.alpha > 0 ? 0 : 1;
         canvasGroup.blocksRaycasts = canvasGroup.blocksRaycasts == true ? false : true;
+
+    }
+
+    // Opens a single menu
+    public void OpenSingle(CanvasGroup canvasGroup)
+    {
+        // closes all other menus
+        foreach (CanvasGroup canvas in menus)
+        {
+            CloseSingle(canvas);
+        }
+
+        // open specific menu we want to show
+        Debug.Log("setting alpha to 1");
+        canvasGroup.alpha = canvasGroup.alpha > 0 ? 0 : 1;
+
+        Debug.Log("setting blockraycasts to true");
+        canvasGroup.blocksRaycasts = canvasGroup.blocksRaycasts == true ? false : true;
+    }
+
+    // closes a single menu
+    public void CloseSingle(CanvasGroup canvasGroup)
+    {
+        canvasGroup.alpha = 0;
+        canvasGroup.blocksRaycasts = false;
 
     }
 

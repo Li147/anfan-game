@@ -17,6 +17,10 @@ public class SaveData
 
     public List<ActionButtonData> MyActionBarData { get; set; }
 
+    public DateTime MyDateTime { get; set; }
+
+    public string MyScene { get; set; }
+
 
     public SaveData()
     {
@@ -24,6 +28,7 @@ public class SaveData
         MyChestData = new List<ChestData>();
         MyEquipmentData = new List<EquipmentData>();
         MyActionBarData = new List<ActionButtonData>();
+        MyDateTime = DateTime.Now;
     }
 
 }

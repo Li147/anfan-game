@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 // manages saving
 public class SaveManager : MonoBehaviour
@@ -19,40 +21,150 @@ public class SaveManager : MonoBehaviour
     [SerializeField]
     private ActionButton[] actionButtons;
 
+    [SerializeField]
+    private SaveMenu[] saveSlots;
+
+    [SerializeField]
+    private GameObject dialogue;
+
+    [SerializeField]
+    private Text dialogueText;
+
+    private SaveMenu current;
+
+
+    private string action;
+
+    // This runs first, before all other functions
     void Awake()
     {
         chests = FindObjectsOfType<Chest>();
         equipment = FindObjectsOfType<CharButton>();
+
+        foreach (SaveMenu save in saveSlots)
+        {
+            ShowSaveFiles(save);
+        }
+
+        
+        
     }
 
-    // Update is called once per frame
-    void Update()
+    // Runs next
+    private void Start()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (PlayerPrefs.HasKey("Load"))
         {
-            Save();
+            Load(saveSlots[PlayerPrefs.GetInt("Load")]);
+            PlayerPrefs.DeleteKey("Load");
         }
-
-        if (Input.GetKeyDown(KeyCode.E))
+        else
         {
-            Load();
+            // set default values for player
+            Player.MyInstance.SetDefaultValues();
         }
+    }
+
+    // Shows a confirmation dialogue screen so player can confirm action
+    public void ShowDialogue(GameObject clickButton)
+    {
+        action = clickButton.name;
+
+        switch (action)
+        {
+            case "Load":
+                dialogueText.text = "Load game?";
+                break;
+            case "Save":
+                dialogueText.text = "Save game?";
+                break;
+            case "Delete":
+                dialogueText.text = "Delete this game save?";
+                break;
+        }
+        current = clickButton.GetComponentInParent<SaveMenu>();
+        dialogue.SetActive(true);
+
+    }
+
+    // Method is called when player presses "YES" icon
+    public void ExecuteAction()
+    {
+        switch (action)
+        {
+            case "Load":
+                LoadScene(current);
+                break;
+            case "Save":
+                Save(current);
+                break;
+            case "Delete":
+                Delete(current);
+                break;
+        }
+        CloseDialogue();
+    }
+
+    // Method is called when player presses "NO" icon 
+    public void CloseDialogue()
+    {
+        dialogue.SetActive(false);
+    }
 
 
+    // Loads an existing save file
+    private void LoadScene(SaveMenu savedGame)
+    {
+        if (File.Exists(Application.persistentDataPath + "/" + savedGame.gameObject.name + ".dat"))
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Open(Application.persistentDataPath + "/" + savedGame.gameObject.name + ".dat", FileMode.Open);
+            SaveData data = (SaveData)bf.Deserialize(file);
+            file.Close();
+
+            PlayerPrefs.SetInt("Load", savedGame.MyIndex);
+            SceneManager.LoadScene(data.MyScene);
+      
+        }
+    }
+
+
+    // Delete an existing save file
+    private void Delete(SaveMenu savedGame)
+    {
+        File.Delete(Application.persistentDataPath + "/" + savedGame.gameObject.name + ".dat");
+        savedGame.HideVisuals();
+    }
+
+
+    
+    // Updates UI to show the available save files
+    private void ShowSaveFiles(SaveMenu savedGame)
+    {
+        if (File.Exists(Application.persistentDataPath + "/" + savedGame.gameObject.name + ".dat"))
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Open(Application.persistentDataPath + "/" + savedGame.gameObject.name + ".dat", FileMode.Open);
+            SaveData data = (SaveData)bf.Deserialize(file);
+            file.Close();
+            savedGame.ShowInfo(data);
+        }
     }
 
 
     //========================================SAVING CODE BELOW===================================================//
 
-    private void Save()
+    public void Save(SaveMenu savedGame)
     {
         try
         {
             BinaryFormatter bf = new BinaryFormatter();
 
-            FileStream file = File.Open(Application.persistentDataPath + "/" + "SaveTest.dat", FileMode.Create);
+            FileStream file = File.Open(Application.persistentDataPath + "/" + savedGame.gameObject.name + ".dat", FileMode.Create);
 
             SaveData data = new SaveData();
+
+            data.MyScene = SceneManager.GetActiveScene().name;
 
             SaveEquipment(data);
             SaveBags(data);
@@ -63,6 +175,8 @@ public class SaveManager : MonoBehaviour
 
             bf.Serialize(file, data);
             file.Close();
+
+            ShowSaveFiles(savedGame);
 
         }
         catch (System.Exception)
@@ -153,6 +267,7 @@ public class SaveManager : MonoBehaviour
         }
     }
 
+    //========================================SAVING CODE END======================================================//
 
 
     //========================================LOADING CODE BELOW===================================================//
@@ -160,13 +275,13 @@ public class SaveManager : MonoBehaviour
 
 
 
-    private void Load()
+    private void Load(SaveMenu savedGame)
     {
         try
         {
             BinaryFormatter bf = new BinaryFormatter();
 
-            FileStream file = File.Open(Application.persistentDataPath + "/" + "SaveTest.dat", FileMode.Open);
+            FileStream file = File.Open(Application.persistentDataPath + "/" + savedGame.gameObject.name + ".dat", FileMode.Open);
 
             SaveData data = (SaveData)bf.Deserialize(file);
 
@@ -182,7 +297,8 @@ public class SaveManager : MonoBehaviour
         }
         catch (System.Exception)
         {
-
+            Delete(savedGame);
+            PlayerPrefs.DeleteKey("Load");
         }
     }
 
@@ -265,6 +381,8 @@ public class SaveManager : MonoBehaviour
     }
 
 
+    //========================================LOADING CODE END===================================================//
+
+
 }
 
-  
