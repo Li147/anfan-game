@@ -116,13 +116,24 @@ public class Enemy : Character, IInteractable
 
         if (!(currentState is EvadeState) && IsAlive) {
 
-            SetTarget(source);
+            if (IsAlive)
+            {
+                SetTarget(source);
 
-            base.TakeDamage(damage, source);
+                base.TakeDamage(damage, source);
 
-            OnHealthChanged(health.MyCurrentValue);
-            flashActive = true;
-            flashCounter = flashLength;
+                OnHealthChanged(health.MyCurrentValue);
+                flashActive = true;
+                flashCounter = flashLength;
+
+                if (!IsAlive)
+                {
+                    Player.MyInstance.MyAttackers.Remove(this);
+                    Player.MyInstance.GainXP(EXPManager.CalculateXP((this as Enemy)));
+                }
+            }
+
+     
 
         }
       
@@ -180,7 +191,7 @@ public class Enemy : Character, IInteractable
 
         if (!IsAlive && !looted) {
 
-            lootTable.RollLoot();
+            this.lootTable.AccessRollLoot();
             looted = true;
             Destroy(this.gameObject);
 

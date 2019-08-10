@@ -30,7 +30,7 @@ public abstract class Character : MonoBehaviour
     protected bool isSpellcasting = false;
     protected bool isShooting = false;
 
-    protected Coroutine attackRoutine;
+    protected Coroutine actionRoutine;
     protected Coroutine spellRoutine;
     protected Coroutine bowRoutine;
 
@@ -189,11 +189,7 @@ public abstract class Character : MonoBehaviour
 
             MyAnimator.SetTrigger("die");
 
-            if (this is Enemy)
-            {
-                Player.MyInstance.GainXP(EXPManager.CalculateXP((this as Enemy)));
-                
-            }
+            
         }
 
     }

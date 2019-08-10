@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnItemController : MonoBehaviour
+public class ItemSpawnManager : MonoBehaviour
 {
 
-    private static SpawnItemController instance;
-    public static SpawnItemController MyInstance {
+    private static ItemSpawnManager instance;
+    public static ItemSpawnManager MyInstance {
 
         get {
             if (instance == null) {
 
-                instance = GameObject.FindObjectOfType<SpawnItemController>();
+                instance = GameObject.FindObjectOfType<ItemSpawnManager>();
 
             }
             return instance;
@@ -21,20 +21,15 @@ public class SpawnItemController : MonoBehaviour
    
     private Transform player;
 
-    public Sprite cheese;
-
     // The GameObject to instantiate.
     [SerializeField]
-    private GameObject[] entityToSpawn;
+    private GameObject[] itemPrefabs;
 
     // An instance of the ScriptableObject defined above.
     public Item[] spawnManagerValues;
 
     // This will be appended to the name of the created entities and increment when each is created.
     int instanceNumber = 1;
-
-
-
 
     // Start is called before the first frame update
     void Start()
@@ -43,6 +38,8 @@ public class SpawnItemController : MonoBehaviour
 
         
         SpawnEntities(0, 2);
+        SpawnEntities(6, 2);
+        
 
     }
 
@@ -59,17 +56,17 @@ public class SpawnItemController : MonoBehaviour
 
         for (int i = 0; i < quantity; i++) {
 
-            float xRandom = Random.Range(-1.0f, 1.0f);
-            float yRandom = Random.Range(-1.0f, 1.0f);
+            float xRandom = Random.Range(-0.5f, 0.5f);
+            float yRandom = Random.Range(-0.5f, 0.5f);
             Vector2 itemDropPos = new Vector2(player.position.x + xRandom, player.position.y + yRandom);
 
 
 
             // Creates an instance of the prefab at the current spawn point.
-            GameObject currentEntity = Instantiate(entityToSpawn[itemIndex], itemDropPos, Quaternion.identity);
+            GameObject currentEntity = Instantiate(itemPrefabs[itemIndex], itemDropPos, Quaternion.identity);
 
             // Sets the name of the instantiated entity to be the string defined in the ScriptableObject and then appends it with a unique number. 
-            currentEntity.name = "Health Potion" + instanceNumber;
+            currentEntity.name = itemPrefabs[itemIndex].name + "_" + instanceNumber;
 
             // possible to change sprite of entity as it spawns
             //currentEntity.GetComponent<SpriteRenderer>().sprite = cheese;

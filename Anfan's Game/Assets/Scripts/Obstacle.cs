@@ -49,11 +49,21 @@ public class Obstacle : MonoBehaviour, IComparable<Obstacle>
 
     }
 
-
-
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        if (collision.name == "ObstacleCollider")
+        {
+            FadeOut();
+
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.name == "ObstacleCollider")
+        {
+            FadeIn();
+
+        }
     }
 }

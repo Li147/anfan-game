@@ -21,3 +21,4 @@ MonoBehaviour:
   strength: 20
   defense: 20
   stamina: 10
+  animationClips: []

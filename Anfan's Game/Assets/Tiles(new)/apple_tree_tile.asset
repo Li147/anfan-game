@@ -10,10 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2a69b7a1b0a9a144fb3cd3ab10ff2d98, type: 3}
-  m_Name: treetile
+  m_Name: apple_tree_tile
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 3027295232775142562, guid: 6be1c29c8128db747bf16a2be830f8f6,
-    type: 3}
+  m_Sprite: {fileID: 21300000, guid: 480eaecbbb9655b47ac5b2cefbfa1732, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1

@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     private Camera mainCamera;
 
     private static GameManager instance;
+    private int targetIndex;
 
     public static GameManager MyInstance
     {
@@ -39,7 +40,7 @@ public class GameManager : MonoBehaviour
     {
         ClickTarget();
 
-        //Debug.Log(LayerMask.GetMask("Clickable"));
+        NextTarget();
     }
 
     // when player mouse clicks a target
@@ -52,33 +53,16 @@ public class GameManager : MonoBehaviour
                         
             if (hit.collider != null && hit.collider.tag == "enemy") { // if my mouse clicks something
 
-                if (currentTarget!= null) {
+                DeSelectTarget();
 
-                    currentTarget.DeSelect();
-
-                }
-
-                currentTarget = hit.collider.GetComponent<Enemy>();
-
-                // BUG - clicking the mini hitbox causes an error -> fix!!!
-                player.MyTarget = currentTarget.Select();
-
-
-
-
-                UIManager.MyInstance.ShowTargetFrame(currentTarget);
-
-
+               SelectTarget(hit.collider.GetComponent<Enemy>());
                 
               
             } else { // if my mouse clicks nothing
 
                 UIManager.MyInstance.HideTargetFrame();
 
-                if (currentTarget != null) {
-
-                    currentTarget.DeSelect();
-                }
+                DeSelectTarget();
 
                 currentTarget = null;
                 player.MyTarget = null;
@@ -88,19 +72,64 @@ public class GameManager : MonoBehaviour
         else if (Input.GetMouseButtonDown(1) && !EventSystem.current.IsPointerOverGameObject()) {
 
             RaycastHit2D hit = Physics2D.Raycast(MyCamera.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, Mathf.Infinity, 512);
-            
-            // if our mouse clicks on an enemy...
-            if (hit.collider != null && (hit.collider.tag == "enemy" || hit.collider.tag == "interactable") &&
-                // ensures that gameobject we click on is same as the one closest to us
-                hit.collider.gameObject.GetComponent<IInteractable>() == player.MyInteractable) { 
-                
 
-                player.Interact();
+            if (hit.collider != null)
+            {
+                IInteractable entity = hit.collider.gameObject.GetComponent<IInteractable>();
 
+                // if our mouse clicks on an enemy...
+                if (hit.collider != null && (hit.collider.tag == "enemy" || hit.collider.tag == "interactable") && player.MyInteractables.Contains(entity))
+                {
+
+                    entity.Interact();
+
+                }
             }
+
 
         }
         
+    }
+
+    private void NextTarget()
+    {
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            DeSelectTarget();
+
+            if (Player.MyInstance.MyAttackers.Count > 0)
+            {
+                if (targetIndex < Player.MyInstance.MyAttackers.Count)
+                {
+                    SelectTarget(Player.MyInstance.MyAttackers[targetIndex]);
+                    targetIndex++;
+                    if (targetIndex >= Player.MyInstance.MyAttackers.Count)
+                    {
+                        targetIndex = 0;
+                    }
+                }
+                else
+                {
+                    targetIndex = 0;
+                }
+               
+            }
+        }
+    }
+
+    private void SelectTarget(Enemy enemy)
+    {
+        currentTarget = enemy;
+        player.MyTarget = currentTarget.Select();
+        UIManager.MyInstance.ShowTargetFrame(currentTarget);
+    }
+
+    private void DeSelectTarget()
+    {
+        if (currentTarget != null)
+        {
+            currentTarget.DeSelect();
+        }
     }
 
 

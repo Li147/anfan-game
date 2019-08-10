@@ -5,17 +5,22 @@ using UnityEngine;
 public class LootTable : MonoBehaviour
 {
     [SerializeField]
-    private Loot[] possibleLoot;
+    protected Loot[] possibleLoot;
 
-    private List<Item> droppedItems = new List<Item>();
+    public int[] quantity;
 
-    public void DropLoot(int itemIndex) {
+    public void Awake()
+    {
+        quantity = new int[possibleLoot.Length];
+    }
 
-        SpawnItemController.MyInstance.SpawnEntities(itemIndex, 1);
+    public void DropLoot(int itemIndex, int quantity) {
+
+        ItemSpawnManager.MyInstance.SpawnEntities(itemIndex, quantity);
 
     }
     
-    public void RollLoot() {
+    protected virtual void RollLoot() {
 
         foreach (Loot item in possibleLoot) {
 
@@ -23,12 +28,17 @@ public class LootTable : MonoBehaviour
 
             if (roll <= item.MyDropChance) {
 
-                DropLoot(item.MyItem.MyItemIndex);
+                DropLoot(item.MyItem.MyItemIndex, 1);
 
             }
 
         }
 
+    }
+
+    public void AccessRollLoot()
+    {
+        RollLoot();
     }
 
 
