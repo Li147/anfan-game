@@ -205,7 +205,7 @@ TextureImporter:
     second: terrain_66
   - first:
       213: -1328729012206468535
-    second: terrain_67
+    second: rock_tile
   - first:
       213: -2412937607718343719
     second: terrain_68
@@ -949,7 +949,7 @@ TextureImporter:
     second: terrain_314
   - first:
       213: 8179071975384138054
-    second: terrain_315
+    second: sand
   - first:
       213: -5685010549472631540
     second: terrain_316
@@ -2934,7 +2934,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: terrain_67
+      name: rock_tile
       rect:
         serializedVersion: 2
         x: 128
@@ -8142,7 +8142,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: terrain_315
+      name: sand
       rect:
         serializedVersion: 2
         x: 32
