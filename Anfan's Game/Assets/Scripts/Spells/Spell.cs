@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public class Spell : IUseable, IMoveable, IDescribable
+public class Spell : IUseable, IMoveable, IDescribable, ICastable
 {
     [SerializeField]
-    private string name;
+    private string title;
 
     [SerializeField]
     private int damage;
@@ -30,7 +30,7 @@ public class Spell : IUseable, IMoveable, IDescribable
     [SerializeField]
     private Color barColor;
 
-    public string MyName { get => name; set => name = value; }
+    public string MyTitle { get => title; set => title = value; }
     public int MyDamage { get => damage; set => damage = value; }
     public Sprite MyIcon { get => icon; set => icon = value; }
     public float MySpeed { get => speed; set => speed = value; }
@@ -38,14 +38,15 @@ public class Spell : IUseable, IMoveable, IDescribable
     public GameObject MySpellPrefab { get => spellPrefab; set => spellPrefab = value; }
     public Color MyBarColor { get => barColor; set => barColor = value; }
 
+
     public string GetDescription() {
 
-        return string.Format("{0} \nCast time: {1} seconds\n{2}\nthat causes {3} damage.", name, castTime, description, damage);
+        return string.Format("{0} \nCast time: {1} seconds\n{2}\nthat causes {3} damage.", title, castTime, description, damage);
     }
 
     public void Use() {
 
-        Player.MyInstance.CastSpell(MyName);
+        Player.MyInstance.CastSpell(this);
 
     }
 }

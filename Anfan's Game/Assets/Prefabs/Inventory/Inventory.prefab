@@ -85,8 +85,6 @@ MonoBehaviour:
   bagButtons:
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   items:
   - {fileID: 11400000, guid: 4933673a3d36cf14282f84e82fad113a, type: 2}
   - {fileID: 11400000, guid: b01624cd4be885442a62bebb27ecdf65, type: 2}
@@ -98,3 +96,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 31b15cc44593a564fa71a1156001a5e3, type: 2}
   - {fileID: 11400000, guid: 8be1ef44d42bba24392d03c8d48d9887, type: 2}
   - {fileID: 11400000, guid: d8f861e62933aa441bcd98d37fa1a848, type: 2}
+  - {fileID: 11400000, guid: 6e5f422f8e631bc4f8246afe71361e6b, type: 2}

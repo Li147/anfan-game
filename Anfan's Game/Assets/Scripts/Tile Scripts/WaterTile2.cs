@@ -85,30 +85,30 @@ public class WaterTile2 : Tile
 
         int randomVal = Random.Range(0, 100);
 
-        if (randomVal < 5) {
+        if (randomVal < 2) {
             tileData.sprite = waterSprites[1];
 
-        } else if (randomVal >= 5 && randomVal < 10) {
+        } else if (randomVal >= 2 && randomVal < 4) {
 
             tileData.sprite = waterSprites[2];
 
-        } else if (randomVal >= 10 && randomVal < 15) {
+        } else if (randomVal >= 4 && randomVal < 6) {
 
             tileData.sprite = waterSprites[3];
 
-        } else if (randomVal >= 15 && randomVal < 20) {
+        } else if (randomVal >= 6 && randomVal < 8) {
 
             tileData.sprite = waterSprites[4];
 
-        } else if (randomVal >= 20 && randomVal < 25) {
+        } else if (randomVal >= 8 && randomVal < 10) {
 
             tileData.sprite = waterSprites[5];
 
-        } else if (randomVal >= 25 && randomVal < 30) {
+        } else if (randomVal >= 10 && randomVal < 12) {
 
             tileData.sprite = waterSprites[6];
 
-        } else if (randomVal >= 25 && randomVal < 30) {
+        } else if (randomVal >= 12 && randomVal < 14) {
 
             tileData.sprite = waterSprites[7];
 

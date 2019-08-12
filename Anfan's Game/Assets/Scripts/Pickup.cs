@@ -5,19 +5,14 @@ using UnityEngine.EventSystems;
 
 public class Pickup : MonoBehaviour{
 
-    
-    
     // FOR DEBUGGING
     [SerializeField]
     private Item item;
 
-    
-
     private void Start() {
 
         
-
-
+   
 
     }
 
@@ -37,12 +32,9 @@ public class Pickup : MonoBehaviour{
                        
         }
 
-
     }
 
     public void OnMouseEnter() {
-
-        Debug.Log("mouse moved on object");
 
         Vector3 tmp = Camera.main.WorldToScreenPoint(this.transform.position);
 
@@ -55,17 +47,6 @@ public class Pickup : MonoBehaviour{
         UIManager.MyInstance.HideTooltip();
     }
 
-    //public void OnPointerEnter(PointerEventData eventData) {
-
-    //    UIManager.MyInstance.ShowTooltip(transform.position, item);
-
-    //}
-
-    //public void OnPointerExit(PointerEventData eventData) {
-
-    //    UIManager.MyInstance.HideTooltip();
-
-    //}
 }
 
     

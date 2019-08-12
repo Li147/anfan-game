@@ -19,9 +19,6 @@ public class InventoryScript : MonoBehaviour
 
             return instance;
         }
-
-
-
     }
 
     // fromSlot is the slot which we have just picked an item from with our mouse
@@ -129,6 +126,8 @@ public class InventoryScript : MonoBehaviour
 
             HealthPotion potion = (HealthPotion) Instantiate(items[1]);
             AddItem(potion);
+            IronOre ironOre = (IronOre)Instantiate(items[13]);
+            AddItem(ironOre);
 
         }
 
@@ -356,6 +355,26 @@ public class InventoryScript : MonoBehaviour
 
     }
 
+    public int GetItemCount(string type)
+    {
+        int itemCount = 0;
+
+        foreach (Bag bag in MyBags)
+        {
+            foreach (SlotScript slot in bag.MyBagScript.MySlots)
+            {
+                if (!slot.IsEmpty && slot.MyItem.MyName == type)
+                {
+                    itemCount += slot.MyItems.Count;
+                }
+            }
+        }
+
+        return itemCount;
+    }
+
+
+
 
     public IUseable GetUseable(string type)
     {
@@ -378,6 +397,26 @@ public class InventoryScript : MonoBehaviour
 
         }
         return null;
+    }
+
+    // removes ONE of a specific item
+    public void RemoveItem(Item item)
+    {
+        foreach (Bag bag in MyBags)
+        {
+            foreach (SlotScript slot in bag.MyBagScript.MySlots)
+            {
+
+                if (!slot.IsEmpty && slot.MyItem.MyName == item.MyName)
+                {
+                    slot.RemoveItem(item);
+                    break;
+
+                }
+
+            }
+
+        }
     }
 
 

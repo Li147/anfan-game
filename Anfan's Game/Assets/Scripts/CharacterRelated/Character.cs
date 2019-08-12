@@ -26,13 +26,10 @@ public abstract class Character : MonoBehaviour
 
   
     public bool IsAttacking { get; set; }
-
-    protected bool isSpellcasting = false;
-    protected bool isShooting = false;
+    public bool isSpellcasting = false;
+    
 
     protected Coroutine actionRoutine;
-    protected Coroutine spellRoutine;
-    protected Coroutine bowRoutine;
 
     [SerializeField]
     protected Transform hitBox;
@@ -128,10 +125,6 @@ public abstract class Character : MonoBehaviour
 
                 ActivateLayer(MyAnimator, "SpellcastLayer");
                                 
-            } else if (isShooting) {
-
-                ActivateLayer(MyAnimator, "BowLayer");
-
             } else {
 
                 ActivateLayer(MyAnimator, "IdleLayer");

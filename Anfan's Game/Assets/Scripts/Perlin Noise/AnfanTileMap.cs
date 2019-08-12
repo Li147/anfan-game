@@ -24,10 +24,13 @@ public class AnfanTileMap : MonoBehaviour
     public bool autoUpdate;
 
     public TileType[] tileTypes;
+    public Tile treeTile;
 
 
     public void DisplayMap()
     {
+        tileMap.ClearAllTiles();
+
         terrainNoiseMap = Noise.GenerateNoiseMap(mapWidth, mapHeight, seed, noiseScale, octaves, 
             persistance, lacunarity, offset);
 
@@ -52,9 +55,13 @@ public class AnfanTileMap : MonoBehaviour
         }
     }
 
+
     public void DisplayMapGUI()
     {
-        terrainNoiseMap = Noise.GenerateNoiseMap(mapWidth, mapHeight, 1234567, 75, 3, 0.44f, 1, Vector2.zero);
+        tileMap.ClearAllEditorPreviewTiles();
+
+        terrainNoiseMap = Noise.GenerateNoiseMap(mapWidth, mapHeight, seed, noiseScale, octaves,
+            persistance, lacunarity, offset);
 
         for (int x = 0; x < mapWidth; x++)
         {
@@ -79,32 +86,74 @@ public class AnfanTileMap : MonoBehaviour
     }
 
 
+    public void DisplayTrees()
+    {
+        terrainNoiseMap = Noise.GenerateNoiseMap(mapWidth, mapHeight, seed, noiseScale, octaves,
+            persistance, lacunarity, offset);
+
+        treeMap.ClearAllTiles();
+
+        for (int x = 0; x < mapWidth; x++)
+        {
+            for (int y = 0; y < mapHeight; y++)
+            {
+                float currentHeight = terrainNoiseMap[x, y];
 
 
+                if (currentHeight > tileTypes[1].height && currentHeight <= tileTypes[2].height)
+                {
+                    int random = Random.Range(0, 100);
+                    if (random < 2)
+                    {
+                        treeMap.SetTile(new Vector3Int(x, y, 0), treeTile);
+                    }
+
+                }
 
 
+            }
+        }
+    }
 
+    public void DisplayTreesGUI()
+    {
+        terrainNoiseMap = Noise.GenerateNoiseMap(mapWidth, mapHeight, seed, noiseScale, octaves,
+            persistance, lacunarity, offset);
 
+        treeMap.ClearAllEditorPreviewTiles();
 
-    public void ClearMap()
+        for (int x = 0; x < mapWidth; x++)
+        {
+            for (int y = 0; y < mapHeight; y++)
+            {
+                float currentHeight = terrainNoiseMap[x, y];
+
+            
+                if (currentHeight > tileTypes[1].height && currentHeight <= tileTypes[2].height)
+                {
+                    int random = Random.Range(0, 100);
+                    if (random < 2)
+                    {
+                        treeMap.SetEditorPreviewTile(new Vector3Int(x, y, 0), treeTile);
+                    }
+
+                }
+                
+
+            }
+        }
+    }
+
+    public void ClearAll()
     {
         tileMap.ClearAllTiles();
+        treeMap.ClearAllTiles();
+
+        tileMap.ClearAllEditorPreviewTiles();
+        treeMap.ClearAllEditorPreviewTiles();
     }
 
-    private void Update()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            DisplayMap();
-        }
-
-
-        if (Input.GetMouseButtonDown(1))
-        {
-            ClearMap();
-        }
-    }
-
+   
 
     private void OnValidate()
     {
@@ -127,9 +176,6 @@ public class AnfanTileMap : MonoBehaviour
             octaves = 0; ; ;
         }
     }
-
-
-
 
 
 }

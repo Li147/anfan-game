@@ -697,22 +697,22 @@ TextureImporter:
     second: terrain_230
   - first:
       213: 2711768980665266091
-    second: terrain_231
+    second: grass4
   - first:
       213: 6409872252558034439
-    second: terrain_232
+    second: grass5
   - first:
       213: -5619613492115230264
-    second: terrain_233
+    second: grass6
   - first:
       213: -1767228945504636571
-    second: terrain_234
+    second: grass7
   - first:
       213: -3327120985697049050
-    second: terrain_235
+    second: grass8
   - first:
       213: 3727224247563178886
-    second: terrain_236
+    second: grass9
   - first:
       213: -8721525087093412516
     second: terrain_237
@@ -733,13 +733,13 @@ TextureImporter:
     second: terrain_242
   - first:
       213: 3531269300831205375
-    second: terrain_243
+    second: grass1
   - first:
       213: -6446414290988229761
-    second: terrain_244
+    second: grass2
   - first:
       213: 4246588582843944735
-    second: terrain_245
+    second: grass3
   - first:
       213: -8307788853846354033
     second: terrain_246
@@ -6378,7 +6378,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: terrain_231
+      name: grass4
       rect:
         serializedVersion: 2
         x: 0
@@ -6399,7 +6399,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: terrain_232
+      name: grass5
       rect:
         serializedVersion: 2
         x: 32
@@ -6420,7 +6420,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: terrain_233
+      name: grass6
       rect:
         serializedVersion: 2
         x: 64
@@ -6441,7 +6441,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: terrain_234
+      name: grass7
       rect:
         serializedVersion: 2
         x: 96
@@ -6462,7 +6462,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: terrain_235
+      name: grass8
       rect:
         serializedVersion: 2
         x: 128
@@ -6483,7 +6483,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: terrain_236
+      name: grass9
       rect:
         serializedVersion: 2
         x: 160
@@ -6630,7 +6630,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: terrain_243
+      name: grass1
       rect:
         serializedVersion: 2
         x: 384
@@ -6651,7 +6651,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: terrain_244
+      name: grass2
       rect:
         serializedVersion: 2
         x: 416
@@ -6672,7 +6672,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: terrain_245
+      name: grass3
       rect:
         serializedVersion: 2
         x: 448

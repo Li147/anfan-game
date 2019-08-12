@@ -5,7 +5,7 @@ using UnityEngine;
 public class LootTable : MonoBehaviour
 {
     [SerializeField]
-    protected Loot[] possibleLoot;
+    public Loot[] possibleLoot;
 
     public int[] quantity;
 

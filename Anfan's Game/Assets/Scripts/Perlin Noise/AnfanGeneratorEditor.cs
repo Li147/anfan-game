@@ -18,9 +18,38 @@ public class AnfanGeneratorEditor : Editor
             }
         }
 
-        if (GUILayout.Button("Generate"))
+        if (GUILayout.Button("Generate Map Game"))
+        {
+            mapGen.DisplayMap();
+        }
+
+
+        if (GUILayout.Button("Generate Map GUI"))
         {
             mapGen.DisplayMapGUI();
         }
+
+        if (GUILayout.Button("Generate Trees Game"))
+        {
+            mapGen.DisplayTrees();
+        }
+
+
+        if (GUILayout.Button("Generate Trees GUI"))
+        {
+            mapGen.DisplayTreesGUI();
+        }
+
+        if (GUILayout.Button("Clear All"))
+        {
+            mapGen.ClearAll();
+        }
+
+
+
+
+
+
+
     }
 }

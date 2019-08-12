@@ -46,9 +46,11 @@ public abstract class Item : ScriptableObject, IMoveable, IDescribable
         }
     }
 
+    public Quality MyQuality { get => quality; set => quality = value; }
+
     public virtual string GetDescription() {
 
-        return string.Format("<color={0}> {1}</color>", QualityColor.MyColors[quality], MyName);
+        return string.Format("<color={0}> {1}</color>", QualityColor.MyColors[MyQuality], MyName);
     
     }
 

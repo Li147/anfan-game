@@ -27,6 +27,7 @@ public class Player : Character {
     public Stat MyHunger { get => hunger; set => hunger = value; }
     public List<IInteractable> MyInteractables { get => interactables; set => interactables = value; }
     public List<Enemy> MyAttackers { get => attackers; set => attackers = value; }
+    public Coroutine MyInitRoutine { get => initRoutine; set => initRoutine = value; }
 
     // player's hunger stat
     [SerializeField]
@@ -66,8 +67,16 @@ public class Player : Character {
     [SerializeField]
     private GearSocket[] gearSockets;
 
+    private Coroutine initRoutine;
+
     [SerializeField]
     private ParticleSystem particleSystem;
+
+    [SerializeField]
+    private Transform minimapIndicator;
+
+    [SerializeField]
+    private Crafting crafting;
     
       
     private GameObject currentObject = null;
@@ -113,27 +122,45 @@ public class Player : Character {
 
         MovementDirection = Vector2.zero;
 
-        if (Input.GetKey(KeybindManager.MyInstance.Keybinds["UP"])) {  // move up
+        if (Input.GetKey(KeybindManager.MyInstance.Keybinds["UP"]))
+        {
             exitIndex = 0;
             hitBoxIndex = 0;
+            minimapIndicator.eulerAngles = new Vector3(0, 0, 0);
             MovementDirection += Vector2.up;
         }
-        if (Input.GetKey(KeybindManager.MyInstance.Keybinds["LEFT"])) {
+        if (Input.GetKey(KeybindManager.MyInstance.Keybinds["LEFT"]))
+        {
             exitIndex = 3;
             hitBoxIndex = 3;
+            
             MovementDirection += Vector2.left;
 
+            if (MovementDirection.y == 0)
+            {
+                minimapIndicator.eulerAngles = new Vector3(0, 0, 90);
+            }
+
         }
-        if (Input.GetKey(KeybindManager.MyInstance.Keybinds["DOWN"])) {
+        if (Input.GetKey(KeybindManager.MyInstance.Keybinds["DOWN"]))
+        {
             exitIndex = 2;
             hitBoxIndex = 2;
             MovementDirection += Vector2.down;
 
+            minimapIndicator.eulerAngles = new Vector3(0, 0, 180);
+
         }
-        if (Input.GetKey(KeybindManager.MyInstance.Keybinds["RIGHT"])) {
+        if (Input.GetKey(KeybindManager.MyInstance.Keybinds["RIGHT"]))
+        {
             exitIndex = 1;
             hitBoxIndex = 1;
             MovementDirection += Vector2.right;
+
+            if (MovementDirection.y == 0)
+            {
+                minimapIndicator.eulerAngles = new Vector3(0, 0, 270);
+            }
 
         }
 
@@ -150,25 +177,11 @@ public class Player : Character {
 
         }
 
-        
-
-        if (Input.GetKeyDown(KeyCode.B)) {
-
-            
-
-            if (MyTarget!= null && !isShooting && !IsMoving) {
-
-                bowRoutine = StartCoroutine(Shoot());
-
-            }
-
-        }
-
         // Cancel spells if player moves
         if (IsMoving) {
             StopAttack();
-            StopSpell();
-            StopShoot();
+            StopAction();
+            StopInit();
         }
 
 
@@ -271,64 +284,88 @@ public class Player : Character {
 
 
 
-    private IEnumerator Spellcast(string spellName) {
+    private IEnumerator SpellRoutine(ICastable castable) {
 
         Transform currentTarget = MyTarget;
 
-        Spell newSpell = SpellBook.MyInstance.FindSpell(spellName);
-
-        isSpellcasting = true; // Changes our state to spellcasting
-
-        MyAnimator.SetBool("spellcast", isSpellcasting); // Starts spellcast animation
-
-        foreach (GearSocket g in gearSockets) {
-
-            g.MyAnimator.SetBool("spellcast", isSpellcasting);
-
-        }
-        
-
-        yield return new WaitForSeconds(newSpell.MyCastTime);
+        yield return actionRoutine = StartCoroutine(ActionRoutine(castable));
 
         if (currentTarget != null) {
+
+            Spell newSpell = SpellBook.MyInstance.GetSpell(castable.MyTitle);
 
             SpellScript s = Instantiate(newSpell.MySpellPrefab, exitPoints[exitIndex].position, Quaternion.identity).GetComponent<SpellScript>();
             s.Initialize(currentTarget, transform, newSpell.MyDamage);
 
         }
 
-              
+        StopAction();
 
-        StopSpell();
-
-               
     }
 
-    public void CastSpell(string spellName) {
 
+
+   
+    private IEnumerator GatherRoutine(ICastable castable, GatheringLootTable lootTable)
+    {
+        yield return actionRoutine = StartCoroutine(ActionRoutine(castable));
+
+        Loot[] possibleLoot = lootTable.possibleLoot;
+        int[] quantity = lootTable.quantity;
+
+
+        yield return new WaitForSeconds(castable.MyCastTime);
+
+        for (int i = 0; i < possibleLoot.Length; i++)
+        {
+            int itemIndex = possibleLoot[i].MyItem.MyItemIndex;
+            int itemQuantity = quantity[i];
+            ItemSpawnManager.MyInstance.SpawnEntities(itemIndex, itemQuantity);
+        }
+
+        lootTable.isEmpty = true;
+
+        StopAction();
+        
+    }
+
+    public IEnumerator CraftRoutine(ICastable castable)
+    {
+        yield return actionRoutine = StartCoroutine(ActionRoutine(castable));
+
+        crafting.AddItemsToInventory();
+    }
+
+
+
+    public void CastSpell(ICastable castable)
+    {
         //Block();
 
-        if (MyTarget != null && MyTarget.GetComponentInParent<Character>().IsAlive && !isSpellcasting && !IsMoving) {
-
-            spellRoutine = StartCoroutine(Spellcast(spellName));
-
-        }
-
-    }
-
-    public void Gather(string skillName, Loot[] possibleLoot, int[] quantity)
-    {
-        if (!IsAttacking)
+        if (MyTarget != null && MyTarget.GetComponentInParent<Character>().IsAlive && !isSpellcasting && !IsMoving)
         {
-            spellRoutine = StartCoroutine(GatherRoutine(skillName, possibleLoot, quantity));
+
+            MyInitRoutine = StartCoroutine(SpellRoutine(castable));
+        }
+
+    }
+
+
+    
+    public void Gather(ICastable castable, GatheringLootTable lootTable)
+    {
+        if (!IsAttacking && !isSpellcasting)
+        {
+            MyInitRoutine = StartCoroutine(GatherRoutine(castable, lootTable));
         }
     }
 
-    private IEnumerator GatherRoutine(string skillName, Loot[] possibleLoot, int[] quantity)
-    {
-        Transform currentTarget = MyTarget;
 
-        Spell newSpell = SpellBook.MyInstance.FindSpell(skillName);
+
+
+    private IEnumerator ActionRoutine(ICastable castable)
+    {
+        SpellBook.MyInstance.Cast(castable);
 
         isSpellcasting = true; // Changes our state to spellcasting
 
@@ -341,39 +378,13 @@ public class Player : Character {
 
         }
 
-        yield return new WaitForSeconds(newSpell.MyCastTime);
+        yield return new WaitForSeconds(castable.MyCastTime);
 
-        StopSpell();
-
-        for (int i = 0; i < possibleLoot.Length; i++)
-        {
-            int itemIndex = possibleLoot[i].MyItem.MyItemIndex;
-            int itemQuantity = quantity[i];
-            ItemSpawnManager.MyInstance.SpawnEntities(itemIndex, itemQuantity);
-        }
+        StopAction();
 
 
-
-        
     }
 
-
-
-    // =====UNIFNISHED
-    private IEnumerator Shoot() {
-
-
-        isShooting = true;
-        MyAnimator.SetBool("bow", isShooting);
-
-        yield return new WaitForSeconds(1);
-
-        Instantiate(arrow, transform.position, Quaternion.identity);
-
-        StopShoot();
-
-    }
-    //======= UNFINISHED
 
 
     
@@ -432,35 +443,37 @@ public class Player : Character {
     }
 
 
-    public void StopSpell() {
+    public void StopAction() {
 
         SpellBook.MyInstance.StopCasting();
 
-        if (spellRoutine != null) {
-            StopCoroutine(spellRoutine);
-            isSpellcasting = false;
-            MyAnimator.SetBool("spellcast", isSpellcasting);
+        isSpellcasting = false;
 
-            foreach (GearSocket g in gearSockets) {
+        MyAnimator.SetBool("spellcast", isSpellcasting);
 
-                g.MyAnimator.SetBool("spellcast", isSpellcasting);
+        foreach (GearSocket g in gearSockets)
+        {
 
-            }
+            g.MyAnimator.SetBool("spellcast", isSpellcasting);
 
+        }
 
+        if (actionRoutine != null) {
+            StopCoroutine(actionRoutine);
+            
         }
 
     }
 
-    public void StopShoot() {
-
-        if (bowRoutine != null) {
-            StopCoroutine(bowRoutine);
-            isShooting = false;
-            MyAnimator.SetBool("bow", isShooting);
+    private void StopInit()
+    {
+        if (MyInitRoutine != null)
+        {
+            StopCoroutine(MyInitRoutine);
         }
-
     }
+
+ 
 
 
 

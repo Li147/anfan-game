@@ -45,7 +45,7 @@ public class SpellBook : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        canvasGroup.alpha = 0;
     }
 
     // Update is called once per frame
@@ -54,29 +54,30 @@ public class SpellBook : MonoBehaviour
         
     }
 
-    public Spell FindSpell(string spellName) {
+    public void Cast(ICastable castable) {
 
-        Spell spell = Array.Find(spells, x => x.MyName == spellName);
-
-        castingBar.color = spell.MyBarColor;
+        // resets fill amount of casting bar
         castingBar.fillAmount = 0;
 
-        currentSpell.text = spell.MyName;
+        // changes colour of casting bar
+        castingBar.color = castable.MyBarColor;
+        
 
-        spellRoutine = StartCoroutine(Progress(spell));
+        currentSpell.text = castable.MyTitle;
+
+        spellRoutine = StartCoroutine(Progress(castable));
 
         fadeRoutine = StartCoroutine(FadeBar());
 
-        return spell;
 
     }
 
-    private IEnumerator Progress(Spell spell) {
+    private IEnumerator Progress(ICastable castable) {
 
 
         float timePassed = Time.deltaTime;
 
-        float rate = 1.0f / spell.MyCastTime;
+        float rate = 1.0f / castable.MyCastTime;
 
         float progress = 0.0f;
 
@@ -87,9 +88,9 @@ public class SpellBook : MonoBehaviour
 
             timePassed += Time.deltaTime;
 
-            castTime.text = (spell.MyCastTime - timePassed).ToString("F2");
+            castTime.text = (castable.MyCastTime - timePassed).ToString("F2");
 
-            if (spell.MyCastTime - timePassed < 0) {
+            if (castable.MyCastTime - timePassed < 0) {
                 castTime.text = "0.00";
             }
 
@@ -136,7 +137,7 @@ public class SpellBook : MonoBehaviour
 
     public Spell GetSpell(string spellName) {
 
-        Spell spell = Array.Find(spells, x => x.MyName == spellName);
+        Spell spell = Array.Find(spells, x => x.MyTitle == spellName);
 
         return spell;
 

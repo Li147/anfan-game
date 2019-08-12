@@ -105,7 +105,11 @@ public class UIManager : MonoBehaviour
         {
             OpenClose(menus[2]);
         }
-        
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            OpenClose(menus[5]);
+        }
+
 
 
         //// Opens the keybind menu

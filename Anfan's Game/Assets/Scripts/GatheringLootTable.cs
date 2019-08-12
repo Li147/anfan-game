@@ -13,7 +13,12 @@ public class GatheringLootTable : LootTable, IInteractable
     [SerializeField]
     private Sprite gatherSprite;
 
-    private bool isEmpty;
+    [SerializeField]
+    private GameObject minimapIndicator;
+
+    
+
+    public bool isEmpty;
 
 
     private void Start()
@@ -33,8 +38,8 @@ public class GatheringLootTable : LootTable, IInteractable
 
     public void Interact()
     {
-        Player.MyInstance.Gather("Gather", possibleLoot, quantity);
-        isEmpty = true;
+        Player.MyInstance.Gather(SpellBook.MyInstance.GetSpell("Gather"), this);
+    
      
     }
 
@@ -44,6 +49,7 @@ public class GatheringLootTable : LootTable, IInteractable
         {
             spriteRenderer.sprite = defaultSprite;
             gameObject.SetActive(false);
+            minimapIndicator.SetActive(false);
         }
     }
 }
