@@ -549,10 +549,11 @@ public class Player : Character {
         if (collision.tag == "enemy" || collision.tag == "interactable") 
         {
             IInteractable interactable = collision.GetComponent<IInteractable>();
-
+            
             if (!MyInteractables.Contains(interactable))
             {
                 MyInteractables.Add(interactable);
+                
             }
             
         }

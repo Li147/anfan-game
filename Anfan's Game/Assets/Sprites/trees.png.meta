@@ -22,7 +22,7 @@ TextureImporter:
     second: trees_5
   - first:
       213: -7523560045513598774
-    second: trees_6
+    second: wood_tree
   - first:
       213: -271311362049036883
     second: trees_7
@@ -291,15 +291,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: trees_6
+      name: wood_tree
       rect:
         serializedVersion: 2
         x: 6
         y: 240
         width: 82
         height: 104
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.49335134, y: 0.15401107}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

@@ -11,10 +11,13 @@ public class GatheringLootTable : LootTable, IInteractable
     private Sprite defaultSprite;
 
     [SerializeField]
-    private Sprite gatherSprite;
+    private Sprite emptySprite;
 
     [SerializeField]
     private GameObject minimapIndicator;
+
+    [SerializeField]
+    private bool isDestroyable;
 
     
 
@@ -45,9 +48,13 @@ public class GatheringLootTable : LootTable, IInteractable
 
     public void StopInteract()
     {
-        if (isEmpty)
+        if (isEmpty && isDestroyable)
         {
-            spriteRenderer.sprite = defaultSprite;
+            Destroy(transform.parent.gameObject);
+        }
+        else if (isEmpty)
+        {
+            spriteRenderer.sprite = emptySprite;
             gameObject.SetActive(false);
             minimapIndicator.SetActive(false);
         }

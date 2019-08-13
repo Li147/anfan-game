@@ -80,12 +80,10 @@ public class GameManager : MonoBehaviour
                 // if our mouse clicks on an enemy...
                 if (hit.collider != null && (hit.collider.tag == "enemy" || hit.collider.tag == "interactable") && player.MyInteractables.Contains(entity))
                 {
-
                     entity.Interact();
-
                 }
             }
-
+        
 
         }
         

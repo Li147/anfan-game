@@ -45,14 +45,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   possibleLoot:
-  - item: {fileID: 11400000, guid: c52d18bd82d6e6249a591e390635e438, type: 2}
+  - item: {fileID: 11400000, guid: 029305e970297b14691e54a5c45d1c1a, type: 2}
     dropChance: 100
   quantity: 
   spriteRenderer: {fileID: 9004818644718687119}
-  defaultSprite: {fileID: 21300000, guid: 480eaecbbb9655b47ac5b2cefbfa1732, type: 3}
-  emptySprite: {fileID: 21300000, guid: 113aa05c035b82341b7068254e5af4e4, type: 3}
+  defaultSprite: {fileID: -1968840719456152539, guid: e62a698dd8611244491f3d9e80b517f9,
+    type: 3}
+  emptySprite: {fileID: 0}
   minimapIndicator: {fileID: 5374809448280815352}
-  isDestroyable: 0
+  isDestroyable: 1
   isEmpty: 0
 --- !u!58 &8985841929308290830
 CircleCollider2D:
@@ -67,9 +68,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.22}
+  m_Offset: {x: 0, y: 0.01}
   serializedVersion: 2
-  m_Radius: 0.4
+  m_Radius: 0.25
 --- !u!1 &1451375158447993718
 GameObject:
   m_ObjectHideFlags: 0
@@ -114,7 +115,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.01}
+  m_Offset: {x: 0, y: -0.03}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -125,7 +126,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.3, y: 0.1}
+  m_Size: {x: 0.2, y: 0.1}
   m_EdgeRadius: 0
 --- !u!1 &5374809448280815352
 GameObject:
@@ -216,10 +217,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7048647932692911759}
   - component: {fileID: 9004818644718687119}
-  - component: {fileID: 8869359252694249399}
+  - component: {fileID: 5951839318979450024}
   - component: {fileID: 4325613434303817547}
   m_Layer: 0
-  m_Name: apple_tree
+  m_Name: iron_rock
   m_TagString: obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -234,7 +235,7 @@ Transform:
   m_GameObject: {fileID: 6094999980117071680}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children:
   - {fileID: 8070239266070098999}
   - {fileID: 257405822043286477}
@@ -279,7 +280,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 480eaecbbb9655b47ac5b2cefbfa1732, type: 3}
+  m_Sprite: {fileID: -1968840719456152539, guid: e62a698dd8611244491f3d9e80b517f9,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -290,8 +292,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &8869359252694249399
-PolygonCollider2D:
+--- !u!58 &5951839318979450024
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -303,29 +305,9 @@ PolygonCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.27}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.127}
-    oldSize: {x: 0.64, y: 0.71}
-    newSize: {x: 0.77, y: 0.85}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -0.07310194, y: 0.3286177}
-      - {x: -0.16678411, y: 0.2728064}
-      - {x: -0.3120204, y: 0.00023961067}
-      - {x: -0.28519636, y: -0.111382484}
-      - {x: -0.12887877, y: -0.1897943}
-      - {x: 0.14946485, y: -0.17665267}
-      - {x: 0.23895812, y: -0.13824058}
-      - {x: 0.30426306, y: -0.02722764}
-      - {x: 0.20960194, y: 0.22851467}
-      - {x: 0.12487239, y: 0.31696105}
-      - {x: 0.014872134, y: 0.3433472}
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.09
 --- !u!114 &4325613434303817547
 MonoBehaviour:
   m_ObjectHideFlags: 0

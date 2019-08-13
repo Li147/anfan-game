@@ -108,36 +108,8 @@ public class UIManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             OpenClose(menus[5]);
+            Debug.Log("E key was just pressed");
         }
-
-
-
-        //// Opens the keybind menu
-        //if (Input.GetKeyDown(KeyCode.Escape)) {
-
-        //    OpenClose(keybindMenu);
-
-        //}
-
-        //// Opens the spellbook menu
-        //if (Input.GetKeyDown(KeyCode.P)) {
-
-        //    OpenClose(spellBook);
-
-        //}
-
-        //// Opens the inventory menu
-        //if (Input.GetKeyDown(KeyCode.B)) {
-
-        //    InventoryScript.MyInstance.OpenClose();
-
-        //}
-
-        //if (Input.GetKeyDown(KeyCode.C)) {
-
-        //    charPanel.OpenClose();
-
-        //}
 
     }
 

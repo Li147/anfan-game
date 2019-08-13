@@ -244,7 +244,7 @@ TextureImporter:
     second: roguelikeitems_79
   - first:
       213: -7470800371356827753
-    second: roguelikeitems_80
+    second: wood
   - first:
       213: 611619678665254519
     second: roguelikeitems_81
@@ -2307,7 +2307,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: roguelikeitems_80
+      name: wood
       rect:
         serializedVersion: 2
         x: 32
