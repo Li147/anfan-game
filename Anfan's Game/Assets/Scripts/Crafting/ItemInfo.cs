@@ -52,5 +52,5 @@ public class ItemInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         UIManager.MyInstance.HideTooltip();
     }
 
- 
+  
 }

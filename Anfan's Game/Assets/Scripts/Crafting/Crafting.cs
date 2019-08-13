@@ -77,16 +77,20 @@ public class Crafting : MonoBehaviour
         }
         materials.Clear();
 
-        itemName.text = recipe.MyOutput.MyName;
-        itemDescription.text = recipe.MyDescription + " " + recipe.MyOutput.MyName;
+        itemName.text = string.Format("<color={0}>{1}</color>", QualityColor.MyColors[recipe.MyOutput.MyQuality], recipe.MyTitle);
+
+        itemDescription.text = recipe.MyDescription;
 
         craftItemInfo.Initialize(recipe.MyOutput, 1);
 
         foreach (CraftingMaterial material in recipe.MyMaterials)
         {
+            Transform parent = GameObject.Find("MaterialsList").transform;
             GameObject tmp = Instantiate(materialPrefab, parent);
 
             tmp.GetComponent<ItemInfo>().Initialize(material.MyItem, material.MyCount);
+
+
 
             materials.Add(tmp);
 

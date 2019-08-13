@@ -21,6 +21,12 @@ public class Recipe : MonoBehaviour, ICastable
     private Image highlight;
 
     [SerializeField]
+    private Text recipeText;
+
+    [SerializeField]
+    private Image recipeIcon;
+
+    [SerializeField]
     private float craftTime;
 
     [SerializeField]
@@ -68,7 +74,8 @@ public class Recipe : MonoBehaviour, ICastable
 
     private void Start()
     {
-        GetComponent<Text>().text = MyOutput.MyName;
+        recipeText.text = MyOutput.MyName;
+        recipeIcon.sprite = MyOutput.MyIcon;
     }
 
     public void Select()
