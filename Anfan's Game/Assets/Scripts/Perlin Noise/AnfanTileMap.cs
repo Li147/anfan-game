@@ -25,6 +25,7 @@ public class AnfanTileMap : MonoBehaviour
 
     public TileType[] tileTypes;
     public Tile treeTile;
+    public Tile woodTreeTile;
 
 
     public void DisplayMap()
@@ -86,7 +87,7 @@ public class AnfanTileMap : MonoBehaviour
     }
 
 
-    public void DisplayTrees()
+    public void DisplayResources()
     {
         terrainNoiseMap = Noise.GenerateNoiseMap(mapWidth, mapHeight, seed, noiseScale, octaves,
             persistance, lacunarity, offset);
@@ -99,16 +100,31 @@ public class AnfanTileMap : MonoBehaviour
             {
                 float currentHeight = terrainNoiseMap[x, y];
 
-
+                // On grass tiles
                 if (currentHeight > tileTypes[1].height && currentHeight <= tileTypes[2].height)
                 {
                     int random = Random.Range(0, 100);
-                    if (random < 2)
+                    if (random < 1)
                     {
                         treeMap.SetTile(new Vector3Int(x, y, 0), treeTile);
                     }
+                    else if (random >= 1 && random < 3)
+                    {
+                        treeMap.SetTile(new Vector3Int(x, y, 0), woodTreeTile);
+                    }
 
                 }
+
+                //// On rock tiles
+                //else if (currentHeight > tileTypes[1].height && currentHeight <= tileTypes[2].height)
+                //{
+                //    int random = Random.Range(0, 100);
+                //    if (random < 2)
+                //    {
+                //        treeMap.SetTile(new Vector3Int(x, y, 0), treeTile);
+                //    }
+
+                //}
 
 
             }

@@ -31,7 +31,7 @@ public class AnfanGeneratorEditor : Editor
 
         if (GUILayout.Button("Generate Trees Game"))
         {
-            mapGen.DisplayTrees();
+            mapGen.DisplayResources();
         }
 
 

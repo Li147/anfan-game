@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 using UnityEngine.UI;
 
 public class Player : Character {
@@ -81,13 +82,19 @@ public class Player : Character {
       
     private GameObject currentObject = null;
 
+    [SerializeField]
+    public Tilemap tileMap;
+
    
     // references the things he can interact with e.g. enemies, chests, trees
     private List<IInteractable> interactables = new List<IInteractable>();
-    
- 
-    
-   
+
+
+    //private void Start()
+    //{
+    //    Player.MyInstance.transform.position = tileMap.GetCellCenterWorld(new Vector3Int(50, 50, 0));
+    //}
+
 
     protected override void Update()
     {

@@ -36,7 +36,7 @@ public class InventoryScript : MonoBehaviour
 
     public bool CanAddBag {
 
-        get { return MyBags.Count < 3; }
+        get { return MyBags.Count < 2; }
 
     }
 
@@ -179,6 +179,7 @@ public class InventoryScript : MonoBehaviour
     {
         bag.SetUpScript();
         MyBags.Add(bag);
+        bag.MyBagScript.MyBagIndex = bagIndex;
         bag.MyBagButton = bagButtons[bagIndex];
         bagButtons[bagIndex].MyBag = bag;
     }

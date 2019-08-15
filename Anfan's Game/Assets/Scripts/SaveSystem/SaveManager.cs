@@ -62,6 +62,7 @@ public class SaveManager : MonoBehaviour
         {
             // set default values for player
             Player.MyInstance.SetDefaultValues();
+            Player.MyInstance.transform.position = Player.MyInstance.tileMap.GetCellCenterWorld(new Vector3Int(50, 50, 0));
         }
     }
 
@@ -181,7 +182,9 @@ public class SaveManager : MonoBehaviour
         }
         catch (System.Exception)
         {
-            throw;
+            Delete(savedGame);
+
+            PlayerPrefs.DeleteKey("Load");
 
         }
     }
@@ -297,8 +300,10 @@ public class SaveManager : MonoBehaviour
         }
         catch (System.Exception)
         {
+            // if there's an error, just delete the save file
             Delete(savedGame);
-            PlayerPrefs.DeleteKey("Load");
+            Player.MyInstance.SetDefaultValues();
+            //SceneManager.LoadScene("string scenename");
         }
     }
 
@@ -333,7 +338,7 @@ public class SaveManager : MonoBehaviour
         foreach (BagData bagData in data.MyInventoryData.MyBags)
         {
             
-            Bag newBag = (Bag)Instantiate(items[0]);
+            Bag newBag = (Bag)Instantiate(items[1]);
 
             newBag.Initialize(bagData.MySlotCount);
 
