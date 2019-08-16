@@ -29,6 +29,8 @@ public class CharacterPanel : MonoBehaviour
             
     }
 
+    public CharButton MyMain { get => main; set => main = value; }
+
     public void OpenClose() {
 
         if (canvasGroup.alpha <= 0) {
@@ -64,7 +66,7 @@ public class CharacterPanel : MonoBehaviour
                accessory1.EquipArmour(armour);
                 break;
             case ArmourType.MainHand:
-                main.EquipArmour(armour);
+                MyMain.EquipArmour(armour);
                 break;
             case ArmourType.OffHand:
                 off.EquipArmour(armour);

@@ -89,6 +89,12 @@ public class CharButton : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
             gearSocket.EquipAnimation(MyEquippedArmour.MyAnimationClips);
 
         }
+
+        // code which activates bow
+        if (armour.MyName == "Bow")
+        {
+            Player.MyInstance.MyBow.SetActive(true);
+        }
         
 
     }

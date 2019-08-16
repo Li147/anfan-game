@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class SpellScript : MonoBehaviour
 {
+    [SerializeField]
+    private Animator animator;
 
     private Rigidbody2D myRigidBody;
-
-    [SerializeField]
-    private float speed;
 
     public Transform MyTarget { get; private set; }
     private Transform source;
 
     private int damage;
+    private float speed;
 
-            
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,11 +30,12 @@ public class SpellScript : MonoBehaviour
         
     }
 
-    public void Initialize(Transform target, Transform source, int damage) {
+    public void Initialize(Transform target, Transform source, int damage, int speed) {
 
         this.MyTarget = target;
         this.source = source;
         this.damage = damage;
+        this.speed = speed;
 
     }
 
@@ -65,16 +66,22 @@ public class SpellScript : MonoBehaviour
         if (collision.tag == "hitbox" && collision.transform == MyTarget) {
 
             Character c = collision.GetComponentInParent<Character>();
+            c.TakeDamage(damage, source);
 
             // set speed to 0 when we hit the target so we don't get flicker
             speed = 0;
 
-            c.TakeDamage(damage, source);
-
-
-            GetComponent<Animator>().SetTrigger("impact");
-            myRigidBody.velocity = Vector2.zero;
-            MyTarget = null;
+            if (animator != null)
+            {
+                animator.SetTrigger("impact");
+                myRigidBody.velocity = Vector2.zero;
+                MyTarget = null;
+            }
+            else
+            {
+                Destroy(gameObject);
+            } 
+            
         }
     }
 }

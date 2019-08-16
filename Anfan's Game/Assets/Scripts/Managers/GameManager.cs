@@ -9,12 +9,19 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private Player player;
 
+    [SerializeField]
+    private LayerMask clickableLayer, groundLayer;
+
     private Enemy currentTarget;
 
     private Camera mainCamera;
 
     private static GameManager instance;
     private int targetIndex;
+
+    // keeps track of a set of all tiles we CANNOT WALK ON e.g. water tiles
+    private HashSet<Vector3Int> blocked = new HashSet<Vector3Int>();
+
 
     public static GameManager MyInstance
     {
@@ -29,6 +36,7 @@ public class GameManager : MonoBehaviour
     }
 
     public Camera MyCamera { get => mainCamera; set => mainCamera = value; }
+    public HashSet<Vector3Int> Blocked { get => blocked; set => blocked = value; }
 
     private void Start()
     {
@@ -49,13 +57,19 @@ public class GameManager : MonoBehaviour
         // deals with clicks using the LEFT MOUSE BUTTON
         if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject()) {
 
+            //DEBUGGING PURPOSES=============================================================
+            //Vector3Int hello = Player.MyInstance.tileMap.WorldToCell(Input.mousePosition);
+            //Debug.Log("Vector3Int: " + hello.ToString());
+            //Vector3 sup = MyCamera.ScreenToWorldPoint(Input.mousePosition);
+            //Debug.Log("Vector3: " + sup.ToString());
+
             RaycastHit2D hit = Physics2D.Raycast(MyCamera.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, Mathf.Infinity, 512);
                         
             if (hit.collider != null && hit.collider.tag == "enemy") { // if my mouse clicks something
 
                 DeSelectTarget();
 
-               SelectTarget(hit.collider.GetComponent<Enemy>());
+                SelectTarget(hit.collider.GetComponent<Enemy>());
                 
               
             } else { // if my mouse clicks nothing
@@ -71,7 +85,7 @@ public class GameManager : MonoBehaviour
         // deals with clicks on the RIGHT MOUSE BUTTON
         else if (Input.GetMouseButtonDown(1) && !EventSystem.current.IsPointerOverGameObject()) {
 
-            RaycastHit2D hit = Physics2D.Raycast(MyCamera.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, Mathf.Infinity, 512);
+            RaycastHit2D hit = Physics2D.Raycast(MyCamera.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, Mathf.Infinity, clickableLayer);
 
             if (hit.collider != null)
             {
@@ -81,6 +95,18 @@ public class GameManager : MonoBehaviour
                 if (hit.collider != null && (hit.collider.tag == "enemy" || hit.collider.tag == "interactable") && player.MyInteractables.Contains(entity))
                 {
                     entity.Interact();
+                }
+            }
+            else
+            {
+                hit = Physics2D.Raycast(MyCamera.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, Mathf.Infinity, groundLayer);
+
+                if (hit.collider != null)
+                {
+
+                    player.GetPath(MyCamera.ScreenToWorldPoint(Input.mousePosition));
+
+                   
                 }
             }
         

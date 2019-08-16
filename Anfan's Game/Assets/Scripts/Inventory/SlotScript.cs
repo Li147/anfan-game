@@ -210,6 +210,7 @@ public class SlotScript : MonoBehaviour, IPointerClickHandler, IClickable, IPoin
                     AddItem(armour);
                     HandScript.MyInstance.Drop();
 
+
                 }
                 
                

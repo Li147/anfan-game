@@ -13,7 +13,9 @@ public class WaterTile2 : Tile
     private Sprite preview;
 
     // Allows us to generate colliders on our water tiles
-    public override bool StartUp(Vector3Int position, ITilemap tilemap, GameObject go) {
+    public override bool StartUp(Vector3Int position, ITilemap tilemap, GameObject go)
+    {
+        GameManager.MyInstance.Blocked.Add(position);
 
         return base.StartUp(position, tilemap, go);
     }

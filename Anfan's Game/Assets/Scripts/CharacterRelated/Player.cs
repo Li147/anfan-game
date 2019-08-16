@@ -29,6 +29,7 @@ public class Player : Character {
     public List<IInteractable> MyInteractables { get => interactables; set => interactables = value; }
     public List<Enemy> MyAttackers { get => attackers; set => attackers = value; }
     public Coroutine MyInitRoutine { get => initRoutine; set => initRoutine = value; }
+    public GameObject MyBow { get => bow; set => bow = value; }
 
     // player's hunger stat
     [SerializeField]
@@ -59,14 +60,13 @@ public class Player : Character {
 
     private int hitBoxIndex = 2;
         
-    [SerializeField]
-    private GameObject arrow;
- 
-
     private Vector3 min, max;
 
     [SerializeField]
     private GearSocket[] gearSockets;
+
+    [SerializeField]
+    private GameObject bow;
 
     private Coroutine initRoutine;
 
@@ -89,20 +89,43 @@ public class Player : Character {
     // references the things he can interact with e.g. enemies, chests, trees
     private List<IInteractable> interactables = new List<IInteractable>();
 
+    #region PATHFINDING
 
-    //private void Start()
-    //{
-    //    Player.MyInstance.transform.position = tileMap.GetCellCenterWorld(new Vector3Int(50, 50, 0));
-    //}
+    [SerializeField]
+    private AStarAlgorithm astar;
+
+    private Stack<Vector3> path;
+    private Vector3 destination;
+    private Vector3 goal;
+   
+    #endregion
+
 
 
     protected override void Update()
     {
         ProcessInputs();
+        ClickToMove();
 
         transform.position = new Vector3(Mathf.Clamp(transform.position.x, min.x, max.x), 
                                          Mathf.Clamp(transform.position.y, min.y, max.y), 
                                          transform.position.z);
+
+        // sets bow active to true or false
+        if (CharacterPanel.MyInstance.MyMain.MyEquippedArmour != null)
+        {
+            if (CharacterPanel.MyInstance.MyMain.MyEquippedArmour.MyName == "Bow")
+            {
+                MyBow.SetActive(true);
+
+            }
+            else
+            {
+                MyBow.SetActive(false);
+            }
+        }
+        
+
 
         base.Update();
     }
@@ -302,7 +325,7 @@ public class Player : Character {
             Spell newSpell = SpellBook.MyInstance.GetSpell(castable.MyTitle);
 
             SpellScript s = Instantiate(newSpell.MySpellPrefab, exitPoints[exitIndex].position, Quaternion.identity).GetComponent<SpellScript>();
-            s.Initialize(currentTarget, transform, newSpell.MyDamage);
+            s.Initialize(currentTarget, transform, newSpell.MyDamage, newSpell.MySpeed);
 
         }
 
@@ -516,7 +539,12 @@ public class Player : Character {
     public void GainXP(int xp)
     {
         MyExp.MyCurrentValue += xp;
-        CombatTextManager.MyInstance.CreateText(transform.position, xp.ToString(), SCTTYPE.EXP, false);
+
+        // add a little extra offset for EXP SCT
+        Vector3 pos = transform.position;
+        pos.y += 0.7f;
+
+        CombatTextManager.MyInstance.CreateText(pos, xp.ToString(), SCTTYPE.EXP, false);
         if (MyExp.MyCurrentValue >= MyExp.MyMaxValue)
         {
             StartCoroutine(LevelUp());
@@ -548,6 +576,46 @@ public class Player : Character {
     {
         levelText.text = "Level" + MyLevel.ToString();
     }
+
+    public void GetPath(Vector3 goal)
+    {
+        path = astar.Algorithm(transform.position, goal);
+        Debug.Log("transform.position (Vector3): " + transform.position.ToString());
+        Debug.Log("goal (Vector3): " + goal.ToString());
+
+
+
+        destination = path.Pop();
+        this.goal = goal;
+    }
+
+    private void ClickToMove()
+    {
+        if (path != null)
+        {
+            transform.parent.position = Vector2.MoveTowards(transform.parent.position, destination, MovementSpeed * Time.deltaTime);
+            Debug.Log("ClickToMove: destination Vector3: " + destination.ToString());
+
+            float distance = Vector2.Distance(destination, transform.parent.position);
+
+            if (distance <= 0f)
+            {
+                if(path.Count > 0)
+                {
+                    destination = path.Pop();
+                }
+                else
+                {
+                    path = null;
+                }
+            }
+        }
+    }
+
+
+
+
+
 
 
 

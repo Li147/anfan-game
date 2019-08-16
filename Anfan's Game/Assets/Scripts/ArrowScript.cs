@@ -14,7 +14,7 @@ public class ArrowScript : MonoBehaviour
 
     [SerializeField]
     private int damage;
-    private float lifetime = 1;
+    private float lifetime = 2;
 
 
     // Start is called before the first frame update

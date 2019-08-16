@@ -16,7 +16,7 @@ public class Spell : IUseable, IMoveable, IDescribable, ICastable
     private Sprite icon;
 
     [SerializeField]
-    private float speed;
+    private int speed;
 
     [SerializeField]
     private float castTime;
@@ -33,7 +33,7 @@ public class Spell : IUseable, IMoveable, IDescribable, ICastable
     public string MyTitle { get => title; set => title = value; }
     public int MyDamage { get => damage; set => damage = value; }
     public Sprite MyIcon { get => icon; set => icon = value; }
-    public float MySpeed { get => speed; set => speed = value; }
+    public int MySpeed { get => speed; set => speed = value; }
     public float MyCastTime { get => castTime; set => castTime = value; }
     public GameObject MySpellPrefab { get => spellPrefab; set => spellPrefab = value; }
     public Color MyBarColor { get => barColor; set => barColor = value; }
