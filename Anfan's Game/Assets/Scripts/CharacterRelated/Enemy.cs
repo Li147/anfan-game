@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public delegate void HealthChanged(float health);
 
@@ -26,13 +27,21 @@ public class Enemy : Character, IInteractable
     private SpriteRenderer enemySprite;
     //
 
+    [SerializeField]
+    private int damage;
 
+    private bool canDoDamage = true;
 
 
     [SerializeField]
     private LootTable lootTable;
 
     private bool looted = false;
+
+    [SerializeField]
+    private AStarAlgorithm astar;
+
+
 
     [SerializeField]
     private string enemyName;
@@ -55,13 +64,14 @@ public class Enemy : Character, IInteractable
     }
 
     public string MyName { get => enemyName; set => enemyName = value; }
+    public AStarAlgorithm MyAstar { get => astar; set => astar = value; }
 
     protected void Awake() {
 
         health.Initialize(initHealth, initHealth);
         MyStartPosition = transform.position;
         MyAggroRange = initAggroRange;
-        MyAttackRange = 0.4f;
+        MyAttackRange = 0.1f;
         ChangeState(new IdleState());
 
     }
@@ -70,6 +80,7 @@ public class Enemy : Character, IInteractable
     {
         base.Start();
         enemySprite = GetComponent<SpriteRenderer>();
+
     }
 
     protected override void Update() {
@@ -82,6 +93,11 @@ public class Enemy : Character, IInteractable
             }
 
             currentState.Update();
+
+            if (MyTarget != null && !Player.MyInstance.IsAlive)
+            {
+                ChangeState(new EvadeState());
+            }
                         
         }
 
@@ -138,6 +154,22 @@ public class Enemy : Character, IInteractable
         }
       
     }
+
+    public void DoDamage()
+    {
+        if (canDoDamage)
+        {
+            Player.MyInstance.TakeDamage(damage, transform);
+            canDoDamage = false;
+        }
+        
+    }
+
+    public void CanDoDamage()
+    {
+        canDoDamage = true;
+    }
+
 
     
 

@@ -18,7 +18,6 @@ public class Player : Character {
 
             return instance;
         }
-                
     }
 
     private List<Enemy> attackers = new List<Enemy>();
@@ -30,6 +29,7 @@ public class Player : Character {
     public List<Enemy> MyAttackers { get => attackers; set => attackers = value; }
     public Coroutine MyInitRoutine { get => initRoutine; set => initRoutine = value; }
     public GameObject MyBow { get => bow; set => bow = value; }
+    public float MyManaRegenRate { get => manaRegenRate; set => manaRegenRate = value; }
 
     // player's hunger stat
     [SerializeField]
@@ -42,6 +42,9 @@ public class Player : Character {
     private Stat mana;
 
     private float initMana = 100;
+
+    [SerializeField]
+    private float manaRegenRate;
 
     [SerializeField]
     private Stat exp;
@@ -85,6 +88,9 @@ public class Player : Character {
     [SerializeField]
     public Tilemap tileMap;
 
+    [SerializeField]
+    private CanvasGroup damageEffect;
+
    
     // references the things he can interact with e.g. enemies, chests, trees
     private List<IInteractable> interactables = new List<IInteractable>();
@@ -97,6 +103,7 @@ public class Player : Character {
     private Stack<Vector3> path;
     private Vector3 destination;
     private Vector3 goal;
+    private Vector3 current;
    
     #endregion
 
@@ -129,11 +136,11 @@ public class Player : Character {
 
         base.Update();
     }
-    
-    // code relating to adjusting physics is here
-    protected override void FixedUpdate()
+
+    //code relating to adjusting physics is here
+    protected void FixedUpdate()
     {
-        base.FixedUpdate();
+        Move();
     }
 
 
@@ -259,6 +266,7 @@ public class Player : Character {
     }
 
 
+
     public void SetLimits(Vector3 min, Vector3 max)
     {
         this.min = min;
@@ -326,6 +334,7 @@ public class Player : Character {
 
             SpellScript s = Instantiate(newSpell.MySpellPrefab, exitPoints[exitIndex].position, Quaternion.identity).GetComponent<SpellScript>();
             s.Initialize(currentTarget, transform, newSpell.MyDamage, newSpell.MySpeed);
+            Player.MyInstance.MyMana.MyCurrentValue -= newSpell.MyManaCost;
 
         }
 
@@ -354,6 +363,8 @@ public class Player : Character {
         }
 
         lootTable.isEmpty = true;
+
+
 
         StopAction();
         
@@ -558,6 +569,9 @@ public class Player : Character {
         }
 
         MyLevel++;
+        MyHealth.MyMaxValue += 1;
+        MyHunger.MyMaxValue += 2;
+        MyMana.MyMaxValue += 2;
         particleSystem.Play();
         levelText.text = "Level" + MyLevel.ToString();
         MyExp.MyMaxValue = 100 * MyLevel * Mathf.Pow(MyLevel, 0.5f);
@@ -580,11 +594,7 @@ public class Player : Character {
     public void GetPath(Vector3 goal)
     {
         path = astar.Algorithm(transform.position, goal);
-        Debug.Log("transform.position (Vector3): " + transform.position.ToString());
-        Debug.Log("goal (Vector3): " + goal.ToString());
-
-
-
+        current = path.Pop();
         destination = path.Pop();
         this.goal = goal;
     }
@@ -594,14 +604,41 @@ public class Player : Character {
         if (path != null)
         {
             transform.parent.position = Vector2.MoveTowards(transform.parent.position, destination, MovementSpeed * Time.deltaTime);
+
+            Vector3Int dest = astar.MyTilemap.WorldToCell(destination);
+            Vector3Int cur = astar.MyTilemap.WorldToCell(current);
+
             Debug.Log("ClickToMove: destination Vector3: " + destination.ToString());
 
             float distance = Vector2.Distance(destination, transform.parent.position);
+
+            if(cur.y > dest.y)
+            {
+                MovementDirection = Vector2.down;
+            }
+            else if (cur.y < dest.y)
+            {
+                MovementDirection = Vector2.up;
+            }
+            if (cur.y == dest.y)
+            {
+                if (cur.x > dest.x)
+                {
+                    MovementDirection = Vector2.left;
+                }
+                else if (cur.x < dest.x)
+                {
+                    MovementDirection = Vector2.right;
+                }
+            }
+
+
 
             if (distance <= 0f)
             {
                 if(path.Count > 0)
                 {
+                    current = destination;
                     destination = path.Pop();
                 }
                 else
@@ -615,7 +652,16 @@ public class Player : Character {
 
 
 
-
+    public void Move()
+    {
+        if (path == null)
+        {
+            if (IsAlive)
+            {
+                MyRigidBody.velocity = MovementDirection * MovementSpeed;
+            }
+        }
+    }
 
 
 
@@ -664,9 +710,29 @@ public class Player : Character {
         }
     }
 
-   
+
+    public void GainHunger(int hunger)
+    {
+        MyHunger.MyCurrentValue += hunger;
+        
+        CombatTextManager.MyInstance.CreateText(transform.position, hunger.ToString(), SCTTYPE.HUNGER, true);
+    }
+
+    public override void TakeDamage(float damage, Transform source)
+    {
+        base.TakeDamage(damage, source);
+
+        StartCoroutine(ScreenRedFlash());
+    }
 
 
+
+    private IEnumerator ScreenRedFlash()
+    {
+        damageEffect.alpha = 1;
+        yield return new WaitForSeconds(0.2f);
+        damageEffect.alpha = 0;
+    }
 
 
 

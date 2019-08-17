@@ -24,8 +24,10 @@ public class AnfanTileMap : MonoBehaviour
     public bool autoUpdate;
 
     public TileType[] tileTypes;
-    public Tile treeTile;
-    public Tile woodTreeTile;
+    public Tile appleTree;
+    public Tile woodTree;
+    public Tile dfruitTree;
+    public Tile ironRock;
 
 
     public void DisplayMap()
@@ -100,31 +102,49 @@ public class AnfanTileMap : MonoBehaviour
             {
                 float currentHeight = terrainNoiseMap[x, y];
 
-                // On grass tiles
-                if (currentHeight > tileTypes[1].height && currentHeight <= tileTypes[2].height)
+                // On sand tiles (index 1)
+                if (currentHeight > tileTypes[0].height && currentHeight <= tileTypes[1].height)
                 {
                     int random = Random.Range(0, 100);
                     if (random < 1)
                     {
-                        treeMap.SetTile(new Vector3Int(x, y, 0), treeTile);
+                        treeMap.SetTile(new Vector3Int(x, y, 0), ironRock);
                     }
-                    else if (random >= 1 && random < 3)
+                    
+
+                }
+
+                // On grass tiles (index 2)
+                if (currentHeight > tileTypes[1].height && currentHeight <= tileTypes[2].height)
+                {
+                    int random = Random.Range(0, 200);
+                    if (random < 2)
                     {
-                        treeMap.SetTile(new Vector3Int(x, y, 0), woodTreeTile);
+                        treeMap.SetTile(new Vector3Int(x, y, 0), appleTree);
+                    }
+                    else if (random >= 2 && random < 5)
+                    {
+                        treeMap.SetTile(new Vector3Int(x, y, 0), woodTree);
+                    }
+                    else if (random >= 5 && random < 6)
+                    {
+                        treeMap.SetTile(new Vector3Int(x, y, 0), dfruitTree);
                     }
 
                 }
 
-                //// On rock tiles
-                //else if (currentHeight > tileTypes[1].height && currentHeight <= tileTypes[2].height)
-                //{
-                //    int random = Random.Range(0, 100);
-                //    if (random < 2)
-                //    {
-                //        treeMap.SetTile(new Vector3Int(x, y, 0), treeTile);
-                //    }
+                // On rock tiles (index 3)
+                else if (currentHeight > tileTypes[2].height && currentHeight <= tileTypes[3].height)
+                {
+                    int random = Random.Range(0, 100);
+                    if (random < 2)
+                    {
+                        treeMap.SetTile(new Vector3Int(x, y, 0), ironRock);
+                    }
 
-                //}
+                }
+
+                
 
 
             }
@@ -150,7 +170,7 @@ public class AnfanTileMap : MonoBehaviour
                     int random = Random.Range(0, 100);
                     if (random < 2)
                     {
-                        treeMap.SetEditorPreviewTile(new Vector3Int(x, y, 0), treeTile);
+                        treeMap.SetEditorPreviewTile(new Vector3Int(x, y, 0), appleTree);
                     }
 
                 }

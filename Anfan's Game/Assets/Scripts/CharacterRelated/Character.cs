@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // Base class for all characters in game, including Player and Enemies
-
-[RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Animator))]
 
 public abstract class Character : MonoBehaviour
@@ -21,6 +19,7 @@ public abstract class Character : MonoBehaviour
 
     public Animator MyAnimator { get; set; }
 
+    [SerializeField]
     private Rigidbody2D rb;
     private int length;
 
@@ -49,6 +48,7 @@ public abstract class Character : MonoBehaviour
 
     public Transform MyTarget { get; set; }
 
+   
 
 
           
@@ -69,6 +69,7 @@ public abstract class Character : MonoBehaviour
     public Vector2 MovementDirection { get => movementDirection; set => movementDirection = value; }
     public float MovementSpeed { get => movementSpeed; set => movementSpeed = value; }
     public int MyLevel { get => level; set => level = value; }
+    public Rigidbody2D MyRigidBody { get => rb; set => rb = value; }
 
 
 
@@ -76,9 +77,7 @@ public abstract class Character : MonoBehaviour
     // Start is called before the first frame update
     protected virtual void Start()
     {
-       
         MyAnimator = GetComponent<Animator>();
-        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -86,20 +85,10 @@ public abstract class Character : MonoBehaviour
         HandleLayers();
     }
 
-    protected virtual void FixedUpdate() {
-        Move();
-    }
+    //protected virtual void FixedUpdate() {
+    //    Move();
+    //}
 
-
-
-    public void Move() {
-
-        if (IsAlive) {
-            rb.velocity = MovementDirection * MovementSpeed;
-        }
-        
-           
-    }
 
 
     public virtual void HandleLayers() {
@@ -178,7 +167,7 @@ public abstract class Character : MonoBehaviour
         // if death, velocity is set to zero so character can't move
         if (health.MyCurrentValue <= 0) {
 
-            rb.velocity = Vector2.zero;
+            MyRigidBody.velocity = Vector2.zero;
 
             MyAnimator.SetTrigger("die");
 
@@ -186,6 +175,12 @@ public abstract class Character : MonoBehaviour
         }
 
     }
+
+    
+
+
+
+
 
     // use this function any time you want to increase character's health
     public void GainHealth(int health)

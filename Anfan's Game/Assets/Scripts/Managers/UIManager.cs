@@ -20,11 +20,7 @@ public class UIManager : MonoBehaviour
 
             return instance;
         }
-
-
-
     }
-
 
     [SerializeField]
     private ActionButton[] actionButtons;
@@ -65,25 +61,17 @@ public class UIManager : MonoBehaviour
     private RectTransform tooltipRect;
 
 
-
-    private void Awake() {
-
+    private void Awake()
+    {
         keybindButtons = GameObject.FindGameObjectsWithTag("Keybind");
         tooltipText = tooltip.GetComponentInChildren<Text>();
-
     }
-
-
 
 
     // Start is called before the first frame update
     void Start()
     {
-
-        
-        enemyHealthStat = targetFrame.GetComponentInChildren<Stat>();
-
-                     
+        enemyHealthStat = targetFrame.GetComponentInChildren<Stat>();   
     }
 
     // Update is called once per frame
@@ -271,6 +259,11 @@ public class UIManager : MonoBehaviour
 
         tooltipText.text = description.GetDescription();
 
+
+    }
+
+    public void RefreshCharacterFrame()
+    {
 
     }
 

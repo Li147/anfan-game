@@ -29,6 +29,20 @@ public class GatheringLootTable : LootTable, IInteractable
         RollLoot();
     }
 
+    private void Update()
+    {
+        if (isEmpty && isDestroyable)
+        {
+            Destroy(transform.parent.gameObject);
+        }
+        else if (isEmpty)
+        {
+            spriteRenderer.sprite = emptySprite;
+            gameObject.SetActive(false);
+            minimapIndicator.SetActive(false);
+        }
+    }
+
 
     protected override void RollLoot()
     {

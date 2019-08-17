@@ -7,7 +7,7 @@ public class AttackState : IState {
     private Enemy parent;
     private float attackCooldown = 1;
 
-    private float extraRange = 0.1f;
+    private float extraRange = 0.0f;
 
     public void Enter(Enemy parent) {
 
@@ -54,7 +54,6 @@ public class AttackState : IState {
 
         // Waits for however long the animation time is
         yield return new WaitForSeconds(parent.MyAnimator.GetCurrentAnimatorStateInfo(2).length);
-
         parent.IsAttacking = false;
 
     }

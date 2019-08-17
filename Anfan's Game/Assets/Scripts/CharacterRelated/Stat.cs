@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class Stat : MonoBehaviour
 {
-
     private Image content;
 
     [SerializeField]
@@ -30,9 +29,8 @@ public class Stat : MonoBehaviour
    
     private float currentValue;
 
-
-
-    public float MyCurrentValue {
+    public float MyCurrentValue
+    {
         get => currentValue;
         set {
             if (value > MyMaxValue) // ensures that we don't get too much health
@@ -48,18 +46,7 @@ public class Stat : MonoBehaviour
             }
 
             currentFill = currentValue / MyMaxValue;
-
-            if (statValue != null) {
-
-                statValue.text = currentValue + "/" + MyMaxValue;
-            }
-
-
-
-            
-            
         }
-
     }
 
     public float MyOverflow
@@ -89,7 +76,10 @@ public class Stat : MonoBehaviour
             content.fillAmount = Mathf.MoveTowards(content.fillAmount, currentFill, Time.deltaTime * lerpSpeed);
         }
 
-        
+        if (statValue != null)
+        {
+            statValue.text = currentValue + "/" + MyMaxValue;
+        }
     }
 
     public void Initialize(float currentValue, float maxValue) {

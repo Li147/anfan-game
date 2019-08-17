@@ -13,6 +13,9 @@ public class Spell : IUseable, IMoveable, IDescribable, ICastable
     private int damage;
 
     [SerializeField]
+    private int manaCost;
+
+    [SerializeField]
     private Sprite icon;
 
     [SerializeField]
@@ -37,7 +40,7 @@ public class Spell : IUseable, IMoveable, IDescribable, ICastable
     public float MyCastTime { get => castTime; set => castTime = value; }
     public GameObject MySpellPrefab { get => spellPrefab; set => spellPrefab = value; }
     public Color MyBarColor { get => barColor; set => barColor = value; }
-
+    public int MyManaCost { get => manaCost; set => manaCost = value; }
 
     public string GetDescription() {
 

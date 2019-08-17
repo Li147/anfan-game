@@ -29,13 +29,13 @@ public class AnfanGeneratorEditor : Editor
             mapGen.DisplayMapGUI();
         }
 
-        if (GUILayout.Button("Generate Trees Game"))
+        if (GUILayout.Button("Generate Resources Game"))
         {
             mapGen.DisplayResources();
         }
 
 
-        if (GUILayout.Button("Generate Trees GUI"))
+        if (GUILayout.Button("Generate Resources GUI"))
         {
             mapGen.DisplayTreesGUI();
         }

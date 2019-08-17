@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum SCTTYPE {DAMAGE, HEAL, EXP}
+public enum SCTTYPE {DAMAGE, HEAL, EXP, HUNGER}
 
 public class CombatTextManager : MonoBehaviour
 {
@@ -49,6 +49,11 @@ public class CombatTextManager : MonoBehaviour
                 before = "+";
                 after = "Exp";
                 sct.color = Color.yellow;
+                break;
+            case SCTTYPE.HUNGER:
+                before = "+";
+                after = "hunger";
+                sct.color = Color.green;
                 break;
 
         }

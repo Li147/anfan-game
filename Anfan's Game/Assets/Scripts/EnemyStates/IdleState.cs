@@ -23,6 +23,7 @@ class IdleState : IState {
 
             // Change state to follow state
             parent.ChangeState(new FollowState());
+            //parent.ChangeState(new PathState());
 
         }
     }

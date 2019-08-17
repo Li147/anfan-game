@@ -17,3 +17,5 @@ MonoBehaviour:
   itemName: Apple
   itemIndex: 11
   quality: 0
+  healthAmount: 2
+  hungerAmount: 3

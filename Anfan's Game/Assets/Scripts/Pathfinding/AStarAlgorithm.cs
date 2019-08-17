@@ -26,12 +26,14 @@ public class AStarAlgorithm : MonoBehaviour
 
     private bool start, goal;
 
+    public Tilemap MyTilemap { get => tilemap; set => tilemap = value; }
+
 
     // the main A star algorithm
     public Stack<Vector3> Algorithm(Vector3 start, Vector3 goal)
     {
-        startPos = tilemap.WorldToCell(start);
-        goalPos = tilemap.WorldToCell(goal);
+        startPos = MyTilemap.WorldToCell(start);
+        goalPos = MyTilemap.WorldToCell(goal);
 
         current = GetNode(startPos);
 
@@ -42,6 +44,13 @@ public class AStarAlgorithm : MonoBehaviour
         closedList = new HashSet<Node>();
 
         openList.Add(current);
+
+        foreach (KeyValuePair<Vector3Int, Node> node in allNodes)
+        {
+            node.Value.MyParent = null;
+        }
+
+        allNodes.Clear();
 
         path = null;
 
@@ -81,7 +90,7 @@ public class AStarAlgorithm : MonoBehaviour
 
                     Vector3Int neighborPos = new Vector3Int(parentPosition.x - x, parentPosition.y - y, parentPosition.z);
 
-                    if (neighborPos != startPos && !waterTiles.Contains(neighborPos) && tilemap.GetTile(neighborPos)) // ensures that tiles outside of the tilemap are not added to neighbors
+                    if (neighborPos != startPos && !waterTiles.Contains(neighborPos) && MyTilemap.GetTile(neighborPos)) // ensures that tiles outside of the tilemap are not added to neighbors
                     {
                         Node neighbor = GetNode(neighborPos);
                         neighbors.Add(neighbor);
@@ -196,7 +205,7 @@ public class AStarAlgorithm : MonoBehaviour
         {
             Stack<Vector3> finalPath = new Stack<Vector3>();
 
-            while (current.Position != startPos)
+            while (current != null)
             {
                 finalPath.Push(current.Position);
 

@@ -19,9 +19,17 @@ public class GameManager : MonoBehaviour
     private static GameManager instance;
     private int targetIndex;
 
+    //GAME VALUES
+    [SerializeField]
+    private Timer timer;
+
+    [SerializeField]
+    private int hungerDrainRate;
+
+
+
     // keeps track of a set of all tiles we CANNOT WALK ON e.g. water tiles
     private HashSet<Vector3Int> blocked = new HashSet<Vector3Int>();
-
 
     public static GameManager MyInstance
     {
@@ -34,13 +42,14 @@ public class GameManager : MonoBehaviour
             return instance;
         }
     }
-
     public Camera MyCamera { get => mainCamera; set => mainCamera = value; }
     public HashSet<Vector3Int> Blocked { get => blocked; set => blocked = value; }
 
     private void Start()
     {
         MyCamera = Camera.main;
+        InvokeRepeating("HungerDrain", 5.0f, 10.0f);
+        InvokeRepeating("ManaRegen", 1.0f, 1.0f);
     }
 
     // Update is called once per frame
@@ -156,5 +165,21 @@ public class GameManager : MonoBehaviour
         }
     }
 
+
+    #region
+    // drains player hunger
+    private void HungerDrain()
+    {
+        player.MyHunger.MyCurrentValue -= hungerDrainRate;
+    }
+
+    // increases player mana
+    private void ManaRegen()
+    {
+        float rate = player.MyManaRegenRate;
+        player.MyMana.MyCurrentValue += rate;
+    }
+
+    #endregion
 
 }

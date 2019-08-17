@@ -5,19 +5,22 @@ using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
-    public float timeStart = 60;
+    [SerializeField]
+    private float currentTime;
     public Text textBox;
+
+    public float MyCurrentTime { get => currentTime; set => currentTime = value; }
 
     // Start is called before the first frame update
     void Start()
     {
-        textBox.text = "Time: " + timeStart.ToString();
+        textBox.text = "Time: " + MyCurrentTime.ToString();
     }
 
     // Update is called once per frame
     void Update()
     {
-        timeStart += Time.deltaTime;
-        textBox.text = "Time: " + Mathf.Round(timeStart).ToString();
+        MyCurrentTime += Time.deltaTime;
+        textBox.text = "Time: " + Mathf.Round(MyCurrentTime).ToString();
     }
 }
