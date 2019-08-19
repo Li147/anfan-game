@@ -62,11 +62,11 @@ MonoBehaviour:
     m_Left: 0
     m_Right: 5
     m_Top: 0
-    m_Bottom: -130
+    m_Bottom: -165
   m_ChildAlignment: 8
   m_StartCorner: 3
   m_StartAxis: 0
-  m_CellSize: {x: 300, y: 500}
+  m_CellSize: {x: 280, y: 500}
   m_Spacing: {x: 5, y: 0}
   m_Constraint: 1
   m_ConstraintCount: 2
@@ -97,3 +97,17 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8be1ef44d42bba24392d03c8d48d9887, type: 2}
   - {fileID: 11400000, guid: d8f861e62933aa441bcd98d37fa1a848, type: 2}
   - {fileID: 11400000, guid: 6e5f422f8e631bc4f8246afe71361e6b, type: 2}
+  - {fileID: 11400000, guid: c52d18bd82d6e6249a591e390635e438, type: 2}
+  - {fileID: 11400000, guid: aeb7b2f3e166402429ec96ed79af7a5a, type: 2}
+  - {fileID: 11400000, guid: 029305e970297b14691e54a5c45d1c1a, type: 2}
+  - {fileID: 11400000, guid: 3413e305b7b83984290087a2f92e57c5, type: 2}
+  - {fileID: 11400000, guid: ec337addc2a5c624983fbf2fb269fc0e, type: 2}
+  - {fileID: 11400000, guid: 849e95a44e9a52143bd180f40ff48951, type: 2}
+  - {fileID: 11400000, guid: 5660e2710de27f946bee20a30ba4d450, type: 2}
+  - {fileID: 11400000, guid: 6b706467be9fa7943ad0b3e72b7a7ac8, type: 2}
+  - {fileID: 11400000, guid: b9bcc08f6a408cd4a84ba256bb2ead27, type: 2}
+  - {fileID: 11400000, guid: eff5eba0907b11340b3899ee0d71d840, type: 2}
+  - {fileID: 11400000, guid: 6baa61c436cc6fb4590e8b5921066fbb, type: 2}
+  - {fileID: 11400000, guid: 9d8120994280bd44e86dc661a76c873c, type: 2}
+  - {fileID: 11400000, guid: a96cf39c0b504014b98397f2c9429fcb, type: 2}
+  - {fileID: 11400000, guid: 96cea89c69f638e488a7abebe5a3bdf8, type: 2}

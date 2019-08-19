@@ -85,19 +85,19 @@ TextureImporter:
     second: roguelikeitems_26
   - first:
       213: 2889428959074088571
-    second: roguelikeitems_27
+    second: sapphire_ring
   - first:
       213: -1717757112458516207
     second: roguelikeitems_28
   - first:
       213: -1467233683780619487
-    second: roguelikeitems_29
+    second: ruby_ring
   - first:
       213: 1208729602029812823
     second: roguelikeitems_30
   - first:
       213: 3171012057831008986
-    second: roguelikeitems_31
+    second: diamond_ring
   - first:
       213: 7960038367845498682
     second: roguelikeitems_32
@@ -124,19 +124,19 @@ TextureImporter:
     second: roguelikeitems_39
   - first:
       213: 7825044478356188236
-    second: roguelikeitems_40
+    second: sapphire
   - first:
       213: -5443176891660902369
-    second: roguelikeitems_41
+    second: emerald
   - first:
       213: -8123387816349118897
-    second: roguelikeitems_42
+    second: ruby
   - first:
       213: -6651836021098864036
-    second: roguelikeitems_43
+    second: amethyst
   - first:
       213: -8458715595561043805
-    second: roguelikeitems_44
+    second: diamond
   - first:
       213: 1178821586809743685
     second: roguelikeitems_45
@@ -241,7 +241,7 @@ TextureImporter:
     second: roguelikeitems_78
   - first:
       213: 7390877131248708581
-    second: roguelikeitems_79
+    second: gold_ore
   - first:
       213: -7470800371356827753
     second: wood
@@ -1194,7 +1194,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: roguelikeitems_27
+      name: sapphire_ring
       rect:
         serializedVersion: 2
         x: 16
@@ -1236,7 +1236,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: roguelikeitems_29
+      name: ruby_ring
       rect:
         serializedVersion: 2
         x: 48
@@ -1278,7 +1278,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: roguelikeitems_31
+      name: diamond_ring
       rect:
         serializedVersion: 2
         x: 80
@@ -1467,7 +1467,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: roguelikeitems_40
+      name: sapphire
       rect:
         serializedVersion: 2
         x: 16
@@ -1488,7 +1488,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: roguelikeitems_41
+      name: emerald
       rect:
         serializedVersion: 2
         x: 32
@@ -1509,7 +1509,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: roguelikeitems_42
+      name: ruby
       rect:
         serializedVersion: 2
         x: 48
@@ -1530,7 +1530,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: roguelikeitems_43
+      name: amethyst
       rect:
         serializedVersion: 2
         x: 64
@@ -1551,7 +1551,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: roguelikeitems_44
+      name: diamond
       rect:
         serializedVersion: 2
         x: 80
@@ -2286,7 +2286,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: roguelikeitems_79
+      name: gold_ore
       rect:
         serializedVersion: 2
         x: 16

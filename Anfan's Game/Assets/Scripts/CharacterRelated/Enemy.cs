@@ -7,7 +7,7 @@ public delegate void HealthChanged(float health);
 
 public delegate void CharacterRemoved();
 
-public class Enemy : Character, IInteractable
+public class Enemy : Character
 {
     public event HealthChanged healthChanged;
 
@@ -30,6 +30,9 @@ public class Enemy : Character, IInteractable
     [SerializeField]
     private int damage;
 
+    [SerializeField]
+    private float attackRange;
+
     private bool canDoDamage = true;
 
 
@@ -46,7 +49,7 @@ public class Enemy : Character, IInteractable
     [SerializeField]
     private string enemyName;
 
-    public float MyAttackRange { get; set; }
+    public float MyAttackRange { get => attackRange; set => attackRange = value; }
     public float MyAttackTime { get; set; }
 
     public Vector3 MyStartPosition { get; set; }
@@ -71,7 +74,7 @@ public class Enemy : Character, IInteractable
         health.Initialize(initHealth, initHealth);
         MyStartPosition = transform.position;
         MyAggroRange = initAggroRange;
-        MyAttackRange = 0.1f;
+        MyAttackRange = attackRange;
         ChangeState(new IdleState());
 
     }
@@ -100,6 +103,8 @@ public class Enemy : Character, IInteractable
             }
                         
         }
+
+       
 
         Flash();
 
@@ -146,6 +151,14 @@ public class Enemy : Character, IInteractable
                 {
                     Player.MyInstance.MyAttackers.Remove(this);
                     Player.MyInstance.GainXP(EXPManager.CalculateXP((this as Enemy)));
+
+                    
+                    lootTable.SpawnLootBag();
+                    looted = true;
+
+                    Destroy(this.gameObject);
+                    
+
                 }
             }
 
@@ -217,25 +230,7 @@ public class Enemy : Character, IInteractable
 
     }
 
-    public void Interact() {
-
-        // loot enemy
-
-        if (!IsAlive && !looted) {
-
-            this.lootTable.AccessRollLoot();
-            looted = true;
-            Destroy(this.gameObject);
-
-        }
-    }
-
-    public void StopInteract() {
-
-
-
-    }
-
+    
 
     public void OnHealthChanged(float health)
     {
@@ -301,4 +296,5 @@ public class Enemy : Character, IInteractable
         }
     }
 
+    
 }

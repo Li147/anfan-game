@@ -63,6 +63,10 @@ public class SaveManager : MonoBehaviour
             // set default values for player
             Player.MyInstance.SetDefaultValues();
             //Player.MyInstance.transform.position = Player.MyInstance.tileMap.GetCellCenterWorld(new Vector3Int(50, 50, 0));
+
+            Bounds b = Player.MyInstance.tileMap.localBounds;
+            Player.MyInstance.transform.position = b.center;
+            Debug.Log(b.ToString());
         }
     }
 

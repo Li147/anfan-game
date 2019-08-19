@@ -7,6 +7,9 @@ public class LootTable : MonoBehaviour
     [SerializeField]
     public Loot[] possibleLoot;
 
+    [SerializeField]
+    LootBag lootBagPrefab;
+
     public int[] quantity;
 
     public void Awake()
@@ -14,32 +17,33 @@ public class LootTable : MonoBehaviour
         quantity = new int[possibleLoot.Length];
     }
 
-    public void DropLoot(int itemIndex, int quantity) {
-
-        ItemSpawnManager.MyInstance.SpawnEntities(itemIndex, quantity);
-
+    public void SpawnLootBag()
+    {
+        LootBag loot = Instantiate(lootBagPrefab, transform.position, Quaternion.identity);
+        loot.Initialize(RollLoot());
     }
-    
-    protected virtual void RollLoot() {
 
-        foreach (Loot item in possibleLoot) {
+    
+    protected virtual List<Item> RollLoot()
+    {
+        List<Item> finalLoot = new List<Item>();
+
+        foreach (Loot loot in possibleLoot) {
 
             int roll = Random.Range(0, 100);
 
-            if (roll <= item.MyDropChance) {
+            if (roll <= loot.MyDropChance) {
 
-                DropLoot(item.MyItem.MyItemIndex, 1);
+                finalLoot.Add(loot.MyItem);
 
             }
 
         }
 
+        return finalLoot;
+
     }
 
-    public void AccessRollLoot()
-    {
-        RollLoot();
-    }
 
 
 }

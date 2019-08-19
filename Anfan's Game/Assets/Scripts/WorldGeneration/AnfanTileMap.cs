@@ -12,7 +12,7 @@ public class AnfanTileMap : MonoBehaviour
 
     public int mapWidth;
     public int mapHeight;
-    public int seed;
+    private int seed;
     public float noiseScale;
 
     [Range(0, 10)]
@@ -31,8 +31,26 @@ public class AnfanTileMap : MonoBehaviour
     public Tile woodTree;
     public Tile dfruitTree;
     public Tile ironRock;
-    
+    public Tile goldRock;
+    public Tile rubyRock;
+    public Tile sapphireRock;
+    public Tile diamondRock;
 
+    public void Awake()
+    {
+        seed = Random.Range(0, 10000);
+        DisplayMap();
+        DisplayResources();
+    }
+
+
+    public void Start()
+    {
+        //seed = Random.Range(0, 10000);
+        //DisplayMap();
+        //DisplayResources();
+        
+    }
 
     public void DisplayMap()
     {
@@ -59,7 +77,7 @@ public class AnfanTileMap : MonoBehaviour
                         tileMap.SetTile(pos, tile);
 
                         // sets the watertile on the watermap
-                        if (tile is WaterTile2)
+                        if (tile.name == "water_plain_tile")
                         {
                             waterMap.SetTile(pos, waterTile);
                         }
@@ -96,6 +114,22 @@ public class AnfanTileMap : MonoBehaviour
                     {
                         treeMap.SetTile(new Vector3Int(x, y, 0), ironRock);
                     }
+                    else if (random >= 1 && random < 2)
+                    {
+                        treeMap.SetTile(new Vector3Int(x, y, 0), goldRock);
+                    }
+                    else if (random >= 2 && random < 3)
+                    {
+                        treeMap.SetTile(new Vector3Int(x, y, 0), rubyRock);
+                    }
+                    else if (random >= 3 && random < 4)
+                    {
+                        treeMap.SetTile(new Vector3Int(x, y, 0), sapphireRock);
+                    }
+                    else if (random >= 4 && random < 5)
+                    {
+                        treeMap.SetTile(new Vector3Int(x, y, 0), diamondRock);
+                    }
 
 
                 }
@@ -126,6 +160,22 @@ public class AnfanTileMap : MonoBehaviour
                     if (random < 2)
                     {
                         treeMap.SetTile(new Vector3Int(x, y, 0), ironRock);
+                    }
+                    else if (random >= 2 && random < 4)
+                    {
+                        treeMap.SetTile(new Vector3Int(x, y, 0), goldRock);
+                    }
+                    else if (random >= 4 && random < 6)
+                    {
+                        treeMap.SetTile(new Vector3Int(x, y, 0), rubyRock);
+                    }
+                    else if (random >= 6 && random < 8)
+                    {
+                        treeMap.SetTile(new Vector3Int(x, y, 0), sapphireRock);
+                    }
+                    else if (random >= 8 && random < 10)
+                    {
+                        treeMap.SetTile(new Vector3Int(x, y, 0), diamondRock);
                     }
 
                 }

@@ -272,13 +272,7 @@ public class Player : Character {
             GainXP(100);
         }
 
-        if (Input.GetKeyDown(KeyCode.U))
-        {
 
-
-            particleSystem.Play();
-
-        }
 
 
     }
@@ -381,8 +375,10 @@ public class Player : Character {
             ItemSpawnManager.MyInstance.SpawnEntities(itemIndex, itemQuantity);
         }
 
-        lootTable.isEmpty = true;
 
+
+        lootTable.isEmpty = true;
+        Player.MyInstance.GainXP(100);
 
 
         StopAction();
@@ -678,6 +674,7 @@ public class Player : Character {
             if (IsAlive)
             {
                 MyRigidBody.velocity = MovementDirection * (MyBaseMovementSpeed + bonusSpeed);
+                
             }
         }
     }

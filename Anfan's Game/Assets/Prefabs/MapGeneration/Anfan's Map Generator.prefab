@@ -45,26 +45,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tileMap: {fileID: 0}
   treeMap: {fileID: 0}
-  mapWidth: 200
-  mapHeight: 200
-  seed: 78
-  noiseScale: 50
+  waterMap: {fileID: 0}
+  mapWidth: 50
+  mapHeight: 50
+  seed: 88
+  noiseScale: 35
   octaves: 3
-  persistance: 0.313
-  lacunarity: 1.64
+  persistance: 0.458
+  lacunarity: 1.5
   offset: {x: 0, y: 0}
   autoUpdate: 0
   tileTypes:
-  - name: Grass
-    height: 0.6
-    tile: {fileID: 11400000, guid: c29606cee00afe748b219036d0591641, type: 2}
   - name: Water
-    height: 0.65
-    tile: {fileID: 11400000, guid: 0daaf84990292da4d9c55f2a39c46736, type: 2}
+    height: 0.2
+    tile: {fileID: 11400000, guid: 8850278517400a248b3db43468e75bcd, type: 2}
   - name: Sand
-    height: 0.8
+    height: 0.3
     tile: {fileID: 11400000, guid: 8345d832c9bcd3b43a9e60ff465be533, type: 2}
+  - name: Grass
+    height: 0.7
+    tile: {fileID: 11400000, guid: acaca4b803965954790242b6a947ebf5, type: 2}
   - name: Rock
     height: 1
     tile: {fileID: 11400000, guid: 57451f501e6929a4ba0c55a445c4da58, type: 2}
-  treeTile: {fileID: 11400000, guid: c903218e8a42c534f997b98633cfa3cc, type: 2}
+  waterTile: {fileID: 11400000, guid: 8c6c77426021d0141977e09aefe65d6c, type: 2}
+  appleTree: {fileID: 11400000, guid: c903218e8a42c534f997b98633cfa3cc, type: 2}
+  woodTree: {fileID: 11400000, guid: 7edc097163ffef148a5be6ccb388add2, type: 2}
+  dfruitTree: {fileID: 11400000, guid: 29a0eb361ab22494099202751846bbb9, type: 2}
+  ironRock: {fileID: 11400000, guid: 487612b3c87b69b4faccce29b050ce24, type: 2}
+  goldRock: {fileID: 11400000, guid: 2003b8eaede3f5542ba00ce20c184ffe, type: 2}
+  rubyRock: {fileID: 11400000, guid: bae1254abcf790c4aab80ee7b798ddb8, type: 2}
+  sapphireRock: {fileID: 11400000, guid: 0a9cf2f8f0582a840b876f0cc8886d45, type: 2}
+  diamondRock: {fileID: 11400000, guid: ac3f0db010b5b274a91412254ed4d760, type: 2}

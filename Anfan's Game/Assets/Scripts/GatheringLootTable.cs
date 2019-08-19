@@ -26,7 +26,11 @@ public class GatheringLootTable : LootTable, IInteractable
 
     private void Start()
     {
-        RollLoot();
+        for (int i = 0; i < possibleLoot.Length; i++)
+        {
+            int roll = Random.Range(1, 6);
+            quantity[i] = roll;
+        }
     }
 
     private void Update()
@@ -43,15 +47,6 @@ public class GatheringLootTable : LootTable, IInteractable
         }
     }
 
-
-    protected override void RollLoot()
-    {
-        for (int i = 0; i < possibleLoot.Length;  i++)
-        {
-            int roll = Random.Range(1, 6);
-            quantity[i] = roll;
-        }
-    }
 
     public void Interact()
     {

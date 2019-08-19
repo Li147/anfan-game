@@ -201,7 +201,7 @@ public class SlotScript : MonoBehaviour, IPointerClickHandler, IClickable, IPoin
                     }
 
                 }
-                // Dequip armour from character, add armor to bag
+                // DEQUIP armour from character, add armor to bag
                 else if (HandScript.MyInstance.MyMoveable is Armour) {
 
                     Armour armour = (Armour) HandScript.MyInstance.MyMoveable;

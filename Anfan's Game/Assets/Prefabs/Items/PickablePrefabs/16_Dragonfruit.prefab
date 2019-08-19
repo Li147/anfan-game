@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1484691554878885895}
   - component: {fileID: -6404459139449013762}
   m_Layer: 0
-  m_Name: 11_Apple 1
+  m_Name: 16_Dragonfruit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -70,7 +70,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300024, guid: 142ff8784e552734f9d6a895491d0ae8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b2834b9a4be626e4d8a56e1cde70b1b1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -93,7 +93,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00d630a3c3eebf74f9fe8c1815bfd6b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: c52d18bd82d6e6249a591e390635e438, type: 2}
+  item: {fileID: 11400000, guid: 849e95a44e9a52143bd180f40ff48951, type: 2}
 --- !u!58 &-6404459139449013762
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -109,4 +109,4 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.06}
   serializedVersion: 2
-  m_Radius: 0.55
+  m_Radius: 0.32

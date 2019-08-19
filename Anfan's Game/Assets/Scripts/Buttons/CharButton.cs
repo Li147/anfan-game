@@ -128,6 +128,8 @@ public class CharButton : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
 
         equippedArmour.MyCharButton = null;
         equippedArmour = null;
+
+        CharacterPanel.MyInstance.UpdateStats();
             
     }
 }
