@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
@@ -44,6 +46,12 @@ public class UIManager : MonoBehaviour
 
     [SerializeField]
     private CanvasGroup spellBook;
+
+    [SerializeField]
+    private CanvasGroup gameOverCanvas;
+
+    [SerializeField]
+    private TextMeshProUGUI gameOverText;
 
 
     private GameObject[] keybindButtons;
@@ -96,7 +104,7 @@ public class UIManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             OpenClose(menus[5]);
-            Debug.Log("E key was just pressed");
+
         }
 
     }
@@ -171,12 +179,11 @@ public class UIManager : MonoBehaviour
     }
 
    
-
-    public void OpenClose(CanvasGroup canvasGroup) {
-
+    // open or closes a menu 
+    public void OpenClose(CanvasGroup canvasGroup)
+    {
         canvasGroup.alpha = canvasGroup.alpha > 0 ? 0 : 1;
         canvasGroup.blocksRaycasts = canvasGroup.blocksRaycasts == true ? false : true;
-
     }
 
     // Opens a single menu
@@ -189,10 +196,8 @@ public class UIManager : MonoBehaviour
         }
 
         // open specific menu we want to show
-        Debug.Log("setting alpha to 1");
         canvasGroup.alpha = canvasGroup.alpha > 0 ? 0 : 1;
 
-        Debug.Log("setting blockraycasts to true");
         canvasGroup.blocksRaycasts = canvasGroup.blocksRaycasts == true ? false : true;
     }
 
@@ -201,7 +206,6 @@ public class UIManager : MonoBehaviour
     {
         canvasGroup.alpha = 0;
         canvasGroup.blocksRaycasts = false;
-
     }
 
     public void UpdateStackSize(IClickable clickable) {
@@ -267,5 +271,27 @@ public class UIManager : MonoBehaviour
 
     }
 
+    public void ShowGameOver()
+    {
+        StartCoroutine(GameOverScreen());
+    }
+
+    public IEnumerator GameOverScreen()
+    {
+        int timeSurvived = (int) Timer.MyInstance.MyCurrentTime;
+        gameOverText.text = "You survived for: " + timeSurvived + " seconds.";
+
+        yield return new WaitForSeconds(5);
+
+
+        gameOverCanvas.alpha = 1;
+        gameOverCanvas.blocksRaycasts = true;
+
+    }
+
+    public void PlayAgainButton()
+    {
+        SceneManager.LoadScene(1);
+    }
 
 }

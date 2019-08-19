@@ -16,9 +16,9 @@ MonoBehaviour:
   stackSize: 0
   itemName: Iron Shield
   itemIndex: 7
-  quality: 3
+  quality: 2
   armourType: 6
-  strength: 10
-  defense: 20
-  stamina: 10
+  damage: 1
+  defence: 15
+  speed: 0
   animationClips: []

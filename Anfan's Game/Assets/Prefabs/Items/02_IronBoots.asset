@@ -16,11 +16,11 @@ MonoBehaviour:
   stackSize: 0
   itemName: Iron Boots
   itemIndex: 2
-  quality: 3
+  quality: 2
   armourType: 3
-  strength: 2
-  defense: 5
-  stamina: 20
+  damage: 2
+  defence: 5
+  speed: 10
   animationClips:
   - {fileID: 7400000, guid: 13be3f5ef50071c40824c5192b683632, type: 2}
   - {fileID: 7400000, guid: 10671adc67db15b48b7601c84ea269d5, type: 2}
@@ -38,3 +38,4 @@ MonoBehaviour:
   - {fileID: 7400000, guid: 5f68e023cf6530b43b96e801c1ddcc45, type: 2}
   - {fileID: 7400000, guid: fee7a8fe98edf3143ad99dfed14b91c0, type: 2}
   - {fileID: 7400000, guid: a7c8ef1964b85e4479ebfa99ded29086, type: 2}
+  - {fileID: 7400000, guid: 92625682c1049034da9d164f5f6975a6, type: 2}

@@ -129,12 +129,12 @@ public class PixelTile : MonoBehaviour {
     }
 
 
-	void Update () {
-
+	void Update ()
+    {
         if (Input.GetMouseButtonDown(0))
-            {
+        {
             doSim(numR);
-            }
+        }
 
 
         if (Input.GetMouseButtonDown(1))
@@ -144,22 +144,9 @@ public class PixelTile : MonoBehaviour {
 
 
 
-        if (Input.GetMouseButton(2))
-        {
-            SaveAssetMap();
-            count++;
-        }
+    }
 
-
-
-
-
-
-
-
-        }
-
-
+#if (UNITY_EDITOR)
     public void SaveAssetMap()
     {
         string saveName = "tmapXY_" + count;
@@ -182,7 +169,7 @@ public class PixelTile : MonoBehaviour {
 
 
     }
-
+#endif
     public void clearMap(bool complete)
     {
 

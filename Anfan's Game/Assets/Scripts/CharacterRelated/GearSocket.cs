@@ -52,33 +52,32 @@ public class GearSocket : MonoBehaviour
 
         spriteRenderer.color = Color.white;
 
-        animatorOverrideController["Spellcast_Up"] = animations[7];
-        animatorOverrideController["Spellcast_Right"] = animations[6];
-        animatorOverrideController["Spellcast_Left"] = animations[5];
-        animatorOverrideController["Spellcast_Down"] = animations[4];
+        // Override idle animations
+        animatorOverrideController["Player_Idle_Down"] = animations[0];
+        animatorOverrideController["Player_Idle_Left"] = animations[1];
+        animatorOverrideController["Player_Idle_Right"] = animations[2];
+        animatorOverrideController["Player_Idle_Up"] = animations[3];
 
-        animatorOverrideController["Idle_Down"] = animations[0];
-        animatorOverrideController["Idle_Left"] = animations[1];
-        animatorOverrideController["Idle_Right"] = animations[2];
-        animatorOverrideController["Idle_Up"] = animations[3];
+        // Override spellcast animations
+        animatorOverrideController["Player_Spellcast_Down"] = animations[4];
+        animatorOverrideController["Player_Spellcast_Left"] = animations[5];
+        animatorOverrideController["Player_Spellcast_Right"] = animations[6];
+        animatorOverrideController["Player_Spellcast_Up"] = animations[7];
+        
+        // Override walk animations
+        animatorOverrideController["Player_Walk_Down"] = animations[8];
+        animatorOverrideController["Player_Walk_Left"] = animations[9];
+        animatorOverrideController["Player_Walk_Right"] = animations[10];
+        animatorOverrideController["Player_Walk_Up"] = animations[11];
 
-        animatorOverrideController["Walk_Down"] = animations[8];
-        animatorOverrideController["Walk_Left"] = animations[9];
-        animatorOverrideController["Walk_Right"] = animations[10];
-        animatorOverrideController["Walk_Up"] = animations[11];
+        // Override slash animations
+        animatorOverrideController["Player_Slash_Down"] = animations[12];
+        animatorOverrideController["Player_Slash_Left"] = animations[13];
+        animatorOverrideController["Player_Slash_Right"] = animations[14];
+        animatorOverrideController["Player_Slash_Up"] = animations[15];
 
-        //if (animations[12] != null)
-        //{
-        //    animatorOverrideController["Naked_Attack_Down"] = animations[12];
-        //    animatorOverrideController["Naked_Attack_Left"] = animations[13];
-        //    animatorOverrideController["Naked_Attack_Right"] = animations[14];
-        //    animatorOverrideController["Naked_Attack_Up"] = animations[15];
-        //}
-
-        animatorOverrideController["Naked_Attack_Down"] = animations[12];
-        animatorOverrideController["Naked_Attack_Left"] = animations[13];
-        animatorOverrideController["Naked_Attack_Right"] = animations[14];
-        animatorOverrideController["Naked_Attack_Up"] = animations[15];
+        // Override death animation
+        animatorOverrideController["Player_Death"] = animations[16];
 
 
 
@@ -89,20 +88,20 @@ public class GearSocket : MonoBehaviour
 
     public void DequipAnimation() {
 
-        animatorOverrideController["Spellcast_Up"] = null;
-        animatorOverrideController["Spellcast_Right"] = null;
-        animatorOverrideController["Spellcast_Left"] = null;
-        animatorOverrideController["Spellcast_Down"] = null;
+        animatorOverrideController["Player_Idle_Down"] = null;
+        animatorOverrideController["Player_Idle_Left"] = null;
+        animatorOverrideController["Player_Idle_Right"] = null;
+        animatorOverrideController["Player_Idle_Up"] = null;
 
-        animatorOverrideController["Idle_Down"] = null;
-        animatorOverrideController["Idle_Left"] = null;
-        animatorOverrideController["Idle_Right"] = null;
-        animatorOverrideController["Idle_Up"] = null;
+        animatorOverrideController["Player_Spellcast_Up"] = null;
+        animatorOverrideController["Player_Spellcast_Right"] = null;
+        animatorOverrideController["Player_Spellcast_Left"] = null;
+        animatorOverrideController["Player_Spellcast_Down"] = null;
 
-        animatorOverrideController["Walk_Down"] = null;
-        animatorOverrideController["Walk_Left"] = null;
-        animatorOverrideController["Walk_Right"] = null;
-        animatorOverrideController["Walk_Up"] = null;
+        animatorOverrideController["Player_Walk_Down"] = null;
+        animatorOverrideController["Player_Walk_Left"] = null;
+        animatorOverrideController["Player_Walk_Right"] = null;
+        animatorOverrideController["Player_Walk_Up"] = null;
 
         Color c = spriteRenderer.color;
         c.a = 0;

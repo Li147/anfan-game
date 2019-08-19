@@ -24,7 +24,7 @@ public class EvadeState : IState {
 
         // Moves straight line
         parent.transform.position = Vector2.MoveTowards(
-            parent.transform.position, parent.MyStartPosition, parent.MovementSpeed * Time.deltaTime);
+            parent.transform.position, parent.MyStartPosition, parent.MyBaseMovementSpeed * Time.deltaTime);
         // current position      ,   starting position   ,   with a speed of
 
 

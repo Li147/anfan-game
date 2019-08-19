@@ -20,27 +20,14 @@ public class Player : Character {
         }
     }
 
-    private List<Enemy> attackers = new List<Enemy>();
-
-    public Stat MyExp { get => exp; set => exp = value; }
-    public Stat MyMana { get => mana; set => mana = value; }
-    public Stat MyHunger { get => hunger; set => hunger = value; }
-    public List<IInteractable> MyInteractables { get => interactables; set => interactables = value; }
-    public List<Enemy> MyAttackers { get => attackers; set => attackers = value; }
-    public Coroutine MyInitRoutine { get => initRoutine; set => initRoutine = value; }
-    public GameObject MyBow { get => bow; set => bow = value; }
-    public float MyManaRegenRate { get => manaRegenRate; set => manaRegenRate = value; }
-
-    // player's hunger stat
+    
+    //===============PLAYER STATISTICS====================//
     [SerializeField]
     private Stat hunger;
-
     private float initHunger = 200;
 
-    // player's mana stat
     [SerializeField]
     private Stat mana;
-
     private float initMana = 100;
 
     [SerializeField]
@@ -51,6 +38,23 @@ public class Player : Character {
 
     [SerializeField]
     private Text levelText;
+
+    [SerializeField]
+    private int baseDamage;
+
+    [SerializeField]
+    private int baseDefence;
+
+    private int bonusDamage = 0;
+
+    private int bonusDefence = 0;
+
+    private float bonusSpeed = 0;
+
+
+    //===================================================//
+
+
 
 
     [SerializeField]
@@ -104,10 +108,25 @@ public class Player : Character {
     private Vector3 destination;
     private Vector3 goal;
     private Vector3 current;
-   
+
     #endregion
 
 
+    private List<Enemy> attackers = new List<Enemy>();
+
+    public Stat MyExp { get => exp; set => exp = value; }
+    public Stat MyMana { get => mana; set => mana = value; }
+    public Stat MyHunger { get => hunger; set => hunger = value; }
+    public List<IInteractable> MyInteractables { get => interactables; set => interactables = value; }
+    public List<Enemy> MyAttackers { get => attackers; set => attackers = value; }
+    public Coroutine MyInitRoutine { get => initRoutine; set => initRoutine = value; }
+    public GameObject MyBow { get => bow; set => bow = value; }
+    public float MyManaRegenRate { get => manaRegenRate; set => manaRegenRate = value; }
+    public int MyBonusDamage { get => bonusDamage; set => bonusDamage = value; }
+    public int MyBonusDefence { get => bonusDefence; set => bonusDefence = value; }
+    public float MyBonusSpeed { get => bonusSpeed; set => bonusSpeed = value; }
+    public int MyBaseDamage { get => baseDamage; set => baseDamage = value; }
+    public int MyBaseDefence { get => baseDefence; set => baseDefence = value; }
 
     protected override void Update()
     {
@@ -202,7 +221,6 @@ public class Player : Character {
         }
 
                 
-        
         if (Input.GetKeyDown(KeyCode.Space)) {
 
             if (!IsAttacking && !IsMoving) {
@@ -281,25 +299,25 @@ public class Player : Character {
 
     private IEnumerator Attack() {
 
-        
         IsAttacking = true;
         MyAnimator.SetBool("attack", IsAttacking);
 
         foreach (GearSocket g in gearSockets)
         {
-
             g.MyAnimator.SetBool("attack", IsAttacking);
-
         }
 
-        //experimental code
+      
 
         Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(hitBoxes[hitBoxIndex].position, attackRange, whatIsEnemies);
+
+        Vector2 direction = new Vector2(attackRange, 0);
+
         for (int i = 0; i < enemiesToDamage.Length; i++)
         {
             if (enemiesToDamage[i].tag == "enemy")
             {
-                enemiesToDamage[i].GetComponent<Enemy>().TakeDamage(10, transform);
+                enemiesToDamage[i].GetComponent<Enemy>().TakeDamage(MyBaseDamage + MyBonusDamage, transform);
             }
 
         }
@@ -316,6 +334,7 @@ public class Player : Character {
         Gizmos.DrawWireSphere(hitBoxes[1].position, attackRange);
         Gizmos.DrawWireSphere(hitBoxes[2].position, attackRange);
         Gizmos.DrawWireSphere(hitBoxes[3].position, attackRange);
+
 
     }
 
@@ -603,7 +622,7 @@ public class Player : Character {
     {
         if (path != null)
         {
-            transform.parent.position = Vector2.MoveTowards(transform.parent.position, destination, MovementSpeed * Time.deltaTime);
+            transform.parent.position = Vector2.MoveTowards(transform.parent.position, destination, MyBaseMovementSpeed * Time.deltaTime);
 
             Vector3Int dest = astar.MyTilemap.WorldToCell(destination);
             Vector3Int cur = astar.MyTilemap.WorldToCell(current);
@@ -658,7 +677,7 @@ public class Player : Character {
         {
             if (IsAlive)
             {
-                MyRigidBody.velocity = MovementDirection * MovementSpeed;
+                MyRigidBody.velocity = MovementDirection * (MyBaseMovementSpeed + bonusSpeed);
             }
         }
     }
@@ -720,9 +739,34 @@ public class Player : Character {
 
     public override void TakeDamage(float damage, Transform source)
     {
-        base.TakeDamage(damage, source);
+        // update health value
+        health.MyCurrentValue -= damage;
+
+        CombatTextManager.MyInstance.CreateText(transform.position, damage.ToString(), SCTTYPE.DAMAGE, false);
+
+        // if death, velocity is set to zero so character can't move
+        if (health.MyCurrentValue <= 0)
+        {
+
+            MyRigidBody.velocity = Vector2.zero;
+
+            MyAnimator.SetTrigger("die");
+
+            foreach (GearSocket g in gearSockets)
+            {
+                g.MyAnimator.SetTrigger("die");
+            }
+
+
+        }
 
         StartCoroutine(ScreenRedFlash());
+
+        if (!IsAlive)
+        {
+            UIManager.MyInstance.ShowGameOver();
+        }
+
     }
 
 

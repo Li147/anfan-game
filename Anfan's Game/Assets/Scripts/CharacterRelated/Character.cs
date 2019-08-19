@@ -9,7 +9,7 @@ public abstract class Character : MonoBehaviour
 {
 
     [SerializeField]
-    private float movementSpeed;
+    private float baseSpeed;
 
     private Vector2 movementDirection;
 
@@ -40,8 +40,6 @@ public abstract class Character : MonoBehaviour
         get { return health; }
     }
 
-
-
     [SerializeField]
     protected float initHealth = 100;
 
@@ -67,7 +65,7 @@ public abstract class Character : MonoBehaviour
 
 
     public Vector2 MovementDirection { get => movementDirection; set => movementDirection = value; }
-    public float MovementSpeed { get => movementSpeed; set => movementSpeed = value; }
+    public float MyBaseMovementSpeed { get => baseSpeed; set => baseSpeed = value; }
     public int MyLevel { get => level; set => level = value; }
     public Rigidbody2D MyRigidBody { get => rb; set => rb = value; }
 
@@ -171,7 +169,8 @@ public abstract class Character : MonoBehaviour
 
             MyAnimator.SetTrigger("die");
 
-            
+           
+
         }
 
     }

@@ -16,11 +16,11 @@ MonoBehaviour:
   stackSize: 0
   itemName: Iron Helmet
   itemIndex: 4
-  quality: 1
+  quality: 2
   armourType: 0
-  strength: 10
-  defense: 10
-  stamina: 10
+  damage: 5
+  defence: 10
+  speed: 0
   animationClips:
   - {fileID: 7400000, guid: 2c0ede3b33cf8ae48b00c5289c34dc49, type: 2}
   - {fileID: 7400000, guid: 1688bf3503b1ce042a0e5d6f5d28b144, type: 2}
@@ -38,3 +38,4 @@ MonoBehaviour:
   - {fileID: 7400000, guid: 8106090d73fc2894ea1ded18f538e30a, type: 2}
   - {fileID: 7400000, guid: ba337f068e35540469ff8826ba9c7511, type: 2}
   - {fileID: 7400000, guid: 5c1bcc4db2a6d844496bff5308950bce, type: 2}
+  - {fileID: 7400000, guid: 7226fbcde58f6544c858b84d1fd4c11c, type: 2}

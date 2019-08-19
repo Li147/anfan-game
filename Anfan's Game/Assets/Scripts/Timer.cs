@@ -5,6 +5,20 @@ using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
+    private static Timer instance;
+    public static Timer MyInstance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = FindObjectOfType<Timer>();
+            }
+            return instance;
+        }
+    }
+
+
     [SerializeField]
     private float currentTime;
     public Text textBox;

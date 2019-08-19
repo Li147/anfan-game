@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/StartMenu.unity
     guid: 47460dbe5d2f95c42a5962f1457c0d21
   - enabled: 1
-    path: Assets/Scenes/August-15-pathfinding-experimental.unity
-    guid: 535f8b558ec33be4ea322c3b7c892625
+    path: Assets/Scenes/August-17-more-prefabs.unity
+    guid: 15436ae01da62df4298c582e8b80c3ab
   m_configObjects: {}

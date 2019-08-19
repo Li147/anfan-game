@@ -26,7 +26,7 @@ public class FollowState : IState {
             parent.MovementDirection = (parent.MyTarget.transform.position - parent.transform.position).normalized;
 
             parent.transform.position = 
-            Vector2.MoveTowards(parent.transform.position, parent.MyTarget.position, parent.MovementSpeed * Time.deltaTime);
+            Vector2.MoveTowards(parent.transform.position, parent.MyTarget.position, parent.MyBaseMovementSpeed * Time.deltaTime);
 
             float distance = Vector2.Distance(parent.MyTarget.position, parent.transform.position);
 

@@ -16,9 +16,26 @@ MonoBehaviour:
   stackSize: 0
   itemName: Iron Sword
   itemIndex: 6
-  quality: 3
+  quality: 2
   armourType: 5
-  strength: 30
-  defense: 5
-  stamina: 5
-  animationClips: []
+  damage: 20
+  defence: 0
+  speed: 2
+  animationClips:
+  - {fileID: 7400000, guid: daf04b1fb4ed3c540bda0c51930aa6d7, type: 2}
+  - {fileID: 7400000, guid: daf04b1fb4ed3c540bda0c51930aa6d7, type: 2}
+  - {fileID: 7400000, guid: daf04b1fb4ed3c540bda0c51930aa6d7, type: 2}
+  - {fileID: 7400000, guid: daf04b1fb4ed3c540bda0c51930aa6d7, type: 2}
+  - {fileID: 7400000, guid: daf04b1fb4ed3c540bda0c51930aa6d7, type: 2}
+  - {fileID: 7400000, guid: daf04b1fb4ed3c540bda0c51930aa6d7, type: 2}
+  - {fileID: 7400000, guid: daf04b1fb4ed3c540bda0c51930aa6d7, type: 2}
+  - {fileID: 7400000, guid: daf04b1fb4ed3c540bda0c51930aa6d7, type: 2}
+  - {fileID: 7400000, guid: daf04b1fb4ed3c540bda0c51930aa6d7, type: 2}
+  - {fileID: 7400000, guid: daf04b1fb4ed3c540bda0c51930aa6d7, type: 2}
+  - {fileID: 7400000, guid: daf04b1fb4ed3c540bda0c51930aa6d7, type: 2}
+  - {fileID: 7400000, guid: daf04b1fb4ed3c540bda0c51930aa6d7, type: 2}
+  - {fileID: 7400000, guid: 06bfc8ec8ccdd944089e1418cf83b773, type: 2}
+  - {fileID: 7400000, guid: edb44db41e25874448e6c242b13ba4c6, type: 2}
+  - {fileID: 7400000, guid: b50716baaa25c1044a7faf52527b45f0, type: 2}
+  - {fileID: 7400000, guid: 3acb86cd178b36142a19d8862eaf0aa7, type: 2}
+  - {fileID: 7400000, guid: daf04b1fb4ed3c540bda0c51930aa6d7, type: 2}

@@ -16,11 +16,11 @@ MonoBehaviour:
   stackSize: 0
   itemName: Iron Chestplate
   itemIndex: 3
-  quality: 3
+  quality: 2
   armourType: 1
-  strength: 10
-  defense: 20
-  stamina: 10
+  damage: 0
+  defence: 20
+  speed: 0
   animationClips:
   - {fileID: 7400000, guid: d3c0b1524c746be43bf0ff8cea11f95f, type: 2}
   - {fileID: 7400000, guid: 6d75ced17a1917f43a019f7163fa67eb, type: 2}
@@ -38,3 +38,4 @@ MonoBehaviour:
   - {fileID: 7400000, guid: 26476157d1c63374daec5247f084de2d, type: 2}
   - {fileID: 7400000, guid: 1a78eade2b32c7b4baa5b56f5ff8f6cd, type: 2}
   - {fileID: 7400000, guid: f85bda8625bfb934eba4ef865bcc64e2, type: 2}
+  - {fileID: 7400000, guid: 5c6b9b0864052af40865b1106d15d25d, type: 2}

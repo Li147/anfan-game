@@ -129,7 +129,8 @@ public class TileAutomataYT : MonoBehaviour {
     }
 
 
-	void Update () {
+	void Update ()
+    {
 
         if (Input.GetMouseButtonDown(0))
             {
@@ -144,22 +145,12 @@ public class TileAutomataYT : MonoBehaviour {
 
 
 
-        if (Input.GetMouseButton(2))
-        {
-            SaveAssetMap();
-            count++;
-        }
 
 
 
+    }
 
-
-
-
-
-        }
-
-
+#if (UNITY_EDITOR)
     public void SaveAssetMap()
     {
         string saveName = "tmapXY_" + count;
@@ -182,6 +173,7 @@ public class TileAutomataYT : MonoBehaviour {
 
 
     }
+#endif
 
     public void clearMap(bool complete)
     {

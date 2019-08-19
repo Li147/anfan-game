@@ -6,6 +6,19 @@ using UnityEngine.EventSystems;
 // This class is responsible for selecting a player's target
 public class GameManager : MonoBehaviour
 {
+    private static GameManager instance;
+    public static GameManager MyInstance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = FindObjectOfType<GameManager>();
+            }
+            return instance;
+        }
+    }
+
     [SerializeField]
     private Player player;
 
@@ -16,7 +29,6 @@ public class GameManager : MonoBehaviour
 
     private Camera mainCamera;
 
-    private static GameManager instance;
     private int targetIndex;
 
     //GAME VALUES
@@ -31,17 +43,7 @@ public class GameManager : MonoBehaviour
     // keeps track of a set of all tiles we CANNOT WALK ON e.g. water tiles
     private HashSet<Vector3Int> blocked = new HashSet<Vector3Int>();
 
-    public static GameManager MyInstance
-    {
-        get
-        {
-            if (instance == null)
-            {
-                instance = FindObjectOfType<GameManager>();
-            }
-            return instance;
-        }
-    }
+    
     public Camera MyCamera { get => mainCamera; set => mainCamera = value; }
     public HashSet<Vector3Int> Blocked { get => blocked; set => blocked = value; }
 

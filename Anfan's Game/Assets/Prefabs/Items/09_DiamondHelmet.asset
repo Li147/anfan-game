@@ -18,7 +18,7 @@ MonoBehaviour:
   itemIndex: 9
   quality: 3
   armourType: 0
-  strength: 20
-  defense: 20
-  stamina: 10
+  damage: 5
+  defence: 20
+  speed: 0
   animationClips: []
