@@ -236,17 +236,17 @@ PrefabInstance:
     - target: {fileID: 8287454764720225927, guid: 81f8ab6bcab2d8846aa9ba571d386d9d,
         type: 3}
       propertyPath: initHealth
-      value: 1
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8287454764720225927, guid: 81f8ab6bcab2d8846aa9ba571d386d9d,
         type: 3}
       propertyPath: damage
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8287454764720225927, guid: 81f8ab6bcab2d8846aa9ba571d386d9d,
         type: 3}
       propertyPath: attackRange
-      value: 1
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 8287454764720225927, guid: 81f8ab6bcab2d8846aa9ba571d386d9d,
         type: 3}
@@ -301,6 +301,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5450258372398158293, guid: 81f8ab6bcab2d8846aa9ba571d386d9d,
         type: 3}
+      propertyPath: possibleLoot.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5450258372398158293, guid: 81f8ab6bcab2d8846aa9ba571d386d9d,
+        type: 3}
       propertyPath: possibleLoot.Array.data[1].item
       value: 
       objectReference: {fileID: 11400000, guid: 029305e970297b14691e54a5c45d1c1a,
@@ -322,6 +327,22 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 60664394692680677, guid: 7b52dd35dbe66424f97e2af23ce8bba7,
         type: 3}
+    - target: {fileID: 5450258372398158293, guid: 81f8ab6bcab2d8846aa9ba571d386d9d,
+        type: 3}
+      propertyPath: possibleLoot.Array.data[1].dropChance
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 5450258372398158293, guid: 81f8ab6bcab2d8846aa9ba571d386d9d,
+        type: 3}
+      propertyPath: possibleLoot.Array.data[3].item
+      value: 
+      objectReference: {fileID: 11400000, guid: c52d18bd82d6e6249a591e390635e438,
+        type: 2}
+    - target: {fileID: 5450258372398158293, guid: 81f8ab6bcab2d8846aa9ba571d386d9d,
+        type: 3}
+      propertyPath: possibleLoot.Array.data[3].dropChance
+      value: 70
+      objectReference: {fileID: 0}
     - target: {fileID: 8287454765831535723, guid: 81f8ab6bcab2d8846aa9ba571d386d9d,
         type: 3}
       propertyPath: m_Offset.y

@@ -20,7 +20,7 @@ public class Player : Character {
         }
     }
 
-    
+
     //===============PLAYER STATISTICS====================//
     [SerializeField]
     private Stat hunger;
@@ -66,7 +66,7 @@ public class Player : Character {
     private Transform[] hitBoxes;
 
     private int hitBoxIndex = 2;
-        
+
     private Vector3 min, max;
 
     [SerializeField]
@@ -85,8 +85,8 @@ public class Player : Character {
 
     [SerializeField]
     private Crafting crafting;
-    
-      
+
+
     private GameObject currentObject = null;
 
     [SerializeField]
@@ -95,7 +95,7 @@ public class Player : Character {
     [SerializeField]
     private CanvasGroup damageEffect;
 
-   
+
     // references the things he can interact with e.g. enemies, chests, trees
     private List<IInteractable> interactables = new List<IInteractable>();
 
@@ -131,10 +131,10 @@ public class Player : Character {
     protected override void Update()
     {
         ProcessInputs();
-        ClickToMove();
+        //ClickToMove();
 
-        transform.position = new Vector3(Mathf.Clamp(transform.position.x, min.x, max.x), 
-                                         Mathf.Clamp(transform.position.y, min.y, max.y), 
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x, min.x, max.x),
+                                         Mathf.Clamp(transform.position.y, min.y, max.y),
                                          transform.position.z);
 
         // sets bow active to true or false
@@ -150,7 +150,7 @@ public class Player : Character {
                 MyBow.SetActive(false);
             }
         }
-        
+
 
 
         base.Update();
@@ -189,7 +189,7 @@ public class Player : Character {
         {
             exitIndex = 3;
             hitBoxIndex = 3;
-            
+
             MovementDirection += Vector2.left;
 
             if (MovementDirection.y == 0)
@@ -220,13 +220,13 @@ public class Player : Character {
 
         }
 
-                
+
         if (Input.GetKeyDown(KeyCode.Space)) {
 
             if (!IsAttacking && !IsMoving) {
 
                 actionRoutine = StartCoroutine(Attack());
-                
+
 
             }
 
@@ -249,10 +249,10 @@ public class Player : Character {
             }
 
         }
-        
 
 
-        
+
+
 
         //Debugging stats bars
 
@@ -287,7 +287,7 @@ public class Player : Character {
 
 
 
-    
+
     public float attackRange;
     public LayerMask whatIsEnemies;
 
@@ -301,7 +301,7 @@ public class Player : Character {
             g.MyAnimator.SetBool("attack", IsAttacking);
         }
 
-      
+
 
         Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(hitBoxes[hitBoxIndex].position, attackRange, whatIsEnemies);
 
@@ -357,7 +357,7 @@ public class Player : Character {
 
 
 
-   
+
     private IEnumerator GatherRoutine(ICastable castable, GatheringLootTable lootTable)
     {
         yield return actionRoutine = StartCoroutine(ActionRoutine(castable));
@@ -382,7 +382,7 @@ public class Player : Character {
 
 
         StopAction();
-        
+
     }
 
     public IEnumerator CraftRoutine(ICastable castable)
@@ -407,7 +407,7 @@ public class Player : Character {
     }
 
 
-    
+
     public void Gather(ICastable castable, GatheringLootTable lootTable)
     {
         if (!IsAttacking && !isSpellcasting)
@@ -443,7 +443,7 @@ public class Player : Character {
 
 
 
-    
+
 
     //// Checks if target is line of sight of player model
     //private bool InLineOfSight() {
@@ -463,7 +463,7 @@ public class Player : Character {
 
     //    }
 
-        
+
     //    // if we hit a line of sight block we are not allowed to cast spell
     //    return false;
     //}
@@ -516,7 +516,7 @@ public class Player : Character {
 
         if (actionRoutine != null) {
             StopCoroutine(actionRoutine);
-            
+
         }
 
     }
@@ -529,7 +529,7 @@ public class Player : Character {
         }
     }
 
- 
+
 
 
 
@@ -579,7 +579,7 @@ public class Player : Character {
 
     private IEnumerator LevelUp()
     {
-        while(!MyExp.isFull){
+        while (!MyExp.isFull) {
             yield return null;
         }
 
@@ -627,7 +627,7 @@ public class Player : Character {
 
             float distance = Vector2.Distance(destination, transform.parent.position);
 
-            if(cur.y > dest.y)
+            if (cur.y > dest.y)
             {
                 MovementDirection = Vector2.down;
             }
@@ -651,7 +651,7 @@ public class Player : Character {
 
             if (distance <= 0f)
             {
-                if(path.Count > 0)
+                if (path.Count > 0)
                 {
                     current = destination;
                     destination = path.Pop();
@@ -674,25 +674,25 @@ public class Player : Character {
             if (IsAlive)
             {
                 MyRigidBody.velocity = MovementDirection * (MyBaseMovementSpeed + bonusSpeed);
-                
+
             }
         }
     }
 
 
 
-    public void OnTriggerEnter2D(Collider2D collision) 
+    public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "enemy" || collision.tag == "interactable") 
+        if (collision.tag == "enemy" || collision.tag == "interactable")
         {
             IInteractable interactable = collision.GetComponent<IInteractable>();
-            
+
             if (!MyInteractables.Contains(interactable))
             {
                 MyInteractables.Add(interactable);
-                
+
             }
-            
+
         }
     }
 
@@ -730,9 +730,11 @@ public class Player : Character {
     public void GainHunger(int hunger)
     {
         MyHunger.MyCurrentValue += hunger;
-        
+
         CombatTextManager.MyInstance.CreateText(transform.position, hunger.ToString(), SCTTYPE.HUNGER, true);
     }
+
+  
 
     public override void TakeDamage(float damage, Transform source)
     {

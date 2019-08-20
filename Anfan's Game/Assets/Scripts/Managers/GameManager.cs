@@ -52,6 +52,7 @@ public class GameManager : MonoBehaviour
         MyCamera = Camera.main;
         InvokeRepeating("HungerDrain", 5.0f, 10.0f);
         InvokeRepeating("ManaRegen", 1.0f, 1.0f);
+        InvokeRepeating("CheckHunger", 1.0f, 3.0f);
     }
 
     // Update is called once per frame
@@ -173,6 +174,15 @@ public class GameManager : MonoBehaviour
     private void HungerDrain()
     {
         player.MyHunger.MyCurrentValue -= hungerDrainRate;
+    }
+
+    //checks if player is too hungry
+    private void CheckHunger()
+    {
+        if (player.MyHunger.MyCurrentValue <= 0)
+        {
+            player.TakeDamage(5, this.transform);
+        }
     }
 
     // increases player mana

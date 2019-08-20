@@ -21,7 +21,7 @@ public class EnemySpawnManager : MonoBehaviour
 
         //SpawnEnemies();
 
-        InvokeRepeating("SpawnEnemy", 30.0f, 15.0f);
+        InvokeRepeating("SpawnEnemy", 30.0f, 10.0f);
     }
 
     // Update is called once per frame

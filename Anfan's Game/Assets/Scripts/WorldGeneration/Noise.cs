@@ -4,6 +4,7 @@ using UnityEngine;
 
 public static class Noise
 {
+    // method returns a 2d float array which will be the noisemap for our game
     public static float[,] GenerateNoiseMap(int mapWidth, int mapHeight, int seed, float scale, int octaves, float persistance, float lacunarity, Vector2 offset)
     {
         float[,] noiseMap = new float[mapWidth, mapHeight];
@@ -20,6 +21,7 @@ public static class Noise
         }
         //===========================================
 
+        //scale cannot be less than zero, clamp to small value
         if (scale <= 0)
         {
             scale = 0.0001f;
@@ -31,7 +33,7 @@ public static class Noise
         float halfWidth = mapWidth / 2f;
         float halfHeight = mapHeight / 2f;
 
-
+        // iterate through each value in the array
         for (int y = 0; y < mapHeight; y++)
         {
             for (int x = 0; x < mapWidth; x++)
@@ -40,6 +42,7 @@ public static class Noise
                 float frequency = 1;
                 float noiseHeight = 0;
 
+                // calculate values for each octave
                 for (int i = 0; i < octaves; i++)
                 {
                     float sampleX = (x-halfWidth) / scale * frequency + octaveOffsets[i].x;

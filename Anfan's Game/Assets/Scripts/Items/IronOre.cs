@@ -9,7 +9,7 @@ public class IronOre : Item
     public override string GetDescription()
     {
 
-        return base.GetDescription() + string.Format("\nIt's a chunk of iron ore.");
+        return base.GetDescription() + string.Format("\nUseful crafting material.");
 
     }
 
