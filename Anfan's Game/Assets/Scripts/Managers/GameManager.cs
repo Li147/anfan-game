@@ -109,18 +109,19 @@ public class GameManager : MonoBehaviour
                     entity.Interact();
                 }
             }
-            else
-            {
-                hit = Physics2D.Raycast(MyCamera.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, Mathf.Infinity, groundLayer);
+            // A* star pathfinding code (buggy)
+            //else
+            //{
+            //    hit = Physics2D.Raycast(MyCamera.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, Mathf.Infinity, groundLayer);
 
-                if (hit.collider != null)
-                {
+            //    if (hit.collider != null)
+            //    {
 
-                    player.GetPath(MyCamera.ScreenToWorldPoint(Input.mousePosition));
+            //        player.GetPath(MyCamera.ScreenToWorldPoint(Input.mousePosition));
 
                    
-                }
-            }
+            //    }
+            //}
         
 
         }
